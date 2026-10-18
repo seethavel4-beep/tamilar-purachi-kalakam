@@ -1,159 +1,105 @@
 <!DOCTYPE html>
 <html lang="ta">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>TPK - TAMILAR PURACHI KALAKAM - FINAL VERTICAL ID CARD</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TPK - Red Yellow</title>
 <style>
-*{box-sizing:border-box;font-family:Arial, sans-serif}body{margin:0;background:#fef9c3}
-.header{background:#b91c1c;color:#facc15;padding:12px;display:flex;justify-content:space-between;flex-wrap:wrap;align-items:center}
-.logo-img{width:62px;height:62px;border-radius:50%;border:2px solid #facc15;object-fit:cover;background:#fff}
-.btn{border:none;padding:10px 18px;border-radius:25px;font-weight:800;margin:3px;cursor:pointer}
-.white{background:#fff;color:#b91c1c}.yellow{background:#facc15;color:#b91c1c}
-.card{background:#fff;margin:12px;border:3px solid #b91c1c;border-radius:15px;padding:15px}
-.input{width:100%;padding:12px;border:2px solid #facc15;border-radius:12px;margin:6px 0;font-size:15px}
-.select{width:100%;padding:12px;border:2px solid #facc15;border-radius:12px;margin:6px 0;background:#fff;font-size:15px}
-.reg-btn{background:#b91c1c;color:#facc15;width:100%;padding:15px;border:none;border-radius:12px;font-weight:900;font-size:18px;margin-top:12px;cursor:pointer}
-.excel-btn{background:#16a34a;color:#fff;padding:13px 20px;border:none;border-radius:10px;font-weight:800;cursor:pointer;width:100%;margin:6px 0;font-size:15px}
-.admin-table{width:100%;border-collapse:collapse;font-size:12px}.admin-table th{background:#b91c1c;color:#facc15;padding:8px}.admin-table td{border:1px solid #ddd;padding:6px}
+* {margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
+body {background:#fef08a;min-height:100vh}
+.top-strip {background:#facc15;height:6px}
+.header {background:#dc2626;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:6px solid #facc15}
+.header-left {display:flex;align-items:center;gap:12px}
+.header-left img {width:68px;height:68px;border-radius:50%;border:4px solid #facc15;background:#fff;object-fit:cover}
+.header-left h1 {font-size:16px;font-weight:900;color:#facc15;text-shadow:2px 2px 0px #000;line-height:1.1}
+.header-right {background:#facc15;color:#dc2626;font-weight:900;padding:6px 14px;border-radius:20px;font-size:13px;border:2px solid #000}
+.main {max-width:460px;margin:16px auto;padding:0 12px}
+.form-card {background:#fff;border:4px solid #dc2626;border-radius:20px;overflow:hidden;box-shadow:8px 8px 0px #000}
+.form-header {background:#dc2626;color:#facc15;text-align:center;padding:12px;font-weight:900;font-size:16px;border-bottom:4px solid #facc15}
+.form-body {padding:16px;background:#fffef0}
+.photo-box {width:120px;height:130px;margin:0 auto 10px;border:4px solid #facc15;border-radius:16px;overflow:hidden;position:relative;background:#fef9c3;box-shadow:4px 4px 0px #dc2626;cursor:pointer}
+.photo-box img {width:100%;height:100%;object-fit:cover}
+.photo-box input {position:absolute;inset:0;opacity:0;cursor:pointer}
+.input {width:100%;padding:13px;margin:6px 0;border:3px solid #facc15;border-radius:12px;font-size:14px;font-weight:700;background:#fffef0;outline:none}
+.input:focus {border-color:#dc2626}
+.btn-main {width:100%;padding:15px;background:#dc2626;color:#facc15;font-weight:900;font-size:17px;border:3px solid #000;border-radius:14px;margin-top:10px;cursor:pointer;box-shadow:5px 5px 0px #000}
+.btn-dl {width:100%;padding:14px;background:#facc15;color:#dc2626;font-weight:900;border:3px solid #000;border-radius:14px;margin-top:10px;box-shadow:5px 5px 0px #dc2626;display:none}
+.id-wrapper {display:none;max-width:410px;margin:20px auto}
+.id-card {background:#fff;border:4px solid #000;border-radius:18px;overflow:hidden;box-shadow:8px 8px 0px #000}
+.id-top {background:#dc2626;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:4px solid #facc15}
+.id-top img {width:52px;height:52px;border-radius:50%;border:3px solid #facc15;background:#fff}
+.id-top h2 {color:#facc15;font-size:12px;text-align:center;line-height:1.2}
+.id-middle {padding:16px;background:#fffef0;text-align:center}
+.id-photo {width:120px;height:135px;margin:0 auto;border:4px solid #dc2626;border-radius:14px;overflow:hidden}
+.id-photo img {width:100%;height:100%;object-fit:cover}
+.id-details {text-align:left;margin-top:12px;background:#fff;border:3px solid #facc15;border-radius:12px;padding:12px}
+.id-row {display:flex;font-size:13px;font-weight:700;line-height:2;border-bottom:1px dashed #facc15}
+.id-row b {width:75px;color:#dc2626}
+.id-bottom {background:#dc2626;color:#facc15;text-align:center;padding:10px;font-weight:900;font-size:11px;border-top:4px solid #facc15}
 </style>
 </head>
 <body>
-
+<div class="top-strip"></div>
 <div class="header">
-<div style="display:flex;align-items:center;gap:10px">
-<img src="logo.jpg" class="logo-img" alt="TPK Logo">
-<div><b style="font-size:16px">TAMILAR PURACHI KALAKAM</b><br><small>38 DISTRICTS | 310 TALUKS | 234 THOGUTHIS</small></div>
+<div class="header-left"><img src="logo.jpg"><h1>TAMILAR<br>PURATCHI<br>KALAKAM</h1></div>
+<div class="header-right">🔴 TPK 🟡</div>
 </div>
-<div>
-<button class="btn white" onclick="showPage('reg')">📝 NEW REG</button>
-<button class="btn yellow" onclick="showPage('members')">👥 MEMBERS <span id="mCount">0</span></button>
-<button class="btn yellow" onclick="showPage('admin')">🔐 ADMIN</button>
-</div>
-</div>
-
-<!-- REGISTRATION PAGE -->
-<div id="regPage" class="card">
-<div style="background:#dcfce7;padding:10px;border-radius:10px;text-align:center;color:#166534;font-weight:800;font-size:14px">✅ FINAL VERTICAL ID CARD - ORIGINAL KODI & LOGO - RED+YELLOW ONLY - Mela Left Kodi, Center Name, Right Logo, Vertical Shape</div>
-<h3 style="color:#b91c1c;margin-top:15px">📸 PHOTO *</h3>
-<button class="input" onclick="document.getElementById('photoInput').click()">📸 CAMERA / GALLERY CLICK HERE</button>
-<input type="file" id="photoInput" accept="image/*" style="display:none" onchange="previewPhoto(this)">
-<img id="photoPrev" style="width:110px;height:130px;object-fit:cover;display:none;border-radius:12px;border:3px solid #facc15;margin-top:8px">
-
-<input class="input" id="fullName" placeholder="Full Name *">
-<input class="input" id="fatherName" placeholder="Father Name">
-<input class="input" id="mobile" placeholder="Mobile Number * (10 Digit)" type="tel" maxlength="10">
-<select class="select" id="district" onchange="loadTaluks()"><option value="">-- SELECT DISTRICT * --</option></select>
-<select class="select" id="taluk"><option value="">FIRST SELECT DISTRICT</option></select>
-<select class="select" id="thoguthi"><option value="">-- SELECT THOGUTHI * --</option></select>
-<select class="select" id="blood"><option value="">Blood Group *</option><option>O+ve</option><option>O-ve</option><option>A+ve</option><option>A-ve</option><option>B+ve</option><option>B-ve</option><option>AB+ve</option><option>AB-ve</option></select>
-<input class="input" id="address" placeholder="Full Address *">
-<div id="errorBox" style="background:#fee2e2;color:#b91c1c;padding:10px;border-radius:8px;display:none;font-weight:700;margin-top:8px"></div>
-<button class="reg-btn" onclick="registerMember()">✅ REGISTER NOW - ID CARD READY</button>
-</div>
-
-<!-- MEMBERS PAGE -->
-<div id="membersPage" class="card" style="display:none"><h2 style="color:#b91c1c">👥 Members List - TPK</h2><div id="membersList"></div></div>
-
-<!-- ADMIN PAGE -->
-<div id="adminPage" class="card" style="display:none">
-<h2 style="color:#b91c1c">🔐 ADMIN PANEL - TPK FINAL - ORIGINAL KODI LOGO VERTICAL</h2>
-<button class="excel-btn" onclick="exportExcel()">📊 EXCEL SHEET DOWNLOAD - Member ID, DOJ, Phone, Mavattam, Thoguthi</button>
-<div style="overflow:auto;margin-top:10px">
-<table class="admin-table"><thead><tr><th>Member ID</th><th>DOJ</th><th>Name</th><th>Phone</th><th>Mavattam</th><th>Thoguthi</th><th>ID Card</th></tr></thead><tbody id="adminBody"></tbody></table>
-</div>
-
-<!-- ID CARD TEMPLATE - FINAL VERTICAL WITH ORIGINAL KODI & LOGO -->
-<div id="idCardArea" style="position:fixed;top:-9999px;left:-9999px">
-<div id="idCardTemplate" style="width:400px;background:#fff;border:4px solid #b91c1c;border-radius:18px;overflow:hidden;box-shadow:0 0 10px rgba(0,0,0,0.3)">
-<!-- TOP RED PART -->
-<div style="background:#b91c1c;padding:12px">
-<div style="display:flex;justify-content:space-between;align-items:center">
-<img src="kodi.jpg" style="width:80px;height:54px;object-fit:cover;border:2px solid #facc15;border-radius:6px;background:#fff">
-<div style="color:#facc15;font-weight:900;font-size:16px;text-align:center;line-height:1.2">தமிழர்<br>புரட்சி கழகம்</div>
-<img src="logo.jpg" style="width:68px;height:68px;border-radius:50%;border:2px solid #facc15;object-fit:cover;background:#fff">
-</div>
-<div style="text-align:center;margin-top:10px"><img src="logo.jpg" style="width:92%;max-height:160px;object-fit:contain;filter:drop-shadow(0 3px 6px rgba(0,0,0,0.4))"></div>
-<div style="background:#facc15;border:2px solid #fff;border-radius:10px;padding:8px;text-align:center;margin:10px 12px">
-<div style="color:#b91c1c;font-weight:900;font-size:22px;letter-spacing:1px">TAMILAR PURACHI KALAKAM</div>
-<div style="color:#000;font-weight:800;font-size:13px;margin-top:3px">MEMBERSHIP ID CARD</div>
+<div class="main">
+<div class="form-card">
+<div class="form-header">🟡 RED & YELLOW - TPK REGISTRATION 🔴</div>
+<div class="form-body">
+<div style="text-align:center"><div class="photo-box"><img id="pv" src="logo.jpg"><input type="file" id="fi" accept="image/*"></div></div>
+<input id="n" class="input" placeholder="Full Name">
+<input id="f" class="input" placeholder="Father Name">
+<input id="p" class="input" placeholder="Phone">
+<input id="d" class="input" placeholder="District - Virudhunagar">
+<input id="b" class="input" placeholder="Blood Group - O+ve">
+<input id="a" class="input" placeholder="Address">
+<button class="btn-main" onclick="gen()">🔴 REGISTER NOW 🟡</button>
+<button class="btn-dl" id="dl" onclick="down()">⬇️ DOWNLOAD ID CARD</button>
 </div>
 </div>
-<!-- BOTTOM YELLOW PART -->
-<div style="background:#facc15;padding:16px">
-<div style="display:flex;gap:14px">
-<div style="text-align:center"><img id="cardPhoto" style="width:115px;height:138px;border:3px solid #b91c1c;border-radius:12px;object-fit:cover;background:#fff"><div style="font-weight:900;font-size:11px;color:#b91c1c;margin-top:5px">PHOTO</div></div>
-<div style="font-size:13px;line-height:2;color:#7f1d1d;font-weight:800">
-<div>Member ID : <span id="cId" style="color:#000;font-weight:900"></span></div>
-<div>Name : <span id="cName" style="color:#000"></span></div>
-<div>DOJ : <span id="cDoj" style="color:#000"></span></div>
-<div>Phone : <span id="cPhone" style="color:#000"></span></div>
-<div>Mavattam : <span id="cDist" style="color:#000"></span></div>
-<div>Thoguthi : <span id="cThog" style="color:#000"></span></div>
+<div class="id-wrapper" id="iw">
+<div class="id-card"><div class="id-top"><img src="logo.jpg"><h2>TAMILAR PURATCHI KALAKAM<br>OFFICIAL ID CARD</h2><img src="logo.jpg"></div>
+<div class="id-middle"><div class="id-photo"><img id="ip"></div><div class="id-details"><div class="id-row"><b>Name:</b><span id="in"></span></div><div class="id-row"><b>S/O:</b><span id="if"></span></div><div class="id-row"><b>Phone:</b><span id="iph"></span></div><div class="id-row"><b>Dist:</b><span id="idist"></span></div><div class="id-row"><b>Blood:</b><span id="ib"></span></div><div class="id-row"><b>Add:</b><span id="ia"></span></div></div></div><div class="id-bottom">🔴 TAMILAR PURATCHI KALAKAM 🟡 | TPK</div></div>
 </div>
 </div>
-<div style="margin-top:14px;border-top:2px solid #b91c1c;padding-top:7px;font-size:9px;text-align:center;font-weight:700;color:#7f1d1d">This card is the property of Tamilar Purachi Kalakam • Non-transferable • If found please return to TPK HQ, Chennai</div>
-<div style="background:#b91c1c;color:#facc15;text-align:center;padding:6px;font-size:10px;font-weight:900;margin-top:10px;border-radius:7px;letter-spacing:0.5px">MEMBER • TAMILAR PURACHI KALAKAM • TPK • RED & YELLOW ONLY</div>
-</div>
-</div>
-</div>
-</div>
-
+<canvas id="cv" style="display:none"></canvas>
 <script>
-const data={
-"Ariyalur":{taluks:["Ariyalur","Udayarpalayam"],thoguthis:["Ariyalur","Jayankondam"]},
-"Chengalpattu":{taluks:["Chengalpattu","Thirukalukundram","Thiruporur"],thoguthis:["Chengalpattu","Thiruporur"]},
-"Chennai":{taluks:["Alandur","Aminjikarai","Ayanavaram","Egmore","Guindy","Mambalam","Maduravoyal","Mylapore","Perambur","Purasawalkam","Sholinganallur","Tondiarpet","Velachery","Anna Nagar"],thoguthis:["Chennai Central","Chennai North","Chennai South","Egmore","Royapuram","Kolathur"]},
-"Coimbatore":{taluks:["Coimbatore North","Coimbatore South","Mettupalayam","Pollachi","Sulur","Valparai"],thoguthis:["Coimbatore North","Coimbatore South","Pollachi","Sulur","Valparai","Mettupalayam"]},
-"Cuddalore":{taluks:["Cuddalore","Bhuvanagiri","Chidambaram","Kattumannarkoil","Panruti","Tittakudi","Vriddhachalam"],thoguthis:["Cuddalore","Chidambaram","Panruti","Kattumannarkoil","Vriddhachalam"]},
-"Dharmapuri":{taluks:["Dharmapuri","Harur","Palacode","Pappireddipatti","Pennagaram"],thoguthis:["Dharmapuri","Harur","Palacode","Pappireddipatti","Pennagaram"]},
-"Dindigul":{taluks:["Dindigul","Athoor","Gujiliamparai","Kodaikanal","Nilakottai","Natham","Oddanchatram","Palani","Vedasandur"],thoguthis:["Dindigul","Palani","Nilakottai","Natham","Oddanchatram","Athoor"]},
-"Erode":{taluks:["Erode","Anthiyur","Bhavani","Gobichettipalayam","Kodumudi","Modakkurichi","Nambiyur","Perundurai","Sathyamangalam","Thalavadi"],thoguthis:["Erode East","Erode West","Bhavani","Gobichettipalayam","Modakkurichi","Anthiyur"]},
-"Kallakurichi":{taluks:["Kallakurichi","Chinnasalem","Kalvarayan Hills","Sankarapuram","Tirukkoyilur","Ulundurpet"],thoguthis:["Kallakurichi","Sankarapuram","Rishivandiyam","Ulundurpet"]},
-"Kanchipuram":{taluks:["Kanchipuram","Kundrathur","Sriperumbudur","Uthiramerur","Walajabad"],thoguthis:["Kanchipuram","Sriperumbudur","Uthiramerur"]},
-"Kanyakumari":{taluks:["Agastheeswaram","Kalkulam","Killiyoor","Thiruvattar","Thovalai","Vilavancode"],thoguthis:["Kanyakumari","Nagercoil","Colachel","Padmanabhapuram","Killiyoor","Vilavancode"]},
-"Karur":{taluks:["Karur","Aravakurichi","Kadavur","Krishnarayapuram","Kulithalai","Manmangalam"],thoguthis:["Karur","Aravakurichi","Kulithalai","Krishnarayapuram"]},
-"Krishnagiri":{taluks:["Krishnagiri","Anjetty","Bargur","Denkanikottai","Hosur","Pochampalli","Shoolagiri","Uthangarai"],thoguthis:["Krishnagiri","Hosur","Uthangarai","Bargur"]},
-"Madurai":{taluks:["Madurai North","Madurai South","Madurai East","Madurai West","Melur","Peraiyur","Thirumangalam","Thiruparankundram","Usilampatti","Vadipatti"],thoguthis:["Madurai North","Madurai South","Madurai East","Madurai West","Melur","Thirumangalam"]},
-"Mayiladuthurai":{taluks:["Mayiladuthurai","Kuthalam","Sirkazhi","Tharangambadi"],thoguthis:["Mayiladuthurai","Sirkazhi","Poompuhar"]},
-"Nagapattinam":{taluks:["Nagapattinam","Kilvelur","Thirukkuvalai","Vedaranyam"],thoguthis:["Nagapattinam","Kilvelur","Vedaranyam"]},
-"Namakkal":{taluks:["Namakkal","Kumarapalayam","Paramathi-Velur","Rasipuram","Senthamangalam","Tiruchengode"],thoguthis:["Namakkal","Paramathi-Velur","Rasipuram","Senthamangalam","Tiruchengode","Kumarapalayam"]},
-"Nilgiris":{taluks:["Udhagamandalam","Coonoor","Gudalur","Kotagiri","Kundah","Pandalur"],thoguthis:["Udhagamandalam","Gudalur","Coonoor"]},
-"Perambalur":{taluks:["Perambalur","Alathur","Kunnam","Veppanthattai"],thoguthis:["Perambalur","Kunnam"]},
-"Pudukkottai":{taluks:["Pudukkottai","Alangudi","Aranthangi","Avudayarkoil","Gandarvakottai","Iluppur","Karambakudi","Kulathur","Manamelkudi","Ponnamaravathi","Thirumayam","Viralimalai"],thoguthis:["Pudukkottai","Alangudi","Aranthangi","Gandarvakottai","Thirumayam","Viralimalai"]},
-"Ramanathapuram":{taluks:["Ramanathapuram","Kadaladi","Kamuthi","Kilakarai","Mudukulathur","Paramakudi","Rameswaram","Tiruvadanai"],thoguthis:["Ramanathapuram","Mudukulathur","Paramakudi","Tiruvadanai"]},
-"Ranipet":{taluks:["Ranipet","Arakkonam","Arcot","Kalavai","Nemili","Sholinghur","Walajah"],thoguthis:["Ranipet","Arakkonam","Arcot","Sholinghur"]},
-"Salem":{taluks:["Salem","Attur","Edappadi","Gangavalli","Mettur","Omalur","Pethanaickenpalayam","Salem South","Salem West","Sankari","Vazhapadi","Yercaud"],thoguthis:["Salem North","Salem South","Salem West","Attur","Edappadi","Gangavalli","Mettur","Omalur","Sankari","Veerapandi","Yercaud"]},
-"Sivaganga":{taluks:["Sivaganga","Devakottai","Ilayankudi","Kalayarkoil","Manamadurai","Singampunari","Tirupathur","Tiruppuvanam"],thoguthis:["Sivaganga","Manamadurai","Karaikudi","Tiruppathur"]},
-"Tenkasi":{taluks:["Tenkasi","Alangulam","Kadayanallur","Sankarankoil","Shenkottai","Sivagiri","Thiruvengadam","Veerakeralampudur"],thoguthis:["Tenkasi","Alangulam","Kadayanallur","Sankarankoil","Vasudevanallur"]},
-"Thanjavur":{taluks:["Thanjavur","Boothalur","Kumbakonam","Orathanadu","Papanasam","Pattukkottai","Peravurani","Thiruvaiyaru","Thiruvidaimarudur"],thoguthis:["Thanjavur","Kumbakonam","Pattukkottai","Peravurani","Orathanadu","Thiruvaiyaru"]},
-"Theni":{taluks:["Theni","Andipatti","Bodinayakanur","Periyakulam","Uthamapalayam"],thoguthis:["Theni","Andipatti","Bodinayakanur","Periyakulam"]},
-"Thoothukudi":{taluks:["Thoothukudi","Ettayapuram","Kayathar","Kovilpatti","Ottapidaram","Sathankulam","Srivaikuntam","Tiruchendur","Vilathikulam"],thoguthis:["Thoothukudi","Tiruchendur","Srivaikuntam","Ottapidaram","Kovilpatti","Vilathikulam"]},
-"Tiruchirappalli":{taluks:["Tiruchirappalli West","Tiruchirappalli East","Lalgudi","Manachanallur","Manapparai","Marungapuri","Musiri","Srirangam","Thottiyam","Thuraiyur","Vaiyampatti"],thoguthis:["Tiruchirappalli East","Tiruchirappalli West","Srirangam","Manachanallur","Musiri","Lalgudi","Manapparai","Thuraiyur"]},
-"Tirunelveli":{taluks:["Tirunelveli","Ambasamudram","Cheranmahadevi","Manur","Nanguneri","Palayamkottai","Radhapuram","Tisayanvilai"],thoguthis:["Tirunelveli","Ambasamudram","Palayamkottai","Nanguneri","Radhapuram","Cheranmahadevi"]},
-"Tirupathur":{taluks:["Tirupathur","Ambur","Natrampalli","Vaniyambadi"],thoguthis:["Tirupathur","Ambur","Vaniyambadi","Jolarpet"]},
-"Tiruppur":{taluks:["Tiruppur North","Tiruppur South","Avinashi","Dharapuram","Kangeyam","Madathukulam","Palladam","Uthukuli"],thoguthis:["Tiruppur North","Tiruppur South","Avinashi","Dharapuram","Kangeyam","Madathukulam","Palladam","Uthukuli"]},
-"Tiruvallur":{taluks:["Tiruvallur","Avadi","Gummidipoondi","Pallipattu","Ponneri","Poonamallee","R K Pet","Tiruttani","Uthukottai"],thoguthis:["Tiruvallur","Avadi","Gummidipoondi","Ponneri","Poonamallee","Tiruttani"]},
-"Tiruvannamalai":{taluks:["Tiruvannamalai","Arani","Chengam","Cheyyar","Chetpet","Jamunamarathur","Kalasapakkam","Kilpennathur","Polur","Thandrampet","Vandavasi","Vembakkam"],thoguthis:["Tiruvannamalai","Arani","Chengam","Cheyyar","Kalasapakkam","Kilpennathur","Polur","Vandavasi"]},
-"Tiruvarur":{taluks:["Tiruvarur","Kodavasal","Mannargudi","Nannilam","Needamangalam","Thiruthuraipoondi","Valangaiman"],thoguthis:["Tiruvarur","Mannargudi","Nannilam","Thiruthuraipoondi"]},
-"Vellore":{taluks:["Vellore","Anaicut","Gudiyatham","K V Kuppam","Katpadi","Pernambut"],thoguthis:["Vellore","Anaicut","Gudiyatham","Katpadi","K V Kuppam"]},
-"Viluppuram":{taluks:["Viluppuram","Gingee","Kandamangalam","Marakkanam","Melmalaiyanur","Thiruvennainallur","Tindivanam","Vanur","Vikravandi"],thoguthis:["Viluppuram","Gingee","Mailam","Tindivanam","Vanur","Vikravandi"]},
-"Virudhunagar":{taluks:["Virudhunagar","Aruppukottai","Kariapatti","Rajapalayam","Sattur","Sivakasi","Srivilliputhur","Tiruchuli","Vembakottai","Watrap"],thoguthis:["Virudhunagar","Aruppukottai","Sattur","Sivakasi","Srivilliputhur","Rajapalayam","Tiruchuli"]}
-};
-let members=JSON.parse(localStorage.getItem('tpk_members')||'[]');let photoBase64="";
-function init(){let dSel=document.getElementById('district');Object.keys(data).sort().forEach(d=>{let o=document.createElement('option');o.value=d;o.textContent=d;dSel.appendChild(o)});updateCount();renderAdmin();}
-function loadTaluks(){let d=document.getElementById('district').value;let tSel=document.getElementById('taluk');let thSel=document.getElementById('thoguthi');tSel.innerHTML='<option value="">-- SELECT TALUK --</option>';thSel.innerHTML='<option value="">-- SELECT THOGUTHI --</option>';if(!d)return;data[d].taluks.forEach(t=>{let o=document.createElement('option');o.value=t;o.textContent=t;tSel.appendChild(o)});data[d].thoguthis.forEach(t=>{let o=document.createElement('option');o.value=t;o.textContent=t;thSel.appendChild(o)});}
-function previewPhoto(input){let file=input.files[0];if(!file)return;let reader=new FileReader();reader.onload=function(e){photoBase64=e.target.result;document.getElementById('photoPrev').src=photoBase64;document.getElementById('photoPrev').style.display='block';};reader.readAsDataURL(file);}
-function registerMember(){let name=document.getElementById('fullName').value.trim();let mobile=document.getElementById('mobile').value.trim();let district=document.getElementById('district').value;let taluk=document.getElementById('taluk').value;let thoguthi=document.getElementById('thoguthi').value;let err=document.getElementById('errorBox');if(!name||!mobile||!district||!taluk||!thoguthi){err.style.display='block';err.innerText='❌ District/Taluk/Thoguthi Required!';return;}if(mobile.length!=10){err.style.display='block';err.innerText='❌ Mobile 10 Digit Required!';return;}err.style.display='none';let id='TPK-'+(1000+members.length+1)+'-'+Math.floor(10+Math.random()*90);let doj=new Date().toLocaleDateString('en-GB');let father=document.getElementById('fatherName').value;let blood=document.getElementById('blood').value;let address=document.getElementById('address').value;let member={id,doj,name,father,mobile,district,taluk,thoguthi,blood,address,photo:photoBase64||''};members.push(member);localStorage.setItem('tpk_members',JSON.stringify(members));alert('✅ REGISTERED! ID: '+id);updateCount();renderMembers();renderAdmin();showPage('members');}
-function updateCount(){document.getElementById('mCount').innerText=members.length;}
-function renderMembers(){let div=document.getElementById('membersList');div.innerHTML=members.map(m=>`<div style="border:2px solid #facc15;padding:10px;border-radius:12px;margin:8px 0"><b style="color:#b91c1c">${m.id}</b> - ${m.name}<br>📍 ${m.district} | ${m.taluk} | ${m.thoguthi}<br>📞 ${m.mobile} | 📅 ${m.doj}<br><button onclick="downloadIdCard('${m.id}')" style="background:#b91c1c;color:#facc15;padding:8px 14px;border:none;border-radius:8px;margin-top:6px;font-weight:800">🪪 ID CARD DOWNLOAD</button></div>`).join('')||'No Members Yet';}
-function renderAdmin(){let body=document.getElementById('adminBody');body.innerHTML=members.map(m=>`<tr><td>${m.id}</td><td>${m.doj}</td><td>${m.name}</td><td>${m.mobile}</td><td>${m.district}</td><td>${m.thoguthi}</td><td><button onclick="downloadIdCard('${m.id}')" style="background:#b91c1c;color:white;padding:5px 10px;border:none;border-radius:5px;font-weight:700">ID Card</button></td></tr>`).join('');}
-function showPage(p){document.getElementById('regPage').style.display=p=='reg'?'block':'none';document.getElementById('membersPage').style.display=p=='members'?'block':'none';document.getElementById('adminPage').style.display=p=='admin'?'block':'none';if(p=='admin')renderAdmin();if(p=='members')renderMembers();}
-function exportExcel(){let ws_data=[["Member ID","Date of Joining","Full Name","Father Name","Phone Number","Mavattam (District)","Taluk","Thoguthi","Blood Group","Address"]];members.forEach(m=>{ws_data.push([m.id,m.doj,m.name,m.father||'',m.mobile,m.district,m.taluk,m.thoguthi,m.blood||'',m.address||''])});let ws=XLSX.utils.aoa_to_sheet(ws_data);let wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"TPK Members");XLSX.writeFile(wb,"TPK_Members_"+new Date().toISOString().slice(0,10)+".xlsx");}
-function downloadIdCard(memberId){let m=members.find(x=>x.id==memberId);if(!m)return;document.getElementById('cId').innerText=m.id;document.getElementById('cName').innerText=m.name;document.getElementById('cDoj').innerText=m.doj;document.getElementById('cPhone').innerText=m.mobile;document.getElementById('cDist').innerText=m.district;document.getElementById('cThog').innerText=m.thoguthi;let cardPhoto=document.getElementById('cardPhoto');if(m.photo){cardPhoto.src=m.photo;}else{cardPhoto.src='https://via.placeholder.com/115x138?text=PHOTO';}setTimeout(()=>{html2canvas(document.getElementById('idCardTemplate'),{scale:3,useCORS:true}).then(canvas=>{let link=document.createElement('a');link.download=m.id+'_TPK_ID_Card.png';link.href=canvas.toDataURL('image/png');link.click();});},700);}
-init();
-</script>
-</body>
-  </html>
+let ud=""; 
+document.getElementById('fi').addEventListener('change',e=>{
+ const file=e.target.files[0]; if(!file) return;
+ const r=new FileReader(); r.onload=ev=>{ud=ev.target.result; document.getElementById('pv').src=ud; document.getElementById('ip').src=ud;}; r.readAsDataURL(file);
+});
+function gen(){
+ const name=document.getElementById('n').value||'A Velmurugan';
+ if(!ud){alert('Photo select pannunga Bro!'); return;}
+ document.getElementById('in').innerText=name;
+ document.getElementById('if').innerText=document.getElementById('f').value;
+ document.getElementById('iph').innerText=document.getElementById('p').value;
+ document.getElementById('idist').innerText=document.getElementById('d').value;
+ document.getElementById('ib').innerText=document.getElementById('b').value;
+ document.getElementById('ia').innerText=document.getElementById('a').value;
+ document.getElementById('iw').style.display='block';
+ document.getElementById('dl').style.display='block';
+ document.getElementById('iw').scrollIntoView({behavior:'smooth'});
+}
+function down(){
+ const cv=document.getElementById('cv'); const cx=cv.getContext('2d'); cv.width=420; cv.height=680;
+ cx.fillStyle='#fffef0'; cx.fillRect(0,0,420,680);
+ cx.fillStyle='#dc2626'; cx.fillRect(0,0,420,90);
+ cx.fillStyle='#facc15'; cx.fillRect(0,84,420,8);
+ const lg=new Image(); lg.crossOrigin='anonymous'; lg.src='logo.jpg';
+ const us=new Image(); us.src=ud;
+ let l=0; function draw(){l++; if(l<2) return;
+  cx.drawImage(lg,12,8,72,72); cx.drawImage(lg,336,8,72,72);
+  cx.fillStyle='#facc15'; cx.font='900 15px Arial'; cx.textAlign='center'; cx.fillText('TAMILAR PURATCHI KALAKAM',210,35);
+  cx.fillStyle='#fff'; cx.font='900 10px Arial'; cx.fillText('OFFICIAL ID CARD - RED & YELLOW',210,58);
+  cx.drawImage(us,144,102,128,143);
+  cx.fillStyle='#fff'; cx.fillRect(18,275,384,320); cx.strokeStyle='#facc15'; cx.lineWidth=4; cx.strokeRect(18,275,384,320);
+  const g=id=>document.getElementById(id).innerText; let y=305; cx.textAlign='left'; cx.font='900 14px Arial';
+  cx.fillStyle='#dc2626'; cx.fillText('Name:',24,y); cx.fillStyle='#000'; cx.fillText(g('in'),90,y); y+=36;
+  cx.fillStyle='#dc2626'; cx.fillText('S/O:',24,y); cx.fillStyle='#000'; cx.fillText(g('if'),90,y); y+=36;
+  cx.fillStyle='#dc2626'; cx.fillText('Phone:',24,y); cx.fillStyle='#000'; cx.fillText(g('iph'),90,y); y+=36;
+  cx.fillStyle='#dc2626'; cx.fillText('Dist:',24,y); cx.fillStyle='#000'; cx.fillText(g('idist'),90,y); y+=36;
+  cx.fillStyle='#dc2626'; cx.fillText('Blood:',24,y); cx.fillStyle='#000'; cx.fillText(g('ib'),90,y);
+  cx.fillStyle='#dc2626'; cx.fillRect(0,620,420,60); cx.fillStyle='#facc15'; cx.fillRect
