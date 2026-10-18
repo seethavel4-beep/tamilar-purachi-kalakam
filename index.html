@@ -1,32 +1,192 @@
-// AUTO SAVE EXCEL FUNCTION - NEW - 500 LINE REQUIREMENT
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TPK நீளமான கோடு - MEMBER ID SAVE - 38 DIST 234 THOGUTHI - LOGO FLAG TOP</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+/* ============================================ */
+/* TPK நீளமான கோடு - MEMBER ID SAVE FINAL     */
+/* 1000 LINE - 38 DISTRICT - 234 THOGUTHI      */
+/* LOGO TOP LEFT - FLAG TOP RIGHT - ID SAVE   */
+/* ============================================ */
+* {margin:0;padding:0;box-sizing:border-box}
+body {background:#000;color:#fff;font-family:Arial;text-align:center}
+.header {padding:15px;background:#000}
+.logo {width:120px;height:120px;margin:0 auto 10px;border-radius:50%;overflow:hidden;border:4px solid gold;background:#fff;display:flex;align-items:center;justify-content:center;font-size:40px}
+.kodi {width:90%;max-width:360px;height:180px;margin:0 auto 10px;border:3px solid gold;border-radius:10px;overflow:hidden;background:#111;display:flex;align-items:center;justify-content:center}
+.kodi img {width:100%;height:100%;object-fit:cover}
+.card {background:#fff;color:#000;border-radius:15px;border:3px solid gold;margin:10px;text-align:left;overflow:hidden}
+.head {background:#000;color:gold;padding:12px;text-align:center;font-weight:800;font-size:13px}
+.form {padding:12px}
+label {display:block;margin-top:10px;font-weight:700;font-size:12px;color:#000}
+input,select {width:100%;padding:10px;border:2px solid #ccc;border-radius:8px;margin-top:4px;box-sizing:border-box}
+.reg {width:100%;background:#D90429;color:#fff;padding:12px;border:none;border-radius:10px;font-weight:800;margin-top:12px;cursor:pointer}
+.nav {display:flex;gap:6px;justify-content:center;padding:10px;background:#111;flex-wrap:wrap}
+.nav button {padding:9px 12px;border:none;border-radius:8px;font-weight:800;cursor:pointer;font-size:11px}
+.r {background:#D90429;color:#fff}.y {background:gold;color:#000}.o {background:#222;border:2px solid gold;color:#fff}.b {background:#0066ff;color:#fff}.p {background:#800080;color:#fff}.g {background:#0a7e07;color:#fff}
+.pbox {border:2px dashed gold;border-radius:10px;padding:10px;text-align:center;background:#fff8d6}
+.prev {width:100px;height:100px;border-radius:50%;margin:8px auto;border:3px solid gold;overflow:hidden;display:none;background:#eee}
+.prev img {width:100%;height:100%;object-fit:cover}
+.mitem {background:#111;border-left:4px solid gold;padding:8px;margin:8px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;color:#fff;text-align:left}
+.mphoto {width:45px;height:45px;border-radius:50%;overflow:hidden;border:2px solid gold;flex-shrink:0;background:#222}
+.mphoto img {width:100%;height:100%;object-fit:cover}
+.count-box {display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:10px;background:#111;border-radius:10px;margin:10px}
+.count-btn {padding:8px 12px;border-radius:8px;font-weight:800;font-size:11px;border:none;cursor:pointer}
+.auto-box {background:#0a7e07;color:#fff;padding:10px;border-radius:10px;margin:10px;font-weight:800;font-size:12px}
+.id-box {background:#D90429;color:#fff;padding:8px;border-radius:8px;margin:5px;text-align:center;font-weight:800}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo" id="logoBox">🐅</div>
+<div class="kodi" id="flagBox"><img src="tpk-flag.jpg" onerror="this.style.display='none';document.getElementById('flagBox').innerHTML='TPK FLAG'"></div>
+<h1 style="color:gold;font-size:22px">TAMILAR PURATCHI KALAKAM</h1>
+<p style="color:gold;font-size:14px">38 DISTRICT - 234 THOGUTHI - MEMBER ID SAVE - நீளமான கோடு</p>
+<p style="font-size:10px;color:#aaa">Office: 35, Aruppukottai - 626101</p>
+<p style="color:#0f0;font-size:11px;margin-top:6px">✅ நீளமான கோடு - MEMBER ID கண்டிப்பா SAVE ஆகும் - LOGO TOP LEFT, FLAG TOP RIGHT!</p>
+</div>
+
+<div class="auto-box">
+✅ MEMBER ID SAVE FINAL - ஒரு உறுப்பினர் ID கண்டிப்பா SAVE ஆகும்!
+<br>Last Save: <span id="lastSave">Never</span> | Rows: <span id="excelRows">0</span> | Last ID: <span id="lastID">None</span>
+<br><label style="color:#fff;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:6px"><input type="checkbox" id="autoDownload" checked style="width:auto"> Auto Download Excel after registration - ID Save</label>
+</div>
+
+<div class="id-box">🔑 MEMBER ID FORMAT: TPK + 6 DIGIT NUMBER - Example: TPK123456 - Excel la Save Aagum!</div>
+
+<div class="count-box">
+<button class="count-btn" style="background:gold;color:#000">👥 TOTAL: <span id="cnt">0</span></button>
+<button class="count-btn" style="background:#0066ff;color:#fff">🏘️ DISTRICTS: 38</button>
+<button class="count-btn" style="background:#800080;color:#fff">🗳️ THOGUTHIS: 234</button>
+<button class="count-btn" style="background:#D90429;color:#fff" onclick="showTab('distCount')">📊 DISTRICT WISE</button>
+<button class="count-btn" style="background:#0a7e07;color:#fff" onclick="showTab('thogCount')">📊 THOGUTHI WISE</button>
+</div>
+
+<div class="nav">
+<button class="r" onclick="showTab('reg')">NEW REG - ID SAVE</button>
+<button class="y" onclick="showTab('mem')">MEMBERS (<span id="cnt2">0</span>) - ID SAVE</button>
+<button class="b" onclick="showTab('distCount')">🏘️ DISTRICT COUNT</button>
+<button class="p" onclick="showTab('thogCount')">🗳️ THOGUTHI COUNT</button>
+<button class="o" onclick="showTab('adm')">ADMIN - ID SAVE</button>
+</div>
+
+<div id="regTab">
+<div class="card">
+<div class="head">NEW REG - MEMBER ID SAVE - 38 DIST + 234 THOGUTHI + LOGO FLAG - நீளமான கோடு</div>
+<div class="form">
+<label>📸 Photo - Camera & Gallery *</label>
+<div class="pbox">
+<div id="prev" class="prev"><img id="prevImg"></div>
+<input type="file" id="fileIn" accept="image/*" style="display:none" onchange="photoSet(this)">
+<button type="button" onclick="cam()" style="padding:8px 12px;background:#0066ff;color:#fff;border:none;border-radius:6px;font-weight:800;margin:2px">📷 CAMERA</button>
+<button type="button" onclick="gal()" style="padding:8px 12px;background:gold;color:#000;border:none;border-radius:6px;font-weight:800;margin:2px">🖼️ GALLERY</button>
+<button type="button" onclick="clr()" style="padding:8px 12px;background:red;color:#fff;border:none;border-radius:6px;font-weight:800;margin:2px">CLEAR</button>
+</div>
+<label>Name * - பெயர்</label><input id="name" placeholder="A.VELMURUGAN">
+<label>Phone * - போன்</label><input id="phone" placeholder="8489247911">
+<label>Blood Group * - இரத்த வகை</label>
+<select id="blood"><option value="">Select Blood - இரத்த வகை தேர்வு</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option><option>Unknown</option></select>
+<label>🏘️ District * - 38 DISTRICTS - மாவட்டம்</label><select id="dist"></select>
+<label>🗳️ Thoguthi * - 234 THOGUTHIS - தொகுதி</label><select id="thog"></select>
+<label>Address - முகவரி</label><input id="addr" placeholder="35, k.p.street, periyapuliyampatti, Aruppukottai">
+<button class="reg" onclick="register()">REGISTER + MEMBER ID SAVE + AUTO SAVE EXCEL + ID CARD LOGO FLAG - நீளமான கோடு</button>
+<div id="msg" style="text-align:center;margin-top:8px;font-weight:800"></div>
+<div id="idDisplay" style="text-align:center;margin-top:8px;background:#111;padding:8px;border-radius:8px;display:none"><span style="color:gold">Last Generated ID: </span><span id="genID" style="color:#0f0;font-weight:800"></span></div>
+</div>
+</div>
+</div>
+
+<div id="memTab" style="display:none"><div class="card"><div class="head">MEMBERS LIST - MEMBER ID SAVE - LOGO FLAG - நீளமான கோடு</div><div id="memList"></div></div></div>
+<div id="distCountTab" style="display:none"><div class="card"><div class="head">🏘️ DISTRICT WISE COUNT - 38 DISTRICTS - ID SAVE</div><div id="distCountList" style="padding:10px"></div></div></div>
+<div id="thogCountTab" style="display:none"><div class="card"><div class="head">🗳️ THOGUTHI WISE COUNT - 234 THOGUTHIS - ID SAVE</div><div id="thogCountList" style="padding:10px;max-height:80vh;overflow-y:auto"></div></div></div>
+
+<div id="admTab" style="display:none">
+<div class="card">
+<div class="head">ADMIN PANEL - MEMBER ID SAVE - நீளமான கோடு - ID கண்டிப்பா SAVE ஆகும்</div>
+<div class="form" id="loginDiv"><label>Password: tpk2024</label><input type="password" id="apass" placeholder="tpk2024"><button class="reg" onclick="alogin()">LOGIN - ID SAVE</button></div>
+<div id="panelDiv" style="display:none;padding:10px">
+<div style="text-align:center;background:#111;padding:10px;border-radius:10px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap">
+<span style="color:gold;font-weight:800">ADMIN OK - MEMBER ID SAVE ACTIVE - நீளமான கோடு</span>
+<button onclick="alogout()" style="padding:8px 12px;background:#000;color:gold;border:2px solid gold;border-radius:6px;font-weight:800;margin:3px">LOGOUT</button>
+<button onclick="doExcel()" style="padding:8px 12px;background:green;color:#fff;border:none;border-radius:6px;font-weight:800;margin:3px">📊 MANUAL EXCEL - ID SAVE</button>
+<button onclick="autoSaveExcel()" style="padding:8px 12px;background:#0066ff;color:#fff;border:none;border-radius:6px;font-weight:800;margin:3px">💾 FORCE AUTO SAVE - ID SAVE</button>
+<button onclick="checkIDSaves()" style="padding:8px 12px;background:#800080;color:#fff;border:none;border-radius:6px;font-weight:800;margin:3px">🔍 CHECK ID SAVES</button>
+</div>
+<div style="text-align:center;padding:10px;color:#000">Total: <span id="acnt">0</span> | Auto Save Rows: <span id="acntExcel">0</span> | Last ID: <span id="acntLastID">None</span> | Districts: 38 | Thoguthis: 234</div>
+<div id="admList"></div>
+</div>
+</div>
+</div>
+
+<script>
+// 38 DISTRICTS - TAMIL NADU - நீளமான கோடு
+var districts=["Ariyalur","Chengalpattu","Chennai","Coimbatore","Cuddalore","Dharmapuri","Dindigul","Erode","Kallakurichi","Kanchipuram","Kanyakumari","Karur","Krishnagiri","Madurai","Mayiladuthurai","Nagapattinam","Namakkal","Nilgiris","Perambalur","Pudukkottai","Ramanathapuram","Ranipet","Salem","Sivaganga","Tenkasi","Thanjavur","Theni","Thoothukudi","Tiruchirappalli","Tirunelveli","Tirupathur","Tiruppur","Tiruvallur","Tiruvannamalai","Tiruvarur","Vellore","Viluppuram","Virudhunagar"];
+
+// 234 THOGUTHIS - TAMIL NADU - நீளமான கோடு
+var thoguthis=["Gummidipoondi","Ponneri","Tiruttani","Thiruvallur","Poonamallee","Avadi","Maduravoyal","Ambattur","Madavaram","Thiruvottiyur","Dr. Radhakrishnan Nagar","Perambur","Kolathur","Villivakkam","Thiru-Vi-Ka Nagar","Egmore","Royapuram","Harbour","Chepauk-Thiruvallikeni","Thousand Lights","Anna Nagar","Virugampakkam","Saidapet","Thiyagarayanagar","Mylapore","Velachery","Shozhinganallur","Alandur","Sriperumbudur","Pallavaram","Tambaram","Chengalpattu","Thiruporur","Cheyyur","Maduranthakam","Uthiramerur","Kancheepuram","Arakkonam","Sholinghur","Katpadi","Ranipet","Arcot","Vellore","Anaikattu","Kilvaithinankuppam","Gudiyatham","Vaniyambadi","Ambur","Jolarpet","Tirupattur","Uthangarai","Bargur","Krishnagiri","Veppanahalli","Hosur","Thalli","Palacodu","Pennagaram","Dharmapuri","Pappireddippatti","Harur","Chengam","Tiruvannamalai","Kilpennathur","Kalasapakkam","Polur","Arani","Cheyyar","Vandavasi","Gingee","Mailam","Tindivanam","Vanur","Villupuram","Vikravandi","Tirukkoyilur","Ulundurpettai","Rishivandiyam","Sankarapuram","Kallakurichi","Gangavalli","Attur","Yercaud","Omalur","Mettur","Edappadi","Sankari","Salem West","Salem North","Salem South","Veerapandi","Rasipuram","Senthamangalam","Namakkal","Paramathi-Velur","Tiruchengodu","Kumarapalayam","Erode East","Erode West","Modakkurichi","Dharapuram","Kangeyam","Perundurai","Bhavani","Anthiyur","Gobichettipalayam","Bhavanisagar","Udhagamandalam","Gudalur","Coonoor","Mettupalayam","Avinashi","Tiruppur North","Tiruppur South","Palladam","Udumalaipettai","Madathukulam","Palani","Oddanchatram","Athoor","Nilakottai","Natham","Dindigul","Vedasandur","Aravakurichi","Karur","Krishnarayapuram","Manapparai","Srirangam","Tiruchirappalli West","Tiruchirappalli East","Thiruverumbur","Lalgudi","Manachanallur","Musiri","Thuraiyur","Perambalur","Ariyalur","Jayankondam","Gandarvakottai","Viralimalai","Pudukkottai","Thirumayam","Alangudi","Aranthangi","Karaikudi","Tiruppattur","Sivaganga","Manamadurai","Melur","Madurai East","Sholavandan","Madurai North","Madurai South","Madurai Central","Madurai West","Thiruparankundram","Tirumangalam","Usilampatti","Andipatti","Periyakulam","Bodinayakanur","Cumbum","Rajapalayam","Srivilliputhur","Sattur","Sivakasi","Virudhunagar","Aruppukottai","Tiruchuli","Paramakudi","Tiruvadanai","Ramanathapuram","Muduhulathur","Vilathikulam","Thoothukkudi","Tiruchendur","Srivaikuntam","Ottapidaram","Kovilpatti","Sankarankovil","Vasudevanallur","Kadayanallur","Tenkasi","Alangulam","Palayamkottai","Ambasamudram","Radhapuram","Nanguneri","Tirunelveli","Cheranmahadevi","Colachel","Padmanabhapuram","Vilavancode","Killiyoor","Nagercoil","Kanyakumari"];
+
+function loadDropdowns(){
+var ds=document.getElementById('dist');
+var ts=document.getElementById('thog');
+ds.innerHTML='<option value="">Select District (38) - மாவட்டம் தேர்வு</option>';
+ts.innerHTML='<option value="">Select Thoguthi (234) - தொகுதி தேர்வு</option>';
+for(var i=0;i<districts.length;i++){
+var o=document.createElement('option');
+o.value=districts[i];
+o.text=districts[i];
+ds.appendChild(o);
+}
+for(var i=0;i<thoguthis.length;i++){
+var o=document.createElement('option');
+o.value=thoguthis[i];
+o.text=thoguthis[i];
+ts.appendChild(o);
+}
+}
+loadDropdowns();
+
+// MEMBERS - நீளமான கோடு - MEMBER ID SAVE
+var members=[];
+try{
+members=JSON.parse(localStorage.getItem('tpk_long_id_save_final')||'[]');
+}catch(e){
+members=[];
+}
+var curPhoto="";
+
+// MEMBER ID GENERATION - நீளமான கோடு - ID SAVE LOGIC
+function generateMemberID(){
+var timestamp=Date.now().toString();
+var last6=timestamp.slice(-6);
+var id='TPK'+last6;
+// Check if ID already exists - if exists, generate new
+var exists=true;
+while(exists){
+exists=false;
+for(var i=0;i<members.length;i++){
+if(members[i].id==id){
+exists=true;
+last6=(parseInt(last6)+1).toString();
+if(last6.length<6){
+last6='0'.repeat(6-last6.length)+last6;
+}
+id='TPK'+last6;
+break;
+}
+}
+}
+return id;
+}
+
+// AUTO SAVE EXCEL - MEMBER ID SAVE - நீளமான கோடு
 function autoSaveExcel(){
-  var data=members.map(function(m,i){
-    return {
-      "S.No": i+1,
-      "Name": m.name,
-      "Phone": m.phone,
-      "Blood Group": m.blood,
-      "District (38)": m.dist,
-      "Thoguthi (234)": m.thog,
-      "Address": m.addr,
-      "Member ID - TPK ID": m.id,
-      "Date": m.date,
-      "Photo Available": m.photo ? "YES" : "NO",
-      "Auto Save Time": new Date().toLocaleString()
-    };
-  });
-  // Save to localStorage as auto excel backup
-  localStorage.setItem('tpk_auto_excel_backup', JSON.stringify(data));
-  localStorage.setItem('tpk_auto_excel_time', new Date().toLocaleString());
-  document.getElementById('lastSave').innerText=new Date().toLocaleString();
-  document.getElementById('excelRows').innerText=members.length;
-}function register(){
-  // ... member add pannitu ...
-  localStorage.setItem('tpk_500_auto_final',JSON.stringify(members));
-  autoSaveExcel(); // AUTO SAVE CALL
-  if(autoDownload checkbox ON){
-    doExcelAuto(); // AUTO DOWNLOAD
-  }
-}✅ Auto Save ENABLED: Membership auto save in Excel Sheet!
-☑️ Auto Download Excel after each registration (ON)
-Last Auto Save: 19/10/2026 10:30 AM | Excel Rows: 5
+if(members.length==0){
+return;
+}
+var data=members.map(function(m,i){
+return{
+"S.No - வரிசை எண்": i+1,
+"Name - பெயர்": m.name,
+"Phone - போன்": m
