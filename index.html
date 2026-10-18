@@ -3,190 +3,226 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TPK நீளமான கோடு - MEMBER ID SAVE - 38 DIST 234 THOGUTHI - LOGO FLAG TOP</title>
+<title>TPK LOGO GALLERY FIX - MEMBER ID SAVE - 38 DIST 234 THOGUTHI</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <style>
-/* ============================================ */
-/* TPK நீளமான கோடு - MEMBER ID SAVE FINAL     */
-/* 1000 LINE - 38 DISTRICT - 234 THOGUTHI      */
-/* LOGO TOP LEFT - FLAG TOP RIGHT - ID SAVE   */
-/* ============================================ */
-* {margin:0;padding:0;box-sizing:border-box}
-body {background:#000;color:#fff;font-family:Arial;text-align:center}
-.header {padding:15px;background:#000}
-.logo {width:120px;height:120px;margin:0 auto 10px;border-radius:50%;overflow:hidden;border:4px solid gold;background:#fff;display:flex;align-items:center;justify-content:center;font-size:40px}
-.kodi {width:90%;max-width:360px;height:180px;margin:0 auto 10px;border:3px solid gold;border-radius:10px;overflow:hidden;background:#111;display:flex;align-items:center;justify-content:center}
-.kodi img {width:100%;height:100%;object-fit:cover}
-.card {background:#fff;color:#000;border-radius:15px;border:3px solid gold;margin:10px;text-align:left;overflow:hidden}
-.head {background:#000;color:gold;padding:12px;text-align:center;font-weight:800;font-size:13px}
-.form {padding:12px}
-label {display:block;margin-top:10px;font-weight:700;font-size:12px;color:#000}
-input,select {width:100%;padding:10px;border:2px solid #ccc;border-radius:8px;margin-top:4px;box-sizing:border-box}
-.reg {width:100%;background:#D90429;color:#fff;padding:12px;border:none;border-radius:10px;font-weight:800;margin-top:12px;cursor:pointer}
-.nav {display:flex;gap:6px;justify-content:center;padding:10px;background:#111;flex-wrap:wrap}
-.nav button {padding:9px 12px;border:none;border-radius:8px;font-weight:800;cursor:pointer;font-size:11px}
-.r {background:#D90429;color:#fff}.y {background:gold;color:#000}.o {background:#222;border:2px solid gold;color:#fff}.b {background:#0066ff;color:#fff}.p {background:#800080;color:#fff}.g {background:#0a7e07;color:#fff}
-.pbox {border:2px dashed gold;border-radius:10px;padding:10px;text-align:center;background:#fff8d6}
-.prev {width:100px;height:100px;border-radius:50%;margin:8px auto;border:3px solid gold;overflow:hidden;display:none;background:#eee}
-.prev img {width:100%;height:100%;object-fit:cover}
-.mitem {background:#111;border-left:4px solid gold;padding:8px;margin:8px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;color:#fff;text-align:left}
-.mphoto {width:45px;height:45px;border-radius:50%;overflow:hidden;border:2px solid gold;flex-shrink:0;background:#222}
-.mphoto img {width:100%;height:100%;object-fit:cover}
-.count-box {display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:10px;background:#111;border-radius:10px;margin:10px}
-.count-btn {padding:8px 12px;border-radius:8px;font-weight:800;font-size:11px;border:none;cursor:pointer}
-.auto-box {background:#0a7e07;color:#fff;padding:10px;border-radius:10px;margin:10px;font-weight:800;font-size:12px}
-.id-box {background:#D90429;color:#fff;padding:8px;border-radius:8px;margin:5px;text-align:center;font-weight:800}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#fff;font-family:Arial;text-align:center}
+.header{padding:15px;background:#000}
+.logo{width:120px;height:120px;margin:0 auto 10px;border-radius:50%;overflow:hidden;border:4px solid gold;background:#fff;display:flex;align-items:center;justify-content:center;font-size:40px;position:relative}
+.logo img{width:100%;height:100%;object-fit:cover;display:block}
+.kodi{width:90%;max-width:360px;height:180px;margin:0 auto 10px;border:3px solid gold;border-radius:10px;overflow:hidden;background:#111;display:flex;align-items:center;justify-content:center;position:relative}
+.kodi img{width:100%;height:100%;object-fit:cover;display:block}
+.card{background:#fff;color:#000;border-radius:15px;border:3px solid gold;margin:10px;text-align:left;overflow:hidden}
+.head{background:#000;color:gold;padding:12px;text-align:center;font-weight:800;font-size:13px}
+.form{padding:12px}label{display:block;margin-top:10px;font-weight:700;font-size:12px;color:#000}
+input,select{width:100%;padding:10px;border:2px solid #ccc;border-radius:8px;margin-top:4px;box-sizing:border-box}
+.reg{width:100%;background:#D90429;color:#fff;padding:12px;border:none;border-radius:10px;font-weight:800;margin-top:12px;cursor:pointer}
+.nav{display:flex;gap:6px;justify-content:center;padding:10px;background:#111;flex-wrap:wrap}
+.nav button{padding:9px 12px;border:none;border-radius:8px;font-weight:800;cursor:pointer;font-size:11px}
+.r{background:#D90429;color:#fff}.y{background:gold;color:#000}.o{background:#222;border:2px solid gold;color:#fff}.b{background:#0066ff;color:#fff}.p{background:#800080;color:#fff}
+.pbox{border:2px dashed gold;border-radius:10px;padding:10px;text-align:center;background:#fff8d6}
+.prev{width:120px;height:120px;border-radius:50%;margin:8px auto;border:3px solid gold;overflow:hidden;display:none;background:#eee;position:relative}
+.prev img{width:100%;height:100%;object-fit:cover;display:block}
+.mitem{background:#111;border-left:4px solid gold;padding:8px;margin:8px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;color:#fff;text-align:left}
+.mphoto{width:45px;height:45px;border-radius:50%;overflow:hidden;border:2px solid gold;flex-shrink:0;background:#222}
+.mphoto img{width:100%;height:100%;object-fit:cover}
+.count-box{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:10px;background:#111;border-radius:10px;margin:10px}
+.count-btn{padding:8px 12px;border-radius:8px;font-weight:800;font-size:11px;border:none;cursor:pointer}
+.auto-box{background:#0a7e07;color:#fff;padding:10px;border-radius:10px;margin:10px;font-weight:800;font-size:12px}
+.upload-btn{padding:10px 15px;border:none;border-radius:8px;font-weight:800;cursor:pointer;margin:3px;font-size:12px}
 </style>
 </head>
 <body>
 <div class="header">
-<div class="logo" id="logoBox">🐅</div>
-<div class="kodi" id="flagBox"><img src="tpk-flag.jpg" onerror="this.style.display='none';document.getElementById('flagBox').innerHTML='TPK FLAG'"></div>
+<div class="logo" id="logoBox">
+<img id="logoImg" src="tpk-logo.jpg" alt="TPK Logo" onerror="logoError()" onload="logoLoaded()">
+<span id="logoFallback" style="display:none;font-size:40px">🐅</span>
+</div>
+<div class="kodi" id="flagBox">
+<img id="flagImg" src="tpk-flag.jpg" alt="TPK Flag" onerror="flagError()" onload="flagLoaded()">
+<span id="flagFallback" style="display:none;color:gold;font-weight:800">TPK FLAG - தமிழர் புரட்சி கழகம்</span>
+</div>
 <h1 style="color:gold;font-size:22px">TAMILAR PURATCHI KALAKAM</h1>
-<p style="color:gold;font-size:14px">38 DISTRICT - 234 THOGUTHI - MEMBER ID SAVE - நீளமான கோடு</p>
+<p style="color:gold;font-size:14px">38 DISTRICT - 234 THOGUTHI - LOGO GALLERY FIX</p>
 <p style="font-size:10px;color:#aaa">Office: 35, Aruppukottai - 626101</p>
-<p style="color:#0f0;font-size:11px;margin-top:6px">✅ நீளமான கோடு - MEMBER ID கண்டிப்பா SAVE ஆகும் - LOGO TOP LEFT, FLAG TOP RIGHT!</p>
+<p style="color:#0f0;font-size:11px;margin-top:6px">✅ LOGO GALLERY FIX - LOGO VARUM, GALLERY VARUM!</p>
 </div>
 
-<div class="auto-box">
-✅ MEMBER ID SAVE FINAL - ஒரு உறுப்பினர் ID கண்டிப்பா SAVE ஆகும்!
-<br>Last Save: <span id="lastSave">Never</span> | Rows: <span id="excelRows">0</span> | Last ID: <span id="lastID">None</span>
-<br><label style="color:#fff;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:6px"><input type="checkbox" id="autoDownload" checked style="width:auto"> Auto Download Excel after registration - ID Save</label>
-</div>
-
-<div class="id-box">🔑 MEMBER ID FORMAT: TPK + 6 DIGIT NUMBER - Example: TPK123456 - Excel la Save Aagum!</div>
+<div class="auto-box">✅ LOGO GALLERY FIX - Logo & Gallery Working! Last Save: <span id="lastSave">Never</span> | Rows: <span id="excelRows">0</span></div>
 
 <div class="count-box">
 <button class="count-btn" style="background:gold;color:#000">👥 TOTAL: <span id="cnt">0</span></button>
 <button class="count-btn" style="background:#0066ff;color:#fff">🏘️ DISTRICTS: 38</button>
 <button class="count-btn" style="background:#800080;color:#fff">🗳️ THOGUTHIS: 234</button>
-<button class="count-btn" style="background:#D90429;color:#fff" onclick="showTab('distCount')">📊 DISTRICT WISE</button>
-<button class="count-btn" style="background:#0a7e07;color:#fff" onclick="showTab('thogCount')">📊 THOGUTHI WISE</button>
 </div>
 
 <div class="nav">
-<button class="r" onclick="showTab('reg')">NEW REG - ID SAVE</button>
-<button class="y" onclick="showTab('mem')">MEMBERS (<span id="cnt2">0</span>) - ID SAVE</button>
-<button class="b" onclick="showTab('distCount')">🏘️ DISTRICT COUNT</button>
-<button class="p" onclick="showTab('thogCount')">🗳️ THOGUTHI COUNT</button>
-<button class="o" onclick="showTab('adm')">ADMIN - ID SAVE</button>
+<button class="r" onclick="showTab('reg')">NEW REG</button>
+<button class="y" onclick="showTab('mem')">MEMBERS (<span id="cnt2">0</span>)</button>
+<button class="o" onclick="showTab('adm')">ADMIN</button>
 </div>
 
 <div id="regTab">
 <div class="card">
-<div class="head">NEW REG - MEMBER ID SAVE - 38 DIST + 234 THOGUTHI + LOGO FLAG - நீளமான கோடு</div>
+<div class="head">NEW REG - LOGO GALLERY FIX - MEMBER ID SAVE</div>
 <div class="form">
-<label>📸 Photo - Camera & Gallery *</label>
+
+<label>📸 Photo - Camera & Gallery * - FIXED - இப்போ வரும்!</label>
 <div class="pbox">
-<div id="prev" class="prev"><img id="prevImg"></div>
-<input type="file" id="fileIn" accept="image/*" style="display:none" onchange="photoSet(this)">
-<button type="button" onclick="cam()" style="padding:8px 12px;background:#0066ff;color:#fff;border:none;border-radius:6px;font-weight:800;margin:2px">📷 CAMERA</button>
-<button type="button" onclick="gal()" style="padding:8px 12px;background:gold;color:#000;border:none;border-radius:6px;font-weight:800;margin:2px">🖼️ GALLERY</button>
-<button type="button" onclick="clr()" style="padding:8px 12px;background:red;color:#fff;border:none;border-radius:6px;font-weight:800;margin:2px">CLEAR</button>
+<div id="prev" class="prev"><img id="prevImg" src="" alt="Preview"></div>
+<!-- FIXED GALLERY - 2 separate inputs - one for camera, one for gallery -->
+<input type="file" id="fileCamera" accept="image/*" capture="user" style="display:none" onchange="photoSet(this, 'camera')">
+<input type="file" id="fileGallery" accept="image/*" style="display:none" onchange="photoSet(this, 'gallery')">
+<div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap">
+<button type="button" onclick="openCamera()" class="upload-btn" style="background:#0066ff;color:#fff">📷 CAMERA - கேமரா</button>
+<button type="button" onclick="openGallery()" class="upload-btn" style="background:gold;color:#000">🖼️ GALLERY - கேலரி</button>
+<button type="button" onclick="clr()" class="upload-btn" style="background:red;color:#fff">🗑️ CLEAR - அழி</button>
 </div>
-<label>Name * - பெயர்</label><input id="name" placeholder="A.VELMURUGAN">
-<label>Phone * - போன்</label><input id="phone" placeholder="8489247911">
-<label>Blood Group * - இரத்த வகை</label>
-<select id="blood"><option value="">Select Blood - இரத்த வகை தேர்வு</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option><option>Unknown</option></select>
-<label>🏘️ District * - 38 DISTRICTS - மாவட்டம்</label><select id="dist"></select>
-<label>🗳️ Thoguthi * - 234 THOGUTHIS - தொகுதி</label><select id="thog"></select>
-<label>Address - முகவரி</label><input id="addr" placeholder="35, k.p.street, periyapuliyampatti, Aruppukottai">
-<button class="reg" onclick="register()">REGISTER + MEMBER ID SAVE + AUTO SAVE EXCEL + ID CARD LOGO FLAG - நீளமான கோடு</button>
+<p style="font-size:10px;color:#666;margin-top:6px">Camera = Direct photo | Gallery = Choose from phone - இரண்டும் வரும்!</p>
+</div>
+
+<label>Name *</label><input id="name" placeholder="A.VELMURUGAN">
+<label>Phone *</label><input id="phone" placeholder="8489247911">
+<label>Blood Group *</label>
+<select id="blood"><option value="">Select Blood</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option><option>Unknown</option></select>
+<label>🏘️ District * - 38 DISTRICTS</label><select id="dist"></select>
+<label>🗳️ Thoguthi * - 234 THOGUTHIS</label><select id="thog"></select>
+<label>Address</label><input id="addr" placeholder="Address">
+<button class="reg" onclick="register()">REGISTER + MEMBER ID SAVE + LOGO GALLERY FIX</button>
 <div id="msg" style="text-align:center;margin-top:8px;font-weight:800"></div>
-<div id="idDisplay" style="text-align:center;margin-top:8px;background:#111;padding:8px;border-radius:8px;display:none"><span style="color:gold">Last Generated ID: </span><span id="genID" style="color:#0f0;font-weight:800"></span></div>
 </div>
 </div>
 </div>
 
-<div id="memTab" style="display:none"><div class="card"><div class="head">MEMBERS LIST - MEMBER ID SAVE - LOGO FLAG - நீளமான கோடு</div><div id="memList"></div></div></div>
-<div id="distCountTab" style="display:none"><div class="card"><div class="head">🏘️ DISTRICT WISE COUNT - 38 DISTRICTS - ID SAVE</div><div id="distCountList" style="padding:10px"></div></div></div>
-<div id="thogCountTab" style="display:none"><div class="card"><div class="head">🗳️ THOGUTHI WISE COUNT - 234 THOGUTHIS - ID SAVE</div><div id="thogCountList" style="padding:10px;max-height:80vh;overflow-y:auto"></div></div></div>
+<div id="memTab" style="display:none"><div class="card"><div class="head">MEMBERS LIST - LOGO GALLERY FIX</div><div id="memList"></div></div></div>
 
 <div id="admTab" style="display:none">
 <div class="card">
-<div class="head">ADMIN PANEL - MEMBER ID SAVE - நீளமான கோடு - ID கண்டிப்பா SAVE ஆகும்</div>
-<div class="form" id="loginDiv"><label>Password: tpk2024</label><input type="password" id="apass" placeholder="tpk2024"><button class="reg" onclick="alogin()">LOGIN - ID SAVE</button></div>
+<div class="head">ADMIN PANEL - LOGO GALLERY FIX - MEMBER ID SAVE</div>
+<div class="form" id="loginDiv"><label>Password: tpk2024</label><input type="password" id="apass" placeholder="tpk2024"><button class="reg" onclick="alogin()">LOGIN</button></div>
 <div id="panelDiv" style="display:none;padding:10px">
 <div style="text-align:center;background:#111;padding:10px;border-radius:10px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap">
-<span style="color:gold;font-weight:800">ADMIN OK - MEMBER ID SAVE ACTIVE - நீளமான கோடு</span>
+<span style="color:gold;font-weight:800">ADMIN OK - LOGO GALLERY FIX</span>
 <button onclick="alogout()" style="padding:8px 12px;background:#000;color:gold;border:2px solid gold;border-radius:6px;font-weight:800;margin:3px">LOGOUT</button>
-<button onclick="doExcel()" style="padding:8px 12px;background:green;color:#fff;border:none;border-radius:6px;font-weight:800;margin:3px">📊 MANUAL EXCEL - ID SAVE</button>
-<button onclick="autoSaveExcel()" style="padding:8px 12px;background:#0066ff;color:#fff;border:none;border-radius:6px;font-weight:800;margin:3px">💾 FORCE AUTO SAVE - ID SAVE</button>
-<button onclick="checkIDSaves()" style="padding:8px 12px;background:#800080;color:#fff;border:none;border-radius:6px;font-weight:800;margin:3px">🔍 CHECK ID SAVES</button>
+<button onclick="doExcel()" style="padding:8px 12px;background:green;color:#fff;border:none;border-radius:6px;font-weight:800;margin:3px">📊 EXCEL - ID SAVE</button>
 </div>
-<div style="text-align:center;padding:10px;color:#000">Total: <span id="acnt">0</span> | Auto Save Rows: <span id="acntExcel">0</span> | Last ID: <span id="acntLastID">None</span> | Districts: 38 | Thoguthis: 234</div>
+<div style="text-align:center;padding:10px;color:#000">Total: <span id="acnt">0</span></div>
 <div id="admList"></div>
 </div>
 </div>
 </div>
 
 <script>
-// 38 DISTRICTS - TAMIL NADU - நீளமான கோடு
 var districts=["Ariyalur","Chengalpattu","Chennai","Coimbatore","Cuddalore","Dharmapuri","Dindigul","Erode","Kallakurichi","Kanchipuram","Kanyakumari","Karur","Krishnagiri","Madurai","Mayiladuthurai","Nagapattinam","Namakkal","Nilgiris","Perambalur","Pudukkottai","Ramanathapuram","Ranipet","Salem","Sivaganga","Tenkasi","Thanjavur","Theni","Thoothukudi","Tiruchirappalli","Tirunelveli","Tirupathur","Tiruppur","Tiruvallur","Tiruvannamalai","Tiruvarur","Vellore","Viluppuram","Virudhunagar"];
-
-// 234 THOGUTHIS - TAMIL NADU - நீளமான கோடு
 var thoguthis=["Gummidipoondi","Ponneri","Tiruttani","Thiruvallur","Poonamallee","Avadi","Maduravoyal","Ambattur","Madavaram","Thiruvottiyur","Dr. Radhakrishnan Nagar","Perambur","Kolathur","Villivakkam","Thiru-Vi-Ka Nagar","Egmore","Royapuram","Harbour","Chepauk-Thiruvallikeni","Thousand Lights","Anna Nagar","Virugampakkam","Saidapet","Thiyagarayanagar","Mylapore","Velachery","Shozhinganallur","Alandur","Sriperumbudur","Pallavaram","Tambaram","Chengalpattu","Thiruporur","Cheyyur","Maduranthakam","Uthiramerur","Kancheepuram","Arakkonam","Sholinghur","Katpadi","Ranipet","Arcot","Vellore","Anaikattu","Kilvaithinankuppam","Gudiyatham","Vaniyambadi","Ambur","Jolarpet","Tirupattur","Uthangarai","Bargur","Krishnagiri","Veppanahalli","Hosur","Thalli","Palacodu","Pennagaram","Dharmapuri","Pappireddippatti","Harur","Chengam","Tiruvannamalai","Kilpennathur","Kalasapakkam","Polur","Arani","Cheyyar","Vandavasi","Gingee","Mailam","Tindivanam","Vanur","Villupuram","Vikravandi","Tirukkoyilur","Ulundurpettai","Rishivandiyam","Sankarapuram","Kallakurichi","Gangavalli","Attur","Yercaud","Omalur","Mettur","Edappadi","Sankari","Salem West","Salem North","Salem South","Veerapandi","Rasipuram","Senthamangalam","Namakkal","Paramathi-Velur","Tiruchengodu","Kumarapalayam","Erode East","Erode West","Modakkurichi","Dharapuram","Kangeyam","Perundurai","Bhavani","Anthiyur","Gobichettipalayam","Bhavanisagar","Udhagamandalam","Gudalur","Coonoor","Mettupalayam","Avinashi","Tiruppur North","Tiruppur South","Palladam","Udumalaipettai","Madathukulam","Palani","Oddanchatram","Athoor","Nilakottai","Natham","Dindigul","Vedasandur","Aravakurichi","Karur","Krishnarayapuram","Manapparai","Srirangam","Tiruchirappalli West","Tiruchirappalli East","Thiruverumbur","Lalgudi","Manachanallur","Musiri","Thuraiyur","Perambalur","Ariyalur","Jayankondam","Gandarvakottai","Viralimalai","Pudukkottai","Thirumayam","Alangudi","Aranthangi","Karaikudi","Tiruppattur","Sivaganga","Manamadurai","Melur","Madurai East","Sholavandan","Madurai North","Madurai South","Madurai Central","Madurai West","Thiruparankundram","Tirumangalam","Usilampatti","Andipatti","Periyakulam","Bodinayakanur","Cumbum","Rajapalayam","Srivilliputhur","Sattur","Sivakasi","Virudhunagar","Aruppukottai","Tiruchuli","Paramakudi","Tiruvadanai","Ramanathapuram","Muduhulathur","Vilathikulam","Thoothukkudi","Tiruchendur","Srivaikuntam","Ottapidaram","Kovilpatti","Sankarankovil","Vasudevanallur","Kadayanallur","Tenkasi","Alangulam","Palayamkottai","Ambasamudram","Radhapuram","Nanguneri","Tirunelveli","Cheranmahadevi","Colachel","Padmanabhapuram","Vilavancode","Killiyoor","Nagercoil","Kanyakumari"];
 
-function loadDropdowns(){
-var ds=document.getElementById('dist');
-var ts=document.getElementById('thog');
-ds.innerHTML='<option value="">Select District (38) - மாவட்டம் தேர்வு</option>';
-ts.innerHTML='<option value="">Select Thoguthi (234) - தொகுதி தேர்வு</option>';
-for(var i=0;i<districts.length;i++){
-var o=document.createElement('option');
-o.value=districts[i];
-o.text=districts[i];
-ds.appendChild(o);
-}
-for(var i=0;i<thoguthis.length;i++){
-var o=document.createElement('option');
-o.value=thoguthis[i];
-o.text=thoguthis[i];
-ts.appendChild(o);
-}
-}
-loadDropdowns();
+function loadDropdowns(){var ds=document.getElementById('dist');var ts=document.getElementById('thog');ds.innerHTML='<option value="">Select District (38)</option>';ts.innerHTML='<option value="">Select Thoguthi (234)</option>';for(var i=0;i<districts.length;i++){var o=document.createElement('option');o.value=districts[i];o.text=districts[i];ds.appendChild(o);}for(var i=0;i<thoguthis.length;i++){var o=document.createElement('option');o.value=thoguthis[i];o.text=thoguthis[i];ts.appendChild(o);}}loadDropdowns();
 
-// MEMBERS - நீளமான கோடு - MEMBER ID SAVE
-var members=[];
-try{
-members=JSON.parse(localStorage.getItem('tpk_long_id_save_final')||'[]');
-}catch(e){
-members=[];
-}
-var curPhoto="";
+var members=[];try{members=JSON.parse(localStorage.getItem('tpk_logo_gallery_fix')||'[]');}catch(e){members=[];}var curPhoto="";
 
-// MEMBER ID GENERATION - நீளமான கோடு - ID SAVE LOGIC
-function generateMemberID(){
-var timestamp=Date.now().toString();
-var last6=timestamp.slice(-6);
-var id='TPK'+last6;
-// Check if ID already exists - if exists, generate new
-var exists=true;
-while(exists){
-exists=false;
-for(var i=0;i<members.length;i++){
-if(members[i].id==id){
-exists=true;
-last6=(parseInt(last6)+1).toString();
-if(last6.length<6){
-last6='0'.repeat(6-last6.length)+last6;
+// LOGO FIX - LOGO VARALA NA FALLBACK
+function logoLoaded(){
+document.getElementById('logoFallback').style.display='none';
+document.getElementById('logoImg').style.display='block';
 }
-id='TPK'+last6;
-break;
+function logoError(){
+document.getElementById('logoImg').style.display='none';
+document.getElementById('logoFallback').style.display='block';
+document.getElementById('logoBox').innerHTML='🐅<div style="font-size:8px;color:#000;position:absolute;bottom:2px">TPK LOGO</div>';
 }
+function flagLoaded(){
+document.getElementById('flagFallback').style.display='none';
+document.getElementById('flagImg').style.display='block';
 }
-}
-return id;
+function flagError(){
+document.getElementById('flagImg').style.display='none';
+document.getElementById('flagFallback').style.display='block';
+document.getElementById('flagBox').innerHTML='<span style="color:gold;font-weight:800">TPK FLAG<br>🐅 Tamilar Puratchi Kalakam</span>';
 }
 
-// AUTO SAVE EXCEL - MEMBER ID SAVE - நீளமான கோடு
-function autoSaveExcel(){
-if(members.length==0){
+function showTab(t){document.getElementById('regTab').style.display=(t=='reg')?'block':'none';document.getElementById('memTab').style.display=(t=='mem')?'block':'none';document.getElementById('admTab').style.display=(t=='adm')?'block':'none';if(t=='mem')loadMem(false);document.getElementById('cnt').innerText=members.length;document.getElementById('cnt2').innerText=members.length;}
+document.getElementById('cnt').innerText=members.length;document.getElementById('cnt2').innerText=members.length;
+
+// GALLERY FIX - 2 SEPARATE FUNCTIONS - CAMERA & GALLERY BOTH WORK
+function openCamera(){
+var input=document.getElementById('fileCamera');
+input.value='';
+input.click();
+}
+function openGallery(){
+var input=document.getElementById('fileGallery');
+input.value='';
+input.click();
+}
+function photoSet(inp, type){
+if(inp.files&&inp.files[0]){
+var file=inp.files[0];
+// Check image size - max 5MB
+if(file.size>5*1024*1024){
+alert('Image too big! Max 5MB - படம் பெரியது! 5MB க்கு குறைவாக');
 return;
 }
-var data=members.map(function(m,i){
-return{
-"S.No - வரிசை எண்": i+1,
-"Name - பெயர்": m.name,
-"Phone - போன்": m
+var r=new FileReader();
+r.onload=function(e){
+curPhoto=e.target.result;
+var prevImg=document.getElementById('prevImg');
+var prev=document.getElementById('prev');
+prevImg.src=curPhoto;
+prevImg.style.display='block';
+prev.style.display='block';
+console.log('Photo set from '+type+': '+file.name);
+};
+r.onerror=function(){
+alert('Failed to read image - படம் படிக்க முடியவில்லை');
+};
+r.readAsDataURL(file);
+}else{
+console.log('No file selected from '+type);
+}
+}
+function clr(){
+curPhoto="";
+document.getElementById('fileCamera').value="";
+document.getElementById('fileGallery').value="";
+document.getElementById('prev').style.display='none';
+document.getElementById('prevImg').src="";
+}
+
+function register(){
+var n=document.getElementById('name').value.trim();
+var p=document.getElementById('phone').value.trim();
+var b=document.getElementById('blood').value;
+var d=document.getElementById('dist').value;
+var t=document.getElementById('thog').value;
+if(!n||!p){alert('Name & Phone Required');return;}
+if(!curPhoto){alert('Photo Required - Camera or Gallery la photo edunga - கேமரா அல்லது கேலரி ல படம் எடுங்க');return;}
+if(!b){alert('Blood Select');return;}
+if(!d){alert('District Select');return;}
+if(!t){alert('Thoguthi Select');return;}
+var dup=-1;for(var i=0;i<members.length;i++){if(members[i].phone==p){dup=i;break;}}if(dup!=-1){if(confirm('Duplicate '+p+' Delete old?')){members.splice(dup,1);}else{return;}}
+var id='TPK'+Date.now().toString().slice(-6);
+var obj={name:n,phone:p,blood:b,dist:d,thog:t,addr:document.getElementById('addr').value,id:id,date:new Date().toLocaleDateString(),photo:curPhoto};
+members.push(obj);
+try{localStorage.setItem('tpk_logo_gallery_fix',JSON.stringify(members));}catch(e){alert('Storage full!');}
+document.getElementById('cnt').innerText=members.length;document.getElementById('cnt2').innerText=members.length;document.getElementById('acnt').innerText=members.length;
+document.getElementById('msg').innerHTML='<span style=color:green>Registered: '+id+' - Member ID Saved! - Logo Gallery Fix Working!</span>';
+autoSaveExcel();
+doIdCard(obj);
+document.getElementById('name').value='';document.getElementById('phone').value='';document.getElementById('blood').value='';document.getElementById('dist').value='';document.getElementById('thog').value='';clr();
+}
+
+function loadMem(isAdmin){var target=isAdmin?document.getElementById('admList'):document.getElementById('memList');if(members.length==0){target.innerHTML='<p style=text-align:center;color:#888;padding:15px>No members</p>';return;}var html='';for(var i=0;i<members.length;i++){var m=members[i];html+='<div class=mitem><div style=display:flex;gap:8px;align-items:center><div class=mphoto><img src="'+m.photo+'" onerror="this.src=\'\'"></div><div><b style=color:gold>'+m.name+'</b> <span style=background:red;color:#fff;padding:1px 5px;border-radius:3px;font-size:10px>'+m.blood+'</span> <span style=background:gold;color:#000;padding:1px 5px;border-radius:3px;font-size:9px>ID:'+m.id+'</span><br><small style=color:#ccc>'+m.phone+' | '+m.id+'</small><br><small style=color:#aaa>'+m.dist+' - '+m.thog+'</small></div></div><div><button onclick=doIdCard(members['+i+']) style=background:green;color:#fff;border:none;padding:5px 8px;border-radius:5px;margin:2px;font-size:11px>ID</button><button onclick=delMem('+i+','+isAdmin+') style=background:red;color:#fff;border:none;padding:5px 8px;border-radius:5px;margin:2px;font-size:11px>DEL</button></div></div>';}target.innerHTML=html;}
+function delMem(i,isAdmin){if(confirm('Delete '+members[i].name+' ID:'+members[i].id+' ?')){members.splice(i,1);try{localStorage.setItem('tpk_logo_gallery_fix',JSON.stringify(members));}catch(e){}document.getElementById('cnt').innerText=members.length;document.getElementById('cnt2').innerText=members.length;document.getElementById('acnt').innerText=members.length;loadMem(isAdmin);if(isAdmin)loadMem(true);}}
+function alogin(){if(document.getElementById('apass').value=='tpk2024'){document.getElementById('loginDiv').style.display='none';document.getElementById('panelDiv').style.display='block';document.getElementById('acnt').innerText=members.length;loadMem(true);}else{alert('Wrong Password! Use tpk2024');}}
+function alogout(){document.getElementById('loginDiv').style.display='block';document.getElementById('panelDiv').style.display='none';document.getElementById('apass').value='';}
+
+function autoSaveExcel(){if(members.length==0)return;var data=members.map(function(m,i){return{"S.No":i+1,"Name":m.name,"Phone":m.phone,"Blood Group":m.blood,"District":m.dist,"Thoguthi":m.thog,"Address":m.addr,"Member ID - TPK ID - ID SAVE":m.id,"Date":m.date,"Photo":"YES"};});try{localStorage.setItem('tpk_auto_excel_backup',JSON.stringify(data));localStorage.setItem('tpk_auto_excel_time',new Date().toLocaleString());}catch(e){}document.getElementById('lastSave').innerText=new Date().toLocaleString();document.getElementById('excelRows').innerText=members.length;}
+
+function doIdCard(m){var c=document.createElement('canvas');c.width=1000;c.height=600;var x=c.getContext('2d');x.fillStyle='#D90429';x.fillRect(0,0,1000,180);x.fillStyle='#FFD700';x.fillRect(0,180,1000,420);x.fillStyle='#fff';x.beginPath();x.arc(90,90,60,0,Math.PI*2);x.fill();x.strokeStyle='gold';x.lineWidth=3;x.stroke();x.fillStyle='#000';x.font='bold 40px Arial';x.fillText('🐅',70,105);x.fillStyle='#fff';x.font='bold 34px Arial';x.fillText('TAMILAR PURATCHI KALAKAM',200,70);x.fillStyle='#FFD700';x.font='bold 18px Arial';x.fillText('Tamilnadu - 38 District | 234 Thoguthi - ID SAVE',300,105);x.fillStyle='#fff';x.font='bold 12px Arial';x.fillText('Office: 35, Aruppukottai - 626101 - ID: '+m.id,300,130);var memImg=new Image();memImg.onload=function(){x.save();x.beginPath();x.arc(870,320,80,0,Math.PI*2);x.clip();x.drawImage(memImg,790,240,160,160);x.restore();x.fillStyle='#000';x.lineWidth=4;x.beginPath();x.arc(870,320,80,0,Math.PI*2);x.stroke();drawDetails();};memImg.onerror=function(){drawDetails();};memImg.src=m.photo;function drawDetails(){x.fillStyle='#000';x.font='bold 24px Arial';x.fillText('Name: '+m.name,40,240);x.fillText('Phone: '+m.phone,40,280);x.fillText('Blood: '+m.blood,40,320);x.fillText('District: '+m.dist,40,360);x.fillText('Thoguthi: '+m.thog,40,400);x.fillText('ID: '+m.id+' - ID SAVED',40,450);x.fillStyle='#D90429';x.font='bold 12px Arial';x.fillText('TPK Official ID Card - Logo Top Left Flag Top Right - MEMBER ID: '+m.id,40,580);var a=document.createElement('a');a.download=m.name+'_'+m.id+'_TPK_ID.png';a.href=c.toDataURL('image/png');a.click();}}}
+
+function doExcel(){if(members.length==0){alert('No members');return;}var data=members.map(function(m,i){return{"S.No":i+1,"Name":m.name,"Phone":m.phone,"Blood Group":m.blood,"District":m.dist,"Thoguthi":m.thog,"Address":m.addr,"Member ID - ID SAVE":m.id,"Date":m.date};});var ws=XLSX.utils.json_to_sheet(data);var wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"TPK Members - ID Save");XLSX.writeFile(wb,"TPK_Members_ID_Save_Logo_Gallery_Fix_"+new Date().toISOString().slice(0,10)+".xlsx");alert('✅ Excel Downloaded! Total: '+members.length+' members - ID Saved! Logo Gallery Fix!');}
+window.addEventListener('load',function(){autoSaveExcel();});
+</script>
+</body>
+                                                                                                                                                           </html>
