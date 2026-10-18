@@ -2,171 +2,166 @@
 <html lang="ta">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAMILAR PURACHI KALAKAM - Official Portal</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>TPK - Tamilar Puratchi Kalakam</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Noto Sans Tamil','Poppins',sans-serif}
-body{background:#fffef5}
-:root{--red:#cc0000;--yellow:#ffcc00;--dark:#1a1a1a}
-.header-top{position:relative;background:#000;color:#fff;padding:12px 15px;border-bottom:6px solid var(--yellow);min-height:125px;overflow:hidden}
-.header-top::after{content:'';position:absolute;top:0;left:0;width:100%;height:6px;background:var(--red)}
-.logo-left{position:absolute;top:10px;left:15px;width:85px;height:85px;background:#fff;border-radius:50%;border:3px solid var(--yellow);display:flex;align-items:center;justify-content:center;font-size:42px;overflow:hidden}
-.kodi-right{position:absolute;top:10px;right:15px;width:90px;height:65px;background:linear-gradient(to bottom, #cc0000 50%, #ffcc00 50%);border:2px solid #fff;box-shadow:0 0 10px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;font-weight:bold;color:#fff;text-shadow:1px 1px 2px #000;font-size:10px;text-align:center}
-.header-center{text-align:center;padding:0 110px}
-.header-center h1{font-size:28px;font-weight:800;letter-spacing:1px;color:#fff;text-transform:uppercase;line-height:1.2}
-.header-center h1 span{color:var(--yellow)}
-.header-center h2{font-size:15px;color:var(--yellow);margin-top:2px}
-.header-center p{font-size:13px;color:#ddd;margin-top:4px}
-.bond-line{height:8px;background:linear-gradient(to right, var(--red) 50%, var(--yellow) 50%);width:100%}
-.yellow-separator{height:4px;background:var(--yellow);margin:0}
-.nav-bar{background:var(--dark);display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:12px;border-bottom:3px solid var(--red)}
-.btn{padding:10px 20px;border:none;border-radius:6px;font-weight:700;cursor:pointer;transition:0.2s;text-transform:uppercase;font-size:14px}
-.btn-red{background:var(--red);color:#fff}
-.btn-yellow{background:var(--yellow);color:#000}
-.btn-dark{background:#333;color:#fff;border:1px solid var(--yellow)}
-.btn:hover{transform:scale(1.05)}
-.counting-panel{background:#222;padding:15px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-.count-card{background:#fff;padding:12px 18px;border-radius:8px;border-left:5px solid var(--red);min-width:200px;text-align:center}
-.count-card b{font-size:22px;color:var(--red)}
-.container{max-width:1150px;margin:20px auto;padding:0 15px}
-.form-section{background:#fff;border:2px solid #000;border-radius:12px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,0.15)}
-.form-header{background:#000;color:var(--yellow);padding:12px;text-align:center;font-weight:700;font-size:18px;border-bottom:4px solid var(--red)}
-.form-body{padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.form-body .full{grid-column:1/3}
-label{font-weight:700;font-size:14px;display:block;margin-bottom:5px}
-input,select,textarea{width:100%;padding:10px;border:2px solid #333;border-radius:6px;font-size:14px}
-.photo-preview{width:120px;height:140px;border:2px dashed #000;display:flex;align-items:center;justify-content:center;background:#f5f5f5;overflow:hidden}
-.photo-preview img{width:100%;height:100%;object-fit:cover}
-.sign-box{font-family:cursive;font-size:22px;color:#000;border-top:1px solid #000;width:180px;padding-top:5px;margin-top:10px}
-.admin-login{max-width:400px;margin:30px auto;background:#fff;border:3px solid var(--red);border-radius:12px;padding:20px;display:none}
-.member-card-design{width:380px;min-height:240px;background:#fff;border:3px solid #000;border-radius:10px;overflow:hidden;position:relative;margin:20px auto;box-shadow:0 6px 15px rgba(0,0,0,0.3)}
-.card-top{position:relative;background:#000;height:75px;padding:5px 10px;color:#fff}
-.card-logo{position:absolute;left:8px;top:8px;width:50px;height:50px;background:#fff;border-radius:50%;border:2px solid var(--yellow);display:flex;align-items:center;justify-content:center;font-size:24px}
-.card-kodi{position:absolute;right:8px;top:8px;width:55px;height:38px;background:linear-gradient(to bottom, #cc0000 50%, #ffcc00 50%);border:1px solid #fff}
-.card-center{text-align:center;padding:0 65px}
-.card-center h3{font-size:13px;color:var(--yellow);line-height:1.1}
-.card-center h4{font-size:10px;color:#fff}
-.card-line{height:4px;background:linear-gradient(to right, var(--red), var(--yellow))}
-.card-body{display:flex;padding:10px;gap:10px;background:linear-gradient(to bottom, #fff 0%, #fff8d0 100%);border-top:4px solid var(--red);border-bottom:4px solid var(--yellow)}
-.card-details{flex:1;font-size:12px;line-height:1.6}
-.card-details b{color:var(--red)}
-.card-photo{width:90px;height:110px;border:2px solid #000;background:#eee}
-.card-photo img{width:100%;height:100%;object-fit:cover}
-.print-actions{display:flex;gap:10px;justify-content:center;margin:15px}
-.member-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:15px;margin-top:20px}
-@media(max-width:700px){.form-body{grid-template-columns:1fr}.form-body .full{grid-column:1}.header-center{padding:0}.header-center h1{font-size:18px}.logo-left,.kodi-right{position:static;margin:5px auto}.header-top{display:flex;flex-direction:column;align-items:center;text-align:center}}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#fff;font-family:sans-serif;overflow-x:hidden;width:100%}
+.header{text-align:center;padding:15px 10px}
+.logo{width:125px;height:125px;margin:0 auto 12px;border-radius:50%;overflow:hidden;border:4px solid #FFD700}
+.kodi{width:95%;max-width:360px;height:200px;margin:0 auto 12px;border:3px solid #FFD700;border-radius:10px;overflow:hidden}
+.kodi img,.logo img{width:100%;height:100%;object-fit:cover}
+.title{color:#FFD700;font-size:20px;font-weight:800}
+.office{font-size:11px;color:#aaa;margin-top:8px}
+.nav{display:flex;gap:8px;justify-content:center;padding:12px;background:#111;flex-wrap:wrap}
+.btn{padding:11px 16px;border:none;border-radius:8px;font-weight:800;font-size:13px;cursor:pointer}
+.btn-r{background:#D90429;color:#fff}
+.btn-y{background:#FFD700;color:#000}
+.btn-o{background:#222;border:2px solid #FFD700;color:#fff}
+.card{background:#fff;color:#000;border-radius:16px;border:3px solid #FFD700;overflow:hidden;margin:10px}
+.head{background:#000;color:#FFD700;padding:12px;text-align:center;font-size:14px}
+.form{padding:12px}
+label{font-weight:700;font-size:12px;display:block;margin-top:8px}
+input{width:100%;padding:11px;border:2px solid #ddd;border-radius:8px;margin-top:4px;box-sizing:border-box;font-size:13px}
+.reg{width:100%;background:#D90429;color:#fff;padding:13px;border:none;border-radius:10px;font-weight:800;margin-top:12px;cursor:pointer}
+.member-item{background:#111;border:1px solid #333;border-left:4px solid #FFD700;padding:10px;margin:8px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.member-item b{color:#FFD700;font-size:13px}
+.del-btn{background:#D90429;color:#fff;border:none;padding:6px 12px;border-radius:6px;font-weight:700;cursor:pointer;margin-left:8px}
+.edit-badge{background:#FFD700;color:#000;padding:2px 6px;border-radius:4px;font-size:10px;margin-left:6px}
 </style>
 </head>
 <body>
-<div class="header-top">
-  <div class="logo-left">🐅</div>
-  <div class="kodi-right">TPK<br>KODI</div>
-  <div class="header-center">
-    <h1><span>TAMILAR</span> PURACHI KALAKAM</h1>
-    <h2>Tamilnadu</h2>
-    <p>Office: 35, Aruppukottai, Virudhunagar District - 626101</p>
-  </div>
+<div class="header">
+<div class="logo"><img src="tpk_logo.png"></div>
+<div class="kodi"><img src="tpk_kodi.jpg"></div>
+<div class="title">TAMILAR PURATCHI KALAKAM</div>
+<p style="color:#FFD700;font-size:13px">Tamilnadu</p>
+<p class="office">Office: 35, Aruppukottai, Virudhunagar Dist - 626101</p>
 </div>
-<div class="bond-line"></div>
-<div class="nav-bar">
-  <button class="btn btn-red" onclick="showSection('reg')">📝 New Reg</button>
-  <button class="btn btn-yellow" onclick="showSection('members')">👥 Members</button>
-  <button class="btn btn-dark" onclick="toggleAdmin()">🔐 Admin Panel</button>
-  <span id="loginStatus" style="color:var(--yellow);align-self:center;font-size:13px;display:none">Admin: TPKHEAD@ ✅</span>
+<div class="nav">
+<button class="btn btn-r" onclick="show('reg')">📝 NEW REG</button>
+<button class="btn btn-y" onclick="show('members')">👥 MEMBERS (<span id="count">0</span>)</button>
+<button class="btn btn-o" onclick="show('admin')">🔐 ADMIN</button>
 </div>
-<div id="countingPanel" class="counting-panel" style="display:none">
-  <button class="btn btn-yellow" onclick="showCounts('taluka')">Taluka Counting (<span id="cTaluka">0</span>)</button>
-  <button class="btn btn-red" onclick="showCounts('thoguthi')">Thoguthi Counting (<span id="cThoguthi">0</span>)</button>
-  <button class="btn btn-dark" onclick="showCounts('district')">District Counting (<span id="cDistrict">0</span>)</button>
-  <div id="countDetails" style="width:100%;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px"></div>
+<div id="regSec">
+<div class="card">
+<div class="head">உறுப்பினர் பதிவு - MEMBER REGISTRATION</div>
+<div class="form">
+<label>Member Photo *</label><input type="file" id="photoFile" accept="image/*">
+<label>பெயர் / Name *</label><input id="name" placeholder="A.VELMURUGAN">
+<label>போன் நம்பர் / Phone *</label><input id="phone" type="tel" placeholder="8489247911">
+<label>Blood Group</label><input id="bg" placeholder="O+">
+<label>மாவட்டம் / District *</label><input id="dist" placeholder="Virudhunagar">
+<label>தொகுதி / Thoguthi *</label><input id="thog" placeholder="Aruppukottai">
+<label>Address</label><input id="addr" placeholder="35,k.p.street">
+<button class="reg" onclick="register()">REGISTER & DOWNLOAD CARD</button>
+<div id="msg" style="margin-top:10px;font-size:12px;text-align:center"></div>
 </div>
-<div class="yellow-separator"></div>
-<div id="adminLogin" class="admin-login">
-  <h3 style="text-align:center;color:var(--red)">ADMIN LOGIN ONLY</h3>
-  <label>User ID</label><input id="adminUser" placeholder="TPKHEAD@">
-  <label style="margin-top:10px">Password</label><input id="adminPass" type="password" placeholder="TPK2031">
-  <button class="btn btn-red" style="width:100%;margin-top:15px" onclick="adminLogin()">Login</button>
-  <button class="btn btn-dark" style="width:100%;margin-top:8px" onclick="adminLogout()">Logout</button>
-  <div id="adminTools" style="display:none;margin-top:15px;border-top:2px solid var(--yellow);padding-top:10px">
-    <b>Admin Tools:</b><br>
-    <input type="file" id="excelFile" accept=".xlsx,.xls" style="margin:8px 0">
-    <button class="btn btn-yellow" style="width:100%" onclick="importExcel()">📊 Import Excel Sheet</button>
-    <button class="btn btn-dark" style="width:100%;margin-top:8px" onclick="exportExcel()">📥 Export Members Excel</button>
-  </div>
 </div>
-<div class="container">
-<div id="regSection" class="form-section">
-  <div class="form-header">உறுப்பினர் பதிவு படிவம் - MEMBER REGISTRATION</div>
-  <div class="form-body">
-    <div class="full" style="display:flex;gap:15px;align-items:center">
-      <div><label>Member Photo *</label><input type="file" id="photoInput" accept="image/*" onchange="previewPhoto(event)"></div>
-      <div class="photo-preview" id="photoPrev">Photo</div>
-    </div>
-    <div class="full"><label>பெயர் / Name *</label><input id="mName" placeholder="பெயர்"></div>
-    <div><label>போன் நம்பர் / Phone *</label><input id="mPhone" placeholder="98xxxxxxxx"></div>
-    <div><label>Blood Group</label><select id="mBlood"><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select></div>
-    <div><label>தாலூக / Taluka *</label><select id="mTaluka"></select></div>
-    <div><label>மாவட்டம் / District *</label><select id="mDistrict"></select></div>
-    <div><label>தொகுதி / Thoguthi *</label><select id="mThoguthi"></select></div>
-    <div class="full"><label>Address</label><textarea id="mAddress" rows="2"></textarea></div>
-    <div class="full" style="display:flex;justify-content:space-between;align-items:end;margin-top:10px">
-      <div><div class="sign-box">தலைவர்</div><small>தலைவர் Sign</small></div>
-      <button class="btn btn-red" style="padding:12px 30px;font-size:16px" onclick="registerMember()">REGISTER & AUTO DOWNLOAD CARD</button>
-    </div>
-  </div>
 </div>
-<div id="membersSection" style="display:none">
-  <h2 style="text-align:center;margin:10px 0">Members List</h2>
-  <input id="searchBox" placeholder="Search Name/Phone/Taluka..." style="max-width:400px;margin:0 auto;display:block" oninput="renderMembers()">
-  <div id="membersList" class="member-list"></div>
+<div id="membersSec" style="display:none">
+<div class="card">
+<div class="head">👥 Members List - Delete Option</div>
+<div id="membersList" style="padding:10px;max-height:70vh;overflow-y:auto"></div>
 </div>
-<div id="printArea" style="display:none;padding:20px;background:#fff">
-  <div id="cardToPrint" class="member-card-design">
-    <div class="card-top">
-      <div class="card-logo">🐅</div>
-      <div class="card-kodi"></div>
-      <div class="card-center"><h3>TAMILAR PURACHI KALAKAM</h3><h4>Red + Yellow Bond Mark</h4></div>
-    </div>
-    <div class="card-line"></div>
-    <div class="card-body">
-      <div class="card-details" id="cardDetails"></div>
-      <div class="card-photo"><img id="cardPhoto" src=""></div>
-    </div>
-  </div>
-  <div class="print-actions">
-    <button class="btn btn-red" onclick="window.print()">🖨️ Print</button>
-    <button class="btn btn-yellow" onclick="downloadCard()">⬇️ Download Card</button>
-  </div>
+</div>
+<div id="adminSec" style="display:none">
+<div class="card">
+<div class="head">ADMIN PANEL</div>
+<div class="form">
+<label>Password</label><input type="password" id="adminPass" placeholder="tpk2024">
+<button class="reg" onclick="adminLogin()">LOGIN & VIEW ALL + DELETE</button>
+<div id="adminData" style="display:none;margin-top:12px"></div>
+</div>
 </div>
 </div>
 <script>
-const districts = ["Ariyalur","Chengalpattu","Chennai","Coimbatore","Cuddalore","Dharmapuri","Dindigul","Erode","Kallakurichi","Kanchipuram","Kanyakumari","Karur","Krishnagiri","Madurai","Mayiladuthurai","Nagapattinam","Namakkal","Nilgiris","Perambalur","Pudukkottai","Ramanathapuram","Ranipet","Salem","Sivaganga","Tenkasi","Thanjavur","Theni","Thoothukudi","Tiruchirappalli","Tirunelveli","Tirupathur","Tiruppur","Tiruvallur","Tiruvannamalai","Tiruvarur","Vellore","Viluppuram","Virudhunagar"];
-const thoguthis = ["Gummidipoondi","Ponneri","Tiruttani","Thiruvallur","Poonamallee","Avadi","Maduravoyal","Ambattur","Madavaram","Thiruvottiyur","Dr.R.K.Nagar","Perambur","Kolathur","Villivakkam","Thiru-Vi-Ka-Nagar","Egmore","Royapuram","Harbour","Chepauk-Thiruvallikeni","Thousand Lights","Anna Nagar","Virugampakkam","Saidapet","Thiyagarayanagar","Mylapore","Velachery","Shozhinganallur","Alandur","Sriperumbudur","Pallavaram","Tambaram","Chengalpattu","Thiruporur","Cheyyur","Maduranthakam","Uthiramerur","Kancheepuram","Arakkonam","Sholingur","Katpadi","Ranipet","Arcot","Vellore","Anaikattu","Kilvaithinankuppam","Gudiyatham","Vaniyambadi","Ambur","Jolarpet","Tirupattur","Uthangarai","Bargur","Krishnagiri","Veppanahalli","Hosur","Thalli","Palacodu","Pennagaram","Dharmapuri","Pappireddippatti","Harur","Chengam","Tiruvannamalai","Kilpennathur","Kalasapakkam","Polur","Arani","Cheyyar","Vandavasi","Gingee","Mailam","Tindivanam","Vanur","Villupuram","Vikravandi","Tirukkoyilur","Ulundurpettai","Rishivandiyam","Sankarapuram","Kallakurichi","Gangavalli","Attur","Yercaud","Omalur","Mettur","Edappadi","Sankari","Salem West","Salem North","Salem South","Veerapandi","Rasipuram","Senthamangalam","Namakkal","Paramathi-Velur","Tiruchengode","Kumarapalayam","Erode East","Erode West","Modakkurichi","Dharapuram","Kangayam","Perundurai","Bhavani","Anthiyur","Gobichettipalayam","Bhavanisagar","Udhagamandalam","Gudalur","Coonoor","Mettupalayam","Avanashi","Tiruppur North","Tiruppur South","Palladam","Sulur","Kavundampalayam","Coimbatore North","Thondamuthur","Coimbatore South","Singanallur","Kinathukadavu","Pollachi","Valparai","Udumalaipettai","Madathukulam","Palani","Oddanchatram","Athoor","Nilakottai","Natham","Dindigul","Vedasandur","Karur","Krishnarayapuram","Kulithalai","Manapparai","Srirangam","Tiruchirappalli West","Tiruchirappalli East","Thiruverumbur","Lalgudi","Manachanallur","Musiri","Thuraiyur","Perambalur","Kunnam","Ariyalur","Jayankondam","Tittakudi","Vriddhachalam","Neyveli","Panruti","Cuddalore","Kurinjipadi","Bhuvanagiri","Chidambaram","Kattumannarkoil","Sirkazhi","Mayiladuthurai","Poompuhar","Nagapattinam","Kilvelur","Vedaranyam","Thiruthuraipoondi","Mannargudi","Thiruvarur","Nannilam","Thiruvidaimarudur","Kumbakonam","Papanasam","Thiruvaiyaru","Thanjavur","Orathanadu","Peravurani","Gandarvakottai","Viralimalai","Pudukkottai","Thirumayam","Alangudi","Aranthangi","Karaikudi","Tiruppattur","Sivaganga","Manamadurai","Mudukulathur","Paramakudi","Tiruvadanai","Ramanathapuram","Muduchiruthan","Aruppukottai","Tiruchuli","Kariapatti","Virudhunagar","Sattur","Sivakasi","Rajapalayam","Srivilliputhur","Sankarankovil","Vasudevanallur","Kadayanallur","Tenkasi","Alangulam","Tirunelveli","Ambasamudram","Palayamkottai","Nanguneri","Radhapuram","Kanniyakumari","Nagercoil","Colachel","Padmanabhapuram","Vilavancode","Killiyoor"];
-let talukas = []; districts.forEach(d=>{ for(let i=1;i<=8;i++) talukas.push(d+" Taluk "+i); }); talukas = talukas.slice(0,310); talukas[0]="Aruppukottai"; talukas[1]="Virudhunagar"; talukas[2]="Sattur";
-const mDistrictSel = document.getElementById('mDistrict'); const mThoguthiSel = document.getElementById('mThoguthi'); const mTalukaSel = document.getElementById('mTaluka');
-function fillSelect(sel, arr){ sel.innerHTML=""; arr.forEach(v=>{ let o=document.createElement('option'); o.value=v; o.textContent=v; sel.appendChild(o); }); }
-fillSelect(mDistrictSel, districts); fillSelect(mThoguthiSel, thoguthis); fillSelect(mTalukaSel, talukas);
-let members = JSON.parse(localStorage.getItem('tpk_members')||"[]"); let photoData = ""; let isAdmin = localStorage.getItem('tpk_admin')==="yes";
-function previewPhoto(e){ let r=new FileReader(); r.onload=()=>{ photoData=r.result; document.getElementById('photoPrev').innerHTML=`<img src="${photoData}">`; }; r.readAsDataURL(e.target.files[0]); }
-function showSection(s){ document.getElementById('regSection').style.display=s==='reg'?'block':'none'; document.getElementById('membersSection').style.display=s==='members'?'block':'none'; if(s==='members'){ document.getElementById('countingPanel').style.display='flex'; updateCounts(); renderMembers(); } else { document.getElementById('countingPanel').style.display='none'; } }
-function toggleAdmin(){ document.getElementById('adminLogin').style.display=document.getElementById('adminLogin').style.display==='none'?'block':'none'; }
-function adminLogin(){ if(document.getElementById('adminUser').value==='TPKHEAD@' && document.getElementById('adminPass').value==='TPK2031'){ isAdmin=true; localStorage.setItem('tpk_admin','yes'); document.getElementById('adminTools').style.display='block'; document.getElementById('loginStatus').style.display='inline'; alert('Admin Login Success!'); } else alert('Wrong ID/Password'); }
-function adminLogout(){ isAdmin=false; localStorage.removeItem('tpk_admin'); document.getElementById('adminTools').style.display='none'; document.getElementById('loginStatus').style.display='none'; alert('Logged out'); }
-if(isAdmin){ document.getElementById('adminTools').style.display='block'; document.getElementById('loginStatus').style.display='inline'; }
-function registerMember(){ let name=document.getElementById('mName').value.trim(); let phone=document.getElementById('mPhone').value.trim(); if(!name||!phone||!photoData){ alert('Photo, Peyar, Phone kandippa venum!'); return; } let id='TPK'+Date.now().toString().slice(-6); let m={id,name,phone,blood:document.getElementById('mBlood').value,taluka:mTalukaSel.value,district:mDistrictSel.value,thoguthi:mThoguthiSel.value,address:document.getElementById('mAddress').value,photo:photoData,date:new Date().toLocaleDateString()}; members.unshift(m); localStorage.setItem('tpk_members',JSON.stringify(members)); alert('Registered! ID: '+id); showCard(m); downloadCardAuto(m); }
-function showCard(m){ document.getElementById('printArea').style.display='block'; document.getElementById('cardDetails').innerHTML=`<b>ID:</b> ${m.id}<br><b>பெயர்:</b> ${m.name}<br><b>போன்:</b> ${m.phone}<br><b>தாலூக:</b> ${m.taluka}<br><b>மாவட்டம்:</b> ${m.district}<br><b>தொகுதி:</b> ${m.thoguthi}<br><b>Blood:</b> ${m.blood}`; document.getElementById('cardPhoto').src=m.photo; window.scrollTo(0,document.getElementById('printArea').offsetTop); }
-function renderMembers(){ let q=document.getElementById('searchBox').value.toLowerCase(); let list=document.getElementById('membersList'); list.innerHTML=''; members.filter(m=> (m.name+m.phone+m.taluka+m.district).toLowerCase().includes(q)).forEach(m=>{ let div=document.createElement('div'); div.className='form-section'; div.style.padding='10px'; div.innerHTML=`<div style="display:flex;gap:10px"><img src="${m.photo}" style="width:70px;height:85px;object-fit:cover;border:2px solid #000"><div style="font-size:13px;line-height:1.5"><b>${m.name}</b> (${m.id})<br>${m.phone} | ${m.blood}<br>${m.taluka}, ${m.district}<br>${m.thoguthi}</div></div>`; let btns=document.createElement('div'); btns.style.marginTop='6px'; btns.innerHTML=`<button class="btn btn-yellow" style="padding:4px 10px;font-size:11px">View Card</button> ${isAdmin?`<button class="btn btn-red" style="padding:4px 8px;font-size:11px">Delete</button><button class="btn btn-dark" style="padding:4px 8px;font-size:11px">Edit</button>`:''}`; btns.children[0].onclick=()=>showCard(m); if(isAdmin){ btns.children[1].onclick=()=>deleteMember(m.id); btns.children[2].onclick=()=>editMember(m.id); } div.appendChild(btns); list.appendChild(div); }); }
-function deleteMember(id){ if(!isAdmin) return alert('Admin only'); if(confirm('Delete?')){ members=members.filter(x=>x.id!==id); localStorage.setItem('tpk_members',JSON.stringify(members)); renderMembers(); updateCounts(); } }
-function editMember(id){ let m=members.find(x=>x.id===id); if(!m) return; let newName=prompt('Name correction:',m.name); if(newName){ m.name=newName; localStorage.setItem('tpk_members',JSON.stringify(members)); renderMembers(); } }
-function updateCounts(){ document.getElementById('cTaluka').textContent=new Set(members.map(m=>m.taluka)).size; document.getElementById('cDistrict').textContent=new Set(members.map(m=>m.district)).size; document.getElementById('cThoguthi').textContent=new Set(members.map(m=>m.thoguthi)).size; }
-function showCounts(type){ let map={}; members.forEach(m=>{ let k=type==='taluka'?m.taluka:type==='thoguthi'?m.thoguthi:m.district; map[k]=(map[k]||0)+1; }); let details=document.getElementById('countDetails'); details.innerHTML=''; Object.entries(map).sort((a,b)=>b[1]-a[1]).forEach(([k,v])=>{ let d=document.createElement('div'); d.className='count-card'; d.innerHTML=`<small>${k}</small><br><b>${v}</b> Members`; details.appendChild(d); }); }
-function downloadCard(){ html2canvas(document.getElementById('cardToPrint')).then(canvas=>{ let a=document.createElement('a'); a.download='TPK_Card.png'; a.href=canvas.toDataURL(); a.click(); }); }
-function downloadCardAuto(m){ setTimeout(()=>downloadCard(),500); }
-function importExcel(){ let file=document.getElementById('excelFile').files[0]; if(!file) return alert('Select Excel'); let reader=new FileReader(); reader.onload=(e)=>{ let wb=XLSX.read(e.target.result,{type:'binary'}); let sheet=wb.Sheets[wb.SheetNames[0]]; let data=XLSX.utils.sheet_to_json(sheet); data.forEach(row=>{ members.push({id:'TPK'+Math.random().toString().slice(2,8),name:row.Name||'NoName',phone:row.Phone||'',taluka:row.Taluka||talukas[0],district:row.District||districts[0],thoguthi:row.Thoguthi||thoguthis[0],blood:row.Blood||'O+',address:row.Address||'',photo:'',date:new Date().toLocaleDateString()}); }); localStorage.setItem('tpk_members',JSON.stringify(members)); alert('Imported '+data.length); renderMembers(); }; reader.readAsBinaryString(file); }
-function exportExcel(){ let ws=XLSX.utils.json_to_sheet(members.map(m=>({ID:m.id,Name:m.name,Phone:m.phone,Taluka:m.taluka,District:m.district,Thoguthi:m.thoguthi,Blood:m.blood,Address:m.address,Date:m.date}))); let wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,'Members'); XLSX.writeFile(wb,'TPK_Members.xlsx'); }
+let members = JSON.parse(localStorage.getItem('tpk_members_v2')||'[]');
+updateCount();
+function show(s){
+document.getElementById('regSec').style.display=s=='reg'?'block':'none';
+document.getElementById('membersSec').style.display=s=='members'?'block':'none';
+document.getElementById('adminSec').style.display=s=='admin'?'block':'none';
+if(s=='members') loadMembers(false);
+}
+function register(){
+let name=document.getElementById('name').value.trim();
+let phone=document.getElementById('phone').value.trim().replace(/\s/g,'');
+let dist=document.getElementById('dist').value.trim()||'Virudhunagar';
+let thog=document.getElementById('thog').value.trim();
+let bg=document.getElementById('bg').value.trim();
+let addr=document.getElementById('addr').value.trim();
+if(!name||!phone){alert('Name & Phone Required!');return}
+let dupIndex = members.findIndex(m=>m.phone==phone);
+if(dupIndex!=-1){
+  let old = members[dupIndex];
+  if(confirm('⚠️ Phone '+phone+' already registered! Name: '+old.name+' ID: '+old.id+'\n\nDelete old & add new? OK=Delete, Cancel=Keep old')){
+    members.splice(dupIndex,1);
+  }else{
+    document.getElementById('msg').innerHTML='<span style=color:orange>⚠️ Already Exists - ID: '+old.id+'</span>';
+    return;
+  }
+}
+let id='TPK'+Date.now().toString().slice(-6);
+let data={name,phone,dist,thog,bg,addr,id,date:new Date().toLocaleDateString(),timestamp:Date.now()};
+members.push(data);
+localStorage.setItem('tpk_members_v2',JSON.stringify(members));
+updateCount();
+document.getElementById('msg').innerHTML='<span style=color:green>✅ Registered! ID: '+id+'</span>';
+downloadCard(data);
+}
+function updateCount(){document.getElementById('count').innerText=members.length;}
+function loadMembers(isAdmin){
+let target = isAdmin ? document.getElementById('adminData') : document.getElementById('membersList');
+if(isAdmin) document.getElementById('adminData').style.display='block';
+if(members.length==0){target.innerHTML='<p style=color:#aaa;padding:10px>No members yet</p>';return}
+let html = members.map((m,i)=>{
+  let dupCount = members.filter(x=>x.phone==m.phone).length;
+  let dupBadge = dupCount>1 ? '<span class=edit-badge>DUPLICATE '+dupCount+'x</span>' : '';
+  return `<div class=member-item>
+  <div style=flex:1><b>${m.name}</b> ${dupBadge}<br><small style=color:#ccc>${m.phone} | ${m.dist} | ${m.id}</small><br><small style=color:#888>${m.date}</small></div>
+  <div><button class=del-btn onclick="deleteMember(${i},${isAdmin})">🗑️ DELETE</button></div>
+</div>`;
+}).join('');
+if(isAdmin){
+  target.innerHTML = '<h4 style=color:#FFD700>Total: '+members.length+'</h4><div style=margin-top:10px>'+html+'</div><button class=reg style=background:#000;border:2px solid #FFD700;color:#FFD700;margin-top:15px onclick="clearAll()">DELETE ALL MEMBERS</button>';
+}else{
+  target.innerHTML=html;
+}
+}
+function deleteMember(index,isAdmin){
+let m=members[index];
+if(confirm('🗑️ Delete? Name: '+m.name+' Phone: '+m.phone+' ID: '+m.id)){
+  members.splice(index,1);
+  localStorage.setItem('tpk_members_v2',JSON.stringify(members));
+  updateCount();
+  loadMembers(isAdmin);
+  if(isAdmin) loadMembers(true);
+  alert('✅ Deleted!');
+}
+}
+function adminLogin(){
+if(document.getElementById('adminPass').value=='tpk2024'){loadMembers(true);}else alert('Wrong Password! Use: tpk2024');
+}
+function clearAll(){
+if(confirm('ALL MEMBERS DELETE?') && confirm('LAST CONFIRM - All '+members.length+' delete?')){
+   members=[];localStorage.setItem('tpk_members_v2','[]');updateCount();loadMembers(true);loadMembers(false);alert('All Deleted');
+}
+}
+function downloadCard(m){
+let c=document.createElement('canvas');c.width=800;c.height=480;
+let x=c.getContext('2d');
+x.fillStyle='#D90429';x.fillRect(0,0,800,180);
+x.fillStyle='#FFD700';x.fillRect(0,180,800,300);
+x.fillStyle='#fff';x.font='bold 32px sans-serif';x.fillText('TAMILAR PURATCHI KALAKAM',110,70);
+x.fillStyle='#000';x.font='bold 20px sans-serif';
+x.fillText('Name: '+m.name,40,230);
+x.fillText('Phone: '+m.phone,40,265);
+x.fillText('District: '+m.dist,40,300);
+x.fillText('Thoguthi: '+(m.thog||''),40,335);
+x.fillText('ID: '+m.id,40,370);
+let a=document.createElement('a');a.download=m.name+'_TPK.png';a.href=c.toDataURL();a.click();
+}
 </script>
 </body>
- </html>
+</html>
