@@ -27,40 +27,35 @@ input,select{width:100%;padding:11px;margin-top:9px;border:1.5px solid #BCAAA4;b
 .btn-submit{width:100%;margin-top:12px;background:linear-gradient(90deg,#FF0000 50%,#FFD700 50%);padding:13px;border:2px solid #000;border-radius:9px;font-size:17px;font-weight:900;cursor:pointer}
 .preview-img{width:70px;height:70px;border-radius:50%;margin:6px auto;display:none;object-fit:cover;border:2px solid #FFD700}
 
-/* HORIZONTAL CARD - FORCE HORIZONTAL ALWAYS */
+/* FINAL - NO GAP - HORIZONTAL */
 .id-wrapper{display:none;margin:15px 8px;background:#fff;padding:10px;border-radius:12px;border:3px solid #7B0000;text-align:center;overflow-x:auto}
 #idCard{
-  width:780px;min-width:780px;height:440px;
+  width:780px;min-width:780px;height:400px;
   background:#FFC107;margin:0 auto;
-  overflow:hidden;border:2px solid #000;
-  position:relative;text-align:left;
-  display:block;
+  border:2px solid #000;position:relative;text-align:left;
 }
-.id-top{display:flex;justify-content:space-between;padding:12px 16px 6px 16px}
-.id-t1{color:#7B0000;font-size:30px;font-weight:900;line-height:1}
-.id-t2{color:#000;font-size:14px;font-weight:bold}
-.id-badge{background:#7B0000;color:#fff;padding:4px 12px;border-radius:20px;font-size:12px;display:inline-block;margin-top:5px}
-.id-logo{width:80px;height:80px;border-radius:50%;background:#fff;border:2px solid #7B0000;overflow:hidden}
+.id-top{display:flex;justify-content:space-between;padding:10px 14px 4px 14px}
+.id-t1{color:#7B0000;font-size:28px;font-weight:900;line-height:1}
+.id-t2{color:#000;font-size:13px;font-weight:bold}
+.id-badge{background:#7B0000;color:#fff;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin-top:4px}
+.id-logo{width:75px;height:75px;border-radius:50%;background:#fff;border:2px solid #7B0000;overflow:hidden}
 .id-logo img{width:100%;height:100%;object-fit:cover}
 
-.id-middle{display:flex;padding:8px 16px;gap:14px}
-.id-left{flex:1}
-.id-line{font-size:15px;font-weight:900;line-height:1.65;color:#000}
-.id-right{width:330px;height:230px;border:3px solid #000;border-radius:12px;overflow:hidden;background:#000;position:relative;flex-shrink:0}
-.id-right img{width:100%;height:100%;object-fit:cover}
-.id-right-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.95));color:#FFD700;text-align:center;padding:6px;font-weight:900;font-size:12px}
-
-.id-bottom{display:flex;gap:24px;align-items:flex-end;padding:8px 16px 0 16px}
+.id-main{display:flex;padding:0 14px;gap:12px}
+.id-left{flex:1;display:flex;flex-direction:column}
+.id-details{font-size:14px;font-weight:900;line-height:1.6;color:#000}
+.id-bottom-row{display:flex;gap:20px;align-items:flex-end;margin-top:12px}
 .id-mem{width:85px;height:105px;border:2px solid #7B0000;background:#fff;overflow:hidden;flex-shrink:0}
 .id-mem img{width:100%;height:100%;object-fit:cover}
 .id-sign-wrap{text-align:center}
-.id-sign-box{width:140px;height:60px;background:#fff;border:1px solid #ccc;display:flex;align-items:center;justify-content:center}
-.id-sign-txt{font-family:cursive;font-size:24px}
+.id-sign-box{width:135px;height:58px;background:#fff;border:1px solid #ccc;display:flex;align-items:center;justify-content:center}
+.id-sign-txt{font-family:cursive;font-size:22px}
+.id-right{width:330px;height:220px;border:3px solid #000;border-radius:12px;overflow:hidden;background:#000;position:relative;flex-shrink:0}
+.id-right img{width:100%;height:100%;object-fit:cover}
+.id-right-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.95));color:#FFD700;text-align:center;padding:5px;font-weight:900;font-size:12px}
 
-.id-footer{position:absolute;bottom:0;left:0;right:0;height:24px;background:#7B0000;color:#fff;font-size:10px;display:flex;align-items:center;padding-left:10px;font-weight:bold}
-
+.id-footer{position:absolute;bottom:0;left:0;right:0;height:22px;background:#7B0000;color:#fff;font-size:10px;display:flex;align-items:center;padding-left:10px;font-weight:bold}
 .btn-act{padding:12px 10px;border:none;border-radius:7px;font-weight:900;margin:4px;cursor:pointer;width:48%;font-size:12px}
-.scroll-hint{font-size:11px;color:#D32F2F;margin-bottom:6px;font-weight:bold}
 </style>
 </head>
 <body>
@@ -94,8 +89,8 @@ input,select{width:100%;padding:11px;margin-top:9px;border:1.5px solid #BCAAA4;b
 </form>
 
 <div class="id-wrapper" id="idWrapper">
-  <h3 style="color:#D32F2F;font-size:15px;margin-bottom:4px">✅ Registration Success! ID Card Ready!</h3>
-  <div class="scroll-hint">👉 Scroll Panni Full Card Paarkkavum - Horizontal Card</div>
+  <h3 style="color:#D32F2F;font-size:15px;margin-bottom:6px">✅ Registration Success!</h3>
+  <div style="font-size:11px;color:#D32F2F;margin-bottom:6px;font-weight:bold">👉 Horizontal Card - Gap Removed</div>
   <div id="idCard">
     <div class="id-top">
       <div>
@@ -105,18 +100,20 @@ input,select{width:100%;padding:11px;margin-top:9px;border:1.5px solid #BCAAA4;b
       </div>
       <div class="id-logo"><img src="tpk-logo.jpg"></div>
     </div>
-    <div class="id-middle">
-      <div class="id-left" id="idDetails"></div>
+    <div class="id-main">
+      <div class="id-left">
+        <div id="idDetails" class="id-details"></div>
+        <div class="id-bottom-row">
+          <div class="id-mem"><img id="idMemPhoto" src=""></div>
+          <div class="id-sign-wrap">
+            <div class="id-sign-box"><span class="id-sign-txt">Velmurugan</span></div>
+            <div style="font-size:11px;font-weight:bold;margin-top:3px">தலைவர்</div>
+          </div>
+        </div>
+      </div>
       <div class="id-right">
         <img src="leader.jpg" onerror="this.src='tpk-flag.jpg'">
         <div class="id-right-cap">புரட்சி தலைவர்<div style="font-size:9px;color:#fff">மக்கள் போராட்டம் - நீதி : சமத்துவம்</div></div>
-      </div>
-    </div>
-    <div class="id-bottom">
-      <div class="id-mem"><img id="idMemPhoto" src=""></div>
-      <div class="id-sign-wrap">
-        <div class="id-sign-box"><span class="id-sign-txt">Velmurugan</span></div>
-        <div style="font-size:11px;font-weight:bold;margin-top:3px">தலைவர்</div>
       </div>
     </div>
     <div class="id-footer">📍 Plot No: 35, Aruppukottai, Virudhunagar - 626101 | @TPK</div>
@@ -136,23 +133,23 @@ document.getElementById('pInput').addEventListener('change',e=>{
 function updTotal(){let m=JSON.parse(localStorage.getItem(KEY)||'[]');let c=m.length<2?2:m.length;document.getElementById('totalBtn').innerText=`TOTAL: ${c} MEMBERS`;}updTotal();
 function downID(){
  const card=document.getElementById('idCard');
- html2canvas(card,{scale:3,useCORS:true,backgroundColor:'#FFC107',width:780,height:440}).then(c=>{
+ html2canvas(card,{scale:3,useCORS:true,backgroundColor:'#FFC107',width:780,height:400}).then(c=>{
   let a=document.createElement('a');a.download=`TPK_ID_${cur.name}.png`;a.href=c.toDataURL('image/png');a.click();
  });
 }
-function printID(){html2canvas(document.getElementById('idCard'),{scale:2,useCORS:true,backgroundColor:'#FFC107',width:780,height:440}).then(c=>{let w=window.open('');w.document.write('<img src="'+c.toDataURL()+'" style="width:100%">');setTimeout(()=>w.print(),500);});}
+function printID(){html2canvas(document.getElementById('idCard'),{scale:2,useCORS:true,backgroundColor:'#FFC107',width:780,height:400}).then(c=>{let w=window.open('');w.document.write('<img src="'+c.toDataURL()+'" style="width:100%">');setTimeout(()=>w.print(),500);});}
 function downExcel(){let m=JSON.parse(localStorage.getItem(KEY)||'[]');if(!m.length){alert('No Data');return;}let ws=XLSX.utils.json_to_sheet(m);let wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Members");XLSX.writeFile(wb,"TPK_Members.xlsx");}
 document.getElementById('form').addEventListener('submit',e=>{
  e.preventDefault();if(!pic){alert('Photo Select Pannunga Anna!');return;}
  let mem={name:document.getElementById('name').value,booth:document.getElementById('booth').value,mobile:document.getElementById('mobile').value,blood:document.getElementById('blood').value,dob:document.getElementById('dob').value,taluk:document.getElementById('taluk').value,thoguthi:document.getElementById('thoguthi').value,mavattam:document.getElementById('mavattam').value,maanilam:document.getElementById('maanilam').value,date:new Date().toLocaleString()};
  let arr=JSON.parse(localStorage.getItem(KEY)||'[]');arr.push(mem);localStorage.setItem(KEY,JSON.stringify(arr));updTotal();cur=mem;
  document.getElementById('idDetails').innerHTML=`
-  <div class="id-line">பெயர் &nbsp;&nbsp;&nbsp;: ${mem.name.toUpperCase()}</div>
-  <div class="id-line">பூத் எண் : ${mem.booth}</div>
-  <div class="id-line">தொகுதி &nbsp;&nbsp;: ${mem.thoguthi}</div>
-  <div class="id-line">மாவட்டம் : ${mem.mavattam}</div>
-  <div class="id-line">மாநிலம் &nbsp;: ${mem.maanilam}</div>
-  <div class="id-line">பிறந்த தேதி : ${mem.dob}</div>
+  <div>பெயர் &nbsp;&nbsp;&nbsp;: ${mem.name.toUpperCase()}</div>
+  <div>பூத் எண் : ${mem.booth}</div>
+  <div>தொகுதி &nbsp;&nbsp;: ${mem.thoguthi}</div>
+  <div>மாவட்டம் : ${mem.mavattam}</div>
+  <div>மாநிலம் &nbsp;: ${mem.maanilam}</div>
+  <div>பிறந்த தேதி : ${mem.dob}</div>
  `;
  document.getElementById('idMemPhoto').src=pic;
  document.getElementById('idWrapper').style.display='block';
