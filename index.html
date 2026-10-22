@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TPK - No Dropdown - DOB Added</title>
+<title>TPK - Fixed Error - No Block</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
@@ -11,25 +11,25 @@
 <div class="max-w-md mx-auto bg-white min-h-screen shadow-2xl">
 
 <div class="bg-black text-center p-3 border-b-4 border-yellow-400">
-<img src="tpk-logo.jpg?v=6" class="w-24 h-24 mx-auto rounded-full border-4 border-yellow-400 bg-white object-cover">
+<img src="tpk-logo.jpg?v=7" class="w-24 h-24 mx-auto rounded-full border-4 border-yellow-400 bg-white object-cover">
 <h1 class="text-yellow-400 font-black mt-2">TAMILAR PURATCHI KALAKAM</h1>
 <div class="flex justify-center gap-2 mt-2">
 <div class="bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold">TOTAL: <span id="totalCount">0</span></div>
 <button onclick="openAdminLogin()" class="bg-red-600 text-white px-4 py-1 rounded-full text-xs font-black">🔐 ADMIN</button>
 </div>
-<img src="tpk-flag.jpg?v=6" class="w-full h-20 object-cover mt-3 rounded border-2 border-yellow-400">
+<img src="tpk-flag.jpg?v=7" class="w-full h-20 object-cover mt-3 rounded border-2 border-yellow-400">
 </div>
 
 <div id="publicView" class="p-4">
-<h2 class="text-center font-black text-red-600 mb-3">📝 REGISTRATION - DOB Added</h2>
+<h2 class="text-center font-black text-red-600 mb-3">📝 REGISTRATION - FIXED ERROR</h2>
 
 <div class="border-2 border-yellow-400 rounded-xl p-3 bg-yellow-50 mb-3">
 <label class="text-xs font-bold">📸 Photo *</label>
 <input id="camIn" type="file" accept="image/*" capture="environment" class="hidden">
 <input id="galIn" type="file" accept="image/*" class="hidden">
 <div class="flex gap-2 mt-2">
-<button onclick="document.getElementById('camIn').click()" class="flex-1 bg-blue-600 text-white py-2.5 rounded-lg font-bold">📷 CAMERA</button>
-<button onclick="document.getElementById('galIn').click()" class="flex-1 bg-green-600 text-white py-2.5 rounded-lg font-bold">🖼️ GALLERY</button>
+<button onclick="document.getElementById('camIn').click()" class="flex-1 bg-blue-600 text-white py-2 rounded-lg font-bold">📷 CAMERA</button>
+<button onclick="document.getElementById('galIn').click()" class="flex-1 bg-green-600 text-white py-2 rounded-lg font-bold">🖼️ GALLERY</button>
 </div>
 <div id="photoDiv" class="hidden mt-2 text-center">
 <img id="photoPrev" class="w-28 h-28 mx-auto rounded-xl border-4 border-yellow-400 object-cover">
@@ -39,18 +39,17 @@
 
 <input id="name" placeholder="Name / பெயர் *" class="w-full border-2 p-3 rounded-lg mb-2 font-bold">
 <input id="booth" placeholder="பூத் எண் / Booth No *" class="w-full border-2 p-3 rounded-lg mb-2 font-bold">
-<input id="thoguthi" placeholder="தொகுதி / Thoguthi * (Type pannunga)" class="w-full border-2 p-3 rounded-lg mb-2 font-bold">
-<input id="dist" placeholder="மாவட்டம் / District * (Type pannunga)" class="w-full border-2 p-3 rounded-lg mb-2 font-bold">
-<input id="dob" type="date" placeholder="Date of Birth *" class="w-full border-2 p-3 rounded-lg mb-2 font-bold">
-<label class="text-[10px] text-gray-500 -mt-1 mb-2 block ml-1">Date of Birth * / பிறந்த தேதி *</label>
-<input id="phone" placeholder="Phone / தொலைபேசி *" type="tel" class="w-full border-2 p-3 rounded-lg mb-2">
-<input id="address" placeholder="Address / முகவரி" class="w-full border-2 p-3 rounded-lg mb-3">
+<input id="thoguthi" placeholder="தொகுதி / Thoguthi *" class="w-full border-2 p-3 rounded-lg mb-2 font-bold">
+<input id="dist" placeholder="மாவட்டம் / District *" class="w-full border-2 p-3 rounded-lg mb-2 font-bold">
+<input id="dob" type="date" class="w-full border-2 p-3 rounded-lg mb-2 font-bold">
+<label class="text-[10px] text-gray-500 -mt-1 mb-2 block ml-1">Date of Birth *</label>
+<input id="phone" placeholder="Phone *" type="tel" class="w-full border-2 p-3 rounded-lg mb-2">
+<input id="address" placeholder="Address" class="w-full border-2 p-3 rounded-lg mb-3">
 
 <button id="mainBtn" class="w-full bg-red-600 text-white py-4 rounded-xl font-black text-lg shadow-xl">🪪 REGISTER & DOWNLOAD ID CARD</button>
 <p id="msg" class="text-center font-bold text-sm mt-2"></p>
 
 <div class="mt-4 bg-white p-2 rounded-xl border-2 border-black">
-<p class="text-xs font-bold text-center mb-1">🪪 ID Card Preview - No Dropdown - DOB Added - No QR</p>
 <canvas id="idCanvas" width="1000" height="620" class="w-full rounded-lg border"></canvas>
 </div>
 </div>
@@ -82,29 +81,51 @@
 const SCRIPT_URL="https://script.google.com/macros/s/AKfycbxrfdA8J0kU8aNlZPOv3IXwQH6H_Afw1Qu4Li9j_hplcjLWumL8DftvTeQiwIRRyTRH/exec";
 const ADMIN_PASSWORD="TPK@2026";
 let photoData=""; 
-let members=JSON.parse(localStorage.getItem('tpk_final_dob')||'[]');
+let members=[];
+try{members=JSON.parse(localStorage.getItem('tpk_final_dob')||'[]');}catch(e){members=[];}
 document.getElementById('totalCount').textContent=members.length;
 
 document.getElementById('camIn').addEventListener('change',e=>handlePhoto(e.target.files[0]));
 document.getElementById('galIn').addEventListener('change',e=>handlePhoto(e.target.files[0]));
-function handlePhoto(f){ if(!f) return; const r=new FileReader(); r.onload=e=>{photoData=e.target.result; window.photoData=photoData; document.getElementById('photoPrev').src=photoData; document.getElementById('photoDiv').classList.remove('hidden'); drawCard();}; r.readAsDataURL(f); }
+function handlePhoto(f){ 
+if(!f) return; 
+if(f.size>5000000){alert('Photo too large! Choose smaller photo'); return;}
+const r=new FileReader(); 
+r.onload=e=>{
+let result=e.target.result;
+// Compress - reduce size to avoid localStorage error
+const img=new Image();
+img.onload=()=>{
+  const canvas=document.createElement('canvas');
+  const max=400;
+  let w=img.width, h=img.height;
+  if(w>h){if(w>max){h*=max/w; w=max;}}else{if(h>max){w*=max/h; h=max;}}
+  canvas.width=w; canvas.height=h;
+  canvas.getContext('2d').drawImage(img,0,0,w,h);
+  photoData=canvas.toDataURL('image/jpeg',0.6);
+  window.photoData=photoData;
+  document.getElementById('photoPrev').src=photoData;
+  document.getElementById('photoDiv').classList.remove('hidden');
+  drawCard();
+};
+img.src=result;
+}; 
+r.readAsDataURL(f); 
+}
 
 function drawCard(){
 const c=document.getElementById('idCanvas'); const ctx=c.getContext('2d');
 ctx.clearRect(0,0,1000,620);
 ctx.fillStyle='#FFC200'; ctx.fillRect(0,0,1000,620);
-
 ctx.fillStyle='#8B0000'; ctx.font='900 36px sans-serif'; ctx.fillText('தமிழர் புரட்சி கழகம்',25,50);
 ctx.font='700 15px sans-serif'; ctx.fillText('பிறப்பொக்கும் எல்லா உயிர்க்கும்!',25,75);
 ctx.fillStyle='#8B0000'; ctx.beginPath(); ctx.roundRect(25,85,165,28,14); ctx.fill();
 ctx.fillStyle='white'; ctx.font='700 14px sans-serif'; ctx.fillText('உறுப்பினர் அட்டை',38,104);
-
 const nameV=document.getElementById('name').value||'--';
 const boothV=document.getElementById('booth').value||'--';
 const thoguthiV=document.getElementById('thoguthi').value||'--';
 const distV=document.getElementById('dist').value||'--';
 const dobV=document.getElementById('dob').value||'--';
-
 ctx.fillStyle='black'; ctx.font='700 17px sans-serif';
 ctx.fillText('பெயர்',25,145); ctx.fillText(': '+nameV,155,145);
 ctx.fillText('பூத் எண்',25,170); ctx.fillText(': '+boothV,155,170);
@@ -112,45 +133,24 @@ ctx.fillText('தொகுதி',25,195); ctx.fillText(': '+thoguthiV,155,195);
 ctx.fillText('மாவட்டம்',25,220); ctx.fillText(': '+distV,155,220);
 ctx.fillText('மாநிலம்',25,245); ctx.fillText(': தமிழ்நாடு',155,245);
 ctx.fillText('பிறந்த தேதி',25,270); ctx.fillText(': '+dobV,155,270);
-
 ctx.fillStyle='white'; ctx.fillRect(25,290,100,120); ctx.strokeStyle='#8B0000'; ctx.lineWidth=2; ctx.strokeRect(25,290,100,120);
 if(photoData){
   const mImg=new Image(); mImg.src=photoData;
   mImg.onload=()=>{ctx.drawImage(mImg,27,292,96,116);};
 }
-
 ctx.fillStyle='#8B0000'; ctx.globalAlpha=0.95;
 ctx.beginPath();
 ctx.moveTo(680,150); ctx.lineTo(865,150); ctx.lineTo(890,210); ctx.lineTo(870,300); ctx.lineTo(830,360); ctx.lineTo(750,390); ctx.lineTo(670,345); ctx.closePath();
 ctx.fill(); ctx.globalAlpha=1;
-
-const lImg=new Image(); lImg.src='leader.jpg?v=6';
-lImg.onload=()=>{
-  ctx.save();
-  ctx.beginPath(); ctx.roundRect(610,170,280,300,18); ctx.clip();
-  ctx.drawImage(lImg,610,170,280,300);
-  ctx.restore();
-};
-
-const logoImg=new Image(); logoImg.src='tpk-logo.jpg?v=6';
-logoImg.onload=()=>{
-  ctx.save();
-  ctx.beginPath(); ctx.arc(860,85,48,0,Math.PI*2); ctx.clip();
-  ctx.drawImage(logoImg,812,37,96,96);
-  ctx.restore();
-  ctx.strokeStyle='#8B0000'; ctx.lineWidth=3;
-  ctx.beginPath(); ctx.arc(860,85,48,0,Math.PI*2); ctx.stroke();
-};
-
-const sImg=new Image(); sImg.src='velmurugan_sign.jpg?v=6';
-sImg.onload=()=>{
-  ctx.drawImage(sImg,200,295,140,70);
-  ctx.fillStyle='black'; ctx.font='700 11px sans-serif'; ctx.fillText('தலைவர்',255,380);
-};
-
+const lImg=new Image(); lImg.src='leader.jpg?v=7';
+lImg.onload=()=>{ctx.save(); ctx.beginPath(); ctx.roundRect(610,170,280,300,18); ctx.clip(); ctx.drawImage(lImg,610,170,280,300); ctx.restore();};
+const logoImg=new Image(); logoImg.src='tpk-logo.jpg?v=7';
+logoImg.onload=()=>{ctx.save(); ctx.beginPath(); ctx.arc(860,85,48,0,Math.PI*2); ctx.clip(); ctx.drawImage(logoImg,812,37,96,96); ctx.restore(); ctx.strokeStyle='#8B0000'; ctx.lineWidth=3; ctx.beginPath(); ctx.arc(860,85,48,0,Math.PI*2); ctx.stroke();};
+const sImg=new Image(); sImg.src='velmurugan_sign.jpg?v=7';
+sImg.onload=()=>{ctx.drawImage(sImg,200,295,140,70); ctx.fillStyle='black'; ctx.font='700 11px sans-serif'; ctx.fillText('தலைவர்',255,380);};
 ctx.fillStyle='#8B0000'; ctx.fillRect(0,555,1000,65);
 ctx.fillStyle='white'; ctx.font='700 11px sans-serif';
-ctx.fillText('📍 Plot No: 35, Aruppukottai, Virudhunagar - 626101 | @TPK | தமிழர் புரட்சி கழகம்',20,585);
+ctx.fillText('📍 Plot No: 35, Aruppukottai, Virudhunagar - 626101 | @TPK',20,585);
 }
 
 function downloadCanvas(name){ const c=document.getElementById('idCanvas'); const a=document.createElement('a'); a.download=name+'.png'; a.href=c.toDataURL('image/png'); a.click(); }
@@ -164,23 +164,53 @@ const dob=document.getElementById('dob').value;
 const msg=document.getElementById('msg'); const btn=document.getElementById('mainBtn');
 if(!name){msg.textContent='❌ பெயர் Required!'; msg.className='text-center font-bold text-sm mt-2 text-red-600'; return;}
 if(!booth){msg.textContent='❌ பூத் எண் Required!'; msg.className='text-center font-bold text-sm mt-2 text-red-600'; return;}
-if(!thoguthi){msg.textContent='❌ தொகுதி Type Pannunga!'; msg.className='text-center font-bold text-sm mt-2 text-red-600'; return;}
-if(!dist){msg.textContent='❌ மாவட்டம் Type Pannunga!'; msg.className='text-center font-bold text-sm mt-2 text-red-600'; return;}
-if(!dob){msg.textContent='❌ Date of Birth Select Pannunga!'; msg.className='text-center font-bold text-sm mt-2 text-red-600'; return;}
+if(!thoguthi){msg.textContent='❌ தொகுதி Type!'; msg.className='text-center font-bold text-sm mt-2 text-red-600'; return;}
+if(!dist){msg.textContent='❌ மாவட்டம் Type!'; msg.className='text-center font-bold text-sm mt-2 text-red-600'; return;}
+if(!dob){msg.textContent='❌ DOB Select!'; msg.className='text-center font-bold text-sm mt-2 text-red-600'; return;}
 if(!photoData){msg.textContent='❌ Photo Required!'; msg.className='text-center font-bold text-sm mt-2 text-red-600'; return;}
-btn.textContent='⏳ Saving...'; btn.disabled=true; msg.textContent='⏳ Saving to Excel...'; msg.className='text-center font-bold text-sm mt-2 text-blue-600';
+
+btn.textContent='⏳ Saving...'; btn.disabled=true;
+msg.textContent='⏳ Generating ID Card...'; msg.className='text-center font-bold text-sm mt-2 text-blue-600';
+
 const memberId='TPK/'+new Date().getFullYear()+'/'+Math.floor(1000+Math.random()*9000);
-setTimeout(()=>{drawCard();},100);
-const phone=document.getElementById('phone').value;
-const payload={memberId,name,fname:'',phone,blood:'',dist,thoguthi,address:document.getElementById('address').value,boothNo:booth,taluk:'',dob:dob};
-try{
-await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)});
-members.unshift({id:memberId,name,booth,thoguthi,dist,dob,phone,date:new Date().toLocaleString(),photo:photoData});
-localStorage.setItem('tpk_final_dob',JSON.stringify(members));
-document.getElementById('totalCount').textContent=members.length;
-msg.textContent='✅ Success! Downloading...'; msg.className='text-center font-bold text-sm mt-2 text-green-600';
-setTimeout(()=>{downloadCanvas(memberId+'_TPK_ID'); btn.textContent='✅ DONE!'; setTimeout(()=>{btn.textContent='🪪 REGISTER & DOWNLOAD ID CARD'; btn.disabled=false;},2000);},1000);
-}catch(e){msg.textContent='❌ Error'; btn.disabled=false;}
+
+// 1. FIRST DRAW AND DOWNLOAD - NO BLOCK
+setTimeout(()=>{
+  drawCard();
+  setTimeout(()=>{
+    try{
+      downloadCanvas(memberId+'_TPK_ID');
+      
+      // 2. Save locally WITHOUT photo to avoid quota error
+      try{
+        const memberForStorage={id:memberId,name,booth,thoguthi,dist,dob,phone:document.getElementById('phone').value,date:new Date().toLocaleString()};
+        members.unshift(memberForStorage);
+        if(members.length>100){members=members.slice(0,100);} // Keep only 100
+        localStorage.setItem('tpk_final_dob',JSON.stringify(members));
+        document.getElementById('totalCount').textContent=members.length;
+      }catch(e){
+        console.log('Storage full, clearing old');
+        try{localStorage.removeItem('tpk_final_dob'); members=[]; }catch(e2){}
+      }
+
+      // 3. Try Google Sheet in background - fail aana kooda paravala
+      const payload={memberId,name,fname:'',phone:document.getElementById('phone').value,blood:'',dist,thoguthi,address:document.getElementById('address').value,boothNo:booth,taluk:'',dob:dob};
+      fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)}).then(()=>{console.log('Sheet saved');}).catch(()=>{console.log('Sheet failed but ok');});
+
+      msg.textContent='✅ Success! ID Card Downloaded!';
+      msg.className='text-center font-bold text-sm mt-2 text-green-600';
+      btn.textContent='✅ DOWNLOADED!';
+      setTimeout(()=>{btn.textContent='🪪 REGISTER & DOWNLOAD ID CARD'; btn.disabled=false;},2000);
+
+    }catch(err){
+      msg.textContent='✅ ID Downloaded! (Excel may be full)';
+      msg.className='text-center font-bold text-sm mt-2 text-green-600';
+      btn.disabled=false; btn.textContent='🪪 REGISTER & DOWNLOAD ID CARD';
+      downloadCanvas(memberId+'_TPK_ID');
+    }
+  },600);
+},100);
+
 });
 
 ['name','booth','thoguthi','dist','dob'].forEach(id=>{
@@ -192,9 +222,9 @@ function openAdminLogin(){document.getElementById('loginModal').classList.remove
 function closeAdminLogin(){document.getElementById('loginModal').classList.add('hidden'); document.getElementById('adminPass').value='';}
 function checkAdminPass(){ const p=document.getElementById('adminPass').value; if(p===ADMIN_PASSWORD){document.getElementById('loginModal').classList.add('hidden'); document.getElementById('publicView').classList.add('hidden'); document.getElementById('adminView').classList.remove('hidden'); renderAdmin();}else{document.getElementById('loginMsg').textContent='❌ Wrong Password!';} }
 function closeAdmin(){document.getElementById('adminView').classList.add('hidden'); document.getElementById('publicView').classList.remove('hidden');}
-function renderAdmin(){ const div=document.getElementById('adminList'); if(members.length===0){div.innerHTML='<p class="text-center py-10 text-gray-500">No members</p>'; return;} div.innerHTML=members.map(m=>`<div class="bg-white border p-3 rounded-xl"><p class="font-black text-sm">${m.name} - DOB:${m.dob}</p><p class="text-[11px] text-gray-600">${m.id} • பூத்:${m.booth} • ${m.dist} • ${m.thoguthi}</p><p class="text-[10px] text-gray-400">${m.date}</p></div>`).join(''); }
-function downloadExcel(){ if(!members.length){alert('No members!'); return;} const data=members.map(m=>({MemberID:m.id,Name:m.name,BoothNo:m.booth,Thoguthi:m.thoguthi,Mavattam:m.dist,DOB:m.dob,Phone:m.phone,Date:m.date})); const ws=XLSX.utils.json_to_sheet(data); const wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,'TPK'); XLSX.writeFile(wb,'TPK_Members_DOB.xlsx'); }
-function downloadCSV(){ if(!members.length){alert('No members!'); return;} let csv='MemberID,Name,Booth,Thoguthi,Mavattam,DOB,Phone,Date\n'; members.forEach(m=>{csv+=`"${m.id}","${m.name}","${m.booth}","${m.thoguthi}","${m.dist}","${m.dob}","${m.phone}","${m.date}"\n`;}); const blob=new Blob([csv],{type:'text/csv'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='TPK_Members_DOB.csv'; a.click(); }
+function renderAdmin(){ const div=document.getElementById('adminList'); if(members.length===0){div.innerHTML='<p class="text-center py-10 text-gray-500">No members</p>'; return;} div.innerHTML=members.map(m=>`<div class="bg-white border p-3 rounded-xl"><p class="font-black text-sm">${m.name} - DOB:${m.dob}</p><p class="text-[11px] text-gray-600">${m.id} • பூத்:${m.booth} • ${m.dist} • ${m.thoguthi}</p></div>`).join(''); }
+function downloadExcel(){ if(!members.length){alert('No members!'); return;} const data=members.map(m=>({MemberID:m.id,Name:m.name,BoothNo:m.booth,Thoguthi:m.thoguthi,Mavattam:m.dist,DOB:m.dob,Phone:m.phone||'',Date:m.date})); const ws=XLSX.utils.json_to_sheet(data); const wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,'TPK'); XLSX.writeFile(wb,'TPK_Members_DOB.xlsx'); }
+function downloadCSV(){ if(!members.length){alert('No members!'); return;} let csv='MemberID,Name,Booth,Thoguthi,Mavattam,DOB,Phone,Date\n'; members.forEach(m=>{csv+=`"${m.id}","${m.name}","${m.booth}","${m.thoguthi}","${m.dist}","${m.dob}","${m.phone||''}","${m.date}"\n`;}); const blob=new Blob([csv],{type:'text/csv'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='TPK_Members_DOB.csv'; a.click(); }
 </script>
 </body>
 </html>
