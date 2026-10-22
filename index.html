@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TPK - Membership</title>
+<title>TPK Membership</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <style>
@@ -27,55 +27,40 @@ input,select{width:100%;padding:11px;margin-top:9px;border:1.5px solid #BCAAA4;b
 .btn-submit{width:100%;margin-top:12px;background:linear-gradient(90deg,#FF0000 50%,#FFD700 50%);padding:13px;border:2px solid #000;border-radius:9px;font-size:17px;font-weight:900;cursor:pointer}
 .preview-img{width:70px;height:70px;border-radius:50%;margin:6px auto;display:none;object-fit:cover;border:2px solid #FFD700}
 
-/* FINAL ID CARD - NO CUT - HEIGHT AUTO */
-.id-wrapper{display:none;margin:15px 8px;background:#fff;padding:12px;border-radius:12px;border:3px solid #7B0000;text-align:center}
+/* HORIZONTAL CARD - FORCE HORIZONTAL ALWAYS */
+.id-wrapper{display:none;margin:15px 8px;background:#fff;padding:10px;border-radius:12px;border:3px solid #7B0000;text-align:center;overflow-x:auto}
 #idCard{
-  width:100%;max-width:780px;
+  width:780px;min-width:780px;height:440px;
   background:#FFC107;margin:0 auto;
-  overflow:hidden;border:2px solid #000;border-radius:4px;
-  position:relative;
-  padding-bottom:30px;
+  overflow:hidden;border:2px solid #000;
+  position:relative;text-align:left;
+  display:block;
 }
-.id-top{display:flex;justify-content:space-between;align-items:flex-start;padding:14px 16px 8px 16px}
-.id-t1{color:#7B0000;font-size:28px;font-weight:900;line-height:1}
+.id-top{display:flex;justify-content:space-between;padding:12px 16px 6px 16px}
+.id-t1{color:#7B0000;font-size:30px;font-weight:900;line-height:1}
 .id-t2{color:#000;font-size:14px;font-weight:bold}
-.id-badge{background:#7B0000;color:#fff;padding:4px 12px;border-radius:20px;font-size:12px;display:inline-block;margin-top:6px}
-.id-logo{width:80px;height:80px;border-radius:50%;background:#fff;border:2px solid #7B0000;overflow:hidden;flex-shrink:0}
+.id-badge{background:#7B0000;color:#fff;padding:4px 12px;border-radius:20px;font-size:12px;display:inline-block;margin-top:5px}
+.id-logo{width:80px;height:80px;border-radius:50%;background:#fff;border:2px solid #7B0000;overflow:hidden}
 .id-logo img{width:100%;height:100%;object-fit:cover}
 
-.id-body{display:flex;padding:10px 16px;gap:16px;align-items:flex-start}
+.id-middle{display:flex;padding:8px 16px;gap:14px}
 .id-left{flex:1}
-.id-line{font-size:16px;font-weight:900;color:#000;line-height:1.7}
-.id-right{width:340px;height:240px;border:3px solid #000;border-radius:12px;overflow:hidden;background:#000;position:relative;flex-shrink:0}
+.id-line{font-size:15px;font-weight:900;line-height:1.65;color:#000}
+.id-right{width:330px;height:230px;border:3px solid #000;border-radius:12px;overflow:hidden;background:#000;position:relative;flex-shrink:0}
 .id-right img{width:100%;height:100%;object-fit:cover}
-.id-right-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.95));color:#FFD700;text-align:center;padding:8px 4px;font-weight:900;font-size:13px}
+.id-right-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.95));color:#FFD700;text-align:center;padding:6px;font-weight:900;font-size:12px}
 
-.id-bottom{display:flex;gap:28px;align-items:flex-end;padding:14px 16px 8px 16px}
-.id-mem{width:90px;height:115px;border:2px solid #7B0000;background:#fff;overflow:hidden}
+.id-bottom{display:flex;gap:24px;align-items:flex-end;padding:8px 16px 0 16px}
+.id-mem{width:85px;height:105px;border:2px solid #7B0000;background:#fff;overflow:hidden;flex-shrink:0}
 .id-mem img{width:100%;height:100%;object-fit:cover}
 .id-sign-wrap{text-align:center}
-.id-sign-box{width:145px;height:70px;background:#fff;border:1px solid #ccc;display:flex;align-items:center;justify-content:center}
-.id-sign-txt{font-family:cursive;font-size:26px}
+.id-sign-box{width:140px;height:60px;background:#fff;border:1px solid #ccc;display:flex;align-items:center;justify-content:center}
+.id-sign-txt{font-family:cursive;font-size:24px}
 
-.id-footer{position:absolute;bottom:0;left:0;right:0;height:26px;background:#7B0000;color:#fff;font-size:10px;display:flex;align-items:center;padding-left:10px;font-weight:bold}
+.id-footer{position:absolute;bottom:0;left:0;right:0;height:24px;background:#7B0000;color:#fff;font-size:10px;display:flex;align-items:center;padding-left:10px;font-weight:bold}
 
 .btn-act{padding:12px 10px;border:none;border-radius:7px;font-weight:900;margin:4px;cursor:pointer;width:48%;font-size:12px}
-
-/* MOBILE - PERFECT RESPONSIVE - NO TRANSFORM SCALE */
-@media(max-width:600px){
-  .id-t1{font-size:18px}
-  .id-t2{font-size:11px}
-  .id-badge{font-size:9px;padding:3px 8px}
-  .id-logo{width:55px;height:55px}
-  .id-body{flex-direction:column;gap:10px;padding:8px 10px}
-  .id-right{width:100%;height:200px}
-  .id-line{font-size:13px;line-height:1.6}
-  .id-bottom{padding:10px}
-  .id-mem{width:70px;height:90px}
-  .id-sign-box{width:120px;height:55px}
-  .id-sign-txt{font-size:20px}
-  .id-footer{font-size:8px;height:22px}
-}
+.scroll-hint{font-size:11px;color:#D32F2F;margin-bottom:6px;font-weight:bold}
 </style>
 </head>
 <body>
@@ -109,7 +94,8 @@ input,select{width:100%;padding:11px;margin-top:9px;border:1.5px solid #BCAAA4;b
 </form>
 
 <div class="id-wrapper" id="idWrapper">
-  <h3 style="color:#D32F2F;font-size:15px;margin-bottom:8px">✅ Registration Success! ID Card Ready!</h3>
+  <h3 style="color:#D32F2F;font-size:15px;margin-bottom:4px">✅ Registration Success! ID Card Ready!</h3>
+  <div class="scroll-hint">👉 Scroll Panni Full Card Paarkkavum - Horizontal Card</div>
   <div id="idCard">
     <div class="id-top">
       <div>
@@ -119,7 +105,7 @@ input,select{width:100%;padding:11px;margin-top:9px;border:1.5px solid #BCAAA4;b
       </div>
       <div class="id-logo"><img src="tpk-logo.jpg"></div>
     </div>
-    <div class="id-body">
+    <div class="id-middle">
       <div class="id-left" id="idDetails"></div>
       <div class="id-right">
         <img src="leader.jpg" onerror="this.src='tpk-flag.jpg'">
@@ -130,7 +116,7 @@ input,select{width:100%;padding:11px;margin-top:9px;border:1.5px solid #BCAAA4;b
       <div class="id-mem"><img id="idMemPhoto" src=""></div>
       <div class="id-sign-wrap">
         <div class="id-sign-box"><span class="id-sign-txt">Velmurugan</span></div>
-        <div style="font-size:12px;font-weight:bold;margin-top:4px">தலைவர்</div>
+        <div style="font-size:11px;font-weight:bold;margin-top:3px">தலைவர்</div>
       </div>
     </div>
     <div class="id-footer">📍 Plot No: 35, Aruppukottai, Virudhunagar - 626101 | @TPK</div>
@@ -150,15 +136,11 @@ document.getElementById('pInput').addEventListener('change',e=>{
 function updTotal(){let m=JSON.parse(localStorage.getItem(KEY)||'[]');let c=m.length<2?2:m.length;document.getElementById('totalBtn').innerText=`TOTAL: ${c} MEMBERS`;}updTotal();
 function downID(){
  const card=document.getElementById('idCard');
- html2canvas(card,{scale:3,useCORS:true,allowTaint:true,backgroundColor:'#FFC107',height:card.offsetHeight,width:card.offsetWidth}).then(c=>{
+ html2canvas(card,{scale:3,useCORS:true,backgroundColor:'#FFC107',width:780,height:440}).then(c=>{
   let a=document.createElement('a');a.download=`TPK_ID_${cur.name}.png`;a.href=c.toDataURL('image/png');a.click();
  });
 }
-function printID(){
- html2canvas(document.getElementById('idCard'),{scale:2,useCORS:true,backgroundColor:'#FFC107'}).then(c=>{
-  let w=window.open('');w.document.write('<img src="'+c.toDataURL()+'" style="width:100%">');setTimeout(()=>w.print(),500);
- });
-}
+function printID(){html2canvas(document.getElementById('idCard'),{scale:2,useCORS:true,backgroundColor:'#FFC107',width:780,height:440}).then(c=>{let w=window.open('');w.document.write('<img src="'+c.toDataURL()+'" style="width:100%">');setTimeout(()=>w.print(),500);});}
 function downExcel(){let m=JSON.parse(localStorage.getItem(KEY)||'[]');if(!m.length){alert('No Data');return;}let ws=XLSX.utils.json_to_sheet(m);let wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Members");XLSX.writeFile(wb,"TPK_Members.xlsx");}
 document.getElementById('form').addEventListener('submit',e=>{
  e.preventDefault();if(!pic){alert('Photo Select Pannunga Anna!');return;}
@@ -174,7 +156,7 @@ document.getElementById('form').addEventListener('submit',e=>{
  `;
  document.getElementById('idMemPhoto').src=pic;
  document.getElementById('idWrapper').style.display='block';
- setTimeout(()=>window.scrollTo(0,document.getElementById('idWrapper').offsetTop),200);
+ document.getElementById('idWrapper').scrollIntoView({behavior:'smooth'});
  e.target.reset();document.getElementById('preview').style.display='none';
 });
 </script>
