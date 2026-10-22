@@ -5,129 +5,88 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TAMILAR PURATCHI KALAKAM - TPK</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
-body{background:#F5E6C8;}
-.header{background:#3E2723;text-align:center;padding:15px 10px;position:sticky;top:0;z-index:100;}
-.logo-circle{width:110px;height:110px;background:radial-gradient(circle,#FFD700 0%,#FF8C00 100%);border:4px solid #FF0000;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;box-shadow:0 0 10px #000;}
-.logo-circle span{font-size:50px;}
-.header h1{color:#FFD700;font-size:18px;margin-top:10px;letter-spacing:1px;font-weight:900;}
-.badges{margin-top:10px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
-.badge-total{background:#C19A2A;color:#000;padding:7px 18px;border-radius:20px;font-weight:900;font-size:14px;}
-.badge-admin{background:#D32F2F;color:#fff;padding:7px 18px;border-radius:20px;font-weight:900;font-size:14px;border:none;cursor:pointer;}
-.banner{width:100%;height:130px;background:linear-gradient(to bottom,#D32F2F 50%,#FFD700 50%);display:flex;align-items:center;justify-content:center;position:relative;border-top:3px solid #FFD700;border-bottom:3px solid #FFD700;overflow:hidden;}
-.banner-tiger{font-size:80px;filter:drop-shadow(2px 2px 4px #000);animation: roar 2s infinite;}
-@keyframes roar{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-.banner-text{position:absolute;bottom:5px;right:10px;background:#000;color:#FFD700;padding:2px 8px;font-size:10px;border-radius:5px;font-weight:bold;}
-.reg-title{text-align:center;color:#D32F2F;font-size:22px;font-weight:900;margin:15px 0 10px;}
-.form-box{margin:10px;padding:12px;border:2px solid #FFD700;border-radius:12px;background:#FFF8E1;}
-.photo-label{font-weight:bold;margin-bottom:8px;display:block;}
-.btn-row{display:flex;gap:10px;}
-.btn-cam{flex:1;background:#5C6BC0;color:#fff;border:none;padding:12px;border-radius:8px;font-weight:bold;cursor:pointer;}
-.btn-gal{flex:1;background:#43A047;color:#fff;border:none;padding:12px;border-radius:8px;font-weight:bold;cursor:pointer;}
-input{width:100%;padding:13px;margin-top:12px;border:1.5px solid #D7CCC8;border-radius:8px;font-size:15px;background:#fff;}
-.btn-submit{width:100%;margin-top:15px;background:linear-gradient(to right,#FF0000 50%,#FFD700 50%);color:#000;padding:14px;border:2px solid #000;border-radius:8px;font-size:18px;font-weight:900;cursor:pointer;}
-.preview-img{width:80px;height:80px;border-radius:50%;margin:10px auto;display:none;object-fit:cover;border:3px solid #FFD700;}
-.total-big{text-align:center;font-size:14px;color:#3E2723;margin:15px 0;font-weight:bold;padding-bottom:20px;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#F5E6C8}
+.header{background:#3E2723;text-align:center;padding:15px 10px;position:sticky;top:0;z-index:100}
+.logo-circle{width:110px;height:110px;background:#fff;border:4px solid #FF0000;border-radius:50%;margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.logo-circle img{width:100%;height:100%;object-fit:cover}
+.header h1{color:#FFD700;font-size:18px;margin-top:10px;font-weight:900}
+.badges{margin-top:10px;display:flex;justify-content:center;gap:10px}
+.badge-total{background:#C19A2A;color:#000;padding:7px 18px;border-radius:20px;font-weight:900;font-size:14px}
+.badge-admin{background:#D32F2F;color:#fff;padding:7px 18px;border-radius:20px;font-weight:900;font-size:14px;border:none}
+.banner{width:100%;height:140px;overflow:hidden;border-top:3px solid #FFD700;border-bottom:3px solid #FFD700;background:#000}
+.banner img{width:100%;height:100%;object-fit:cover}
+.reg-title{text-align:center;color:#D32F2F;font-size:22px;font-weight:900;margin:15px 0 10px}
+.form-box{margin:10px;padding:12px;border:2px solid #FFD700;border-radius:12px;background:#FFF8E1}
+.btn-row{display:flex;gap:10px}
+.btn-cam{flex:1;background:#5C6BC0;color:#fff;border:none;padding:12px;border-radius:8px;font-weight:bold}
+.btn-gal{flex:1;background:#43A047;color:#fff;border:none;padding:12px;border-radius:8px;font-weight:bold}
+input{width:100%;padding:13px;margin-top:12px;border:1.5px solid #D7CCC8;border-radius:8px;font-size:15px}
+.btn-submit{width:100%;margin-top:15px;background:linear-gradient(to right,#FF0000 50%,#FFD700 50%);color:#000;padding:14px;border:2px solid #000;border-radius:8px;font-size:18px;font-weight:900}
+.preview-img{width:80px;height:80px;border-radius:50%;margin:10px auto;display:none;object-fit:cover;border:3px solid #FFD700}
 </style>
 </head>
 <body>
 
 <div class="header">
   <div class="logo-circle">
-    <span>🐅</span>
+    <img src="tpk-logo.jpg" alt="TPK LOGO">
   </div>
-  <div style="color:#fff;font-size:11px;margin-top:5px;font-weight:bold;">TAMILAR PURATCHI KALAKAM</div>
-  <div style="color:#FFD700;font-size:18px;font-weight:900;">TPK</div>
   <h1>TAMILAR PURATCHI KALAKAM</h1>
   <div class="badges">
     <div class="badge-total" id="totalMembersBadge">TOTAL: 2 MEMBERS</div>
-    <button class="badge-admin" onclick="adminLogin()">🔒 ADMIN</button>
+    <button class="badge-admin" onclick="location.href='admin.html'">🔒 ADMIN</button>
   </div>
 </div>
 
 <div class="banner">
-  <div class="banner-tiger">🐅</div>
-  <div class="banner-text">தமிழர் புரட்சி கழகம்</div>
+  <img src="tpk-flag.jpg" alt="TPK FLAG">
 </div>
 
 <h2 class="reg-title">📝 REGISTRATION</h2>
 
 <div class="form-box">
-  <span class="photo-label">📸 Photo *</span>
-  <div class="btn-row">
+  <b>📸 Photo *</b>
+  <div class="btn-row" style="margin-top:8px">
     <button class="btn-cam" onclick="document.getElementById('photoInput').click()">📷 CAMERA</button>
     <button class="btn-gal" onclick="document.getElementById('photoInput').click()">🖼️ GALLERY</button>
   </div>
   <img id="preview" class="preview-img">
-  <input type="file" id="photoInput" accept="image/*" capture="environment" style="display:none">
+  <input type="file" id="photoInput" accept="image/*" style="display:none">
 </div>
 
-<form id="tpkForm" style="padding:0 10px;">
+<form id="tpkForm" style="padding:0 10px 20px">
   <input type="text" id="name" placeholder="Name / பெயர் *" required>
   <input type="text" id="booth" placeholder="பூத் எண் / Booth No *" required>
   <input type="text" id="thoguthi" placeholder="தொகுதி / Thoguthi *" required>
-  <input type="tel" id="phone" placeholder="Phone / தொலைபேசி *" required>
+  <input type="tel" id="phone" placeholder="Phone *" required>
   <button type="submit" class="btn-submit">JOIN TPK - இணைய</button>
+  <div style="text-align:center;margin-top:10px;font-weight:bold;">Total: <span id="totalNum">2</span> / 10,000</div>
 </form>
 
-<div class="total-big">Total Registered: <span id="totalNum">2</span> / 10,000 Target</div>
-
 <script>
-let STORAGE_KEY = 'tpk_members_final_v3';
-let photoBase64 = '';
-
-document.getElementById('photoInput').addEventListener('change', function(e){
-  let file = e.target.files[0];
-  if(file){
-    let reader = new FileReader();
-    reader.onload = function(ev){
-      photoBase64 = ev.target.result;
-      let prev = document.getElementById('preview');
-      prev.src = photoBase64;
-      prev.style.display = 'block';
-    }
-    reader.readAsDataURL(file);
-  }
+let KEY='tpk_members_final_local';
+let photo='';
+document.getElementById('photoInput').addEventListener('change',e=>{
+ let f=e.target.files[0];
+ if(f){let r=new FileReader();r.onload=ev=>{photo=ev.target.result;let p=document.getElementById('preview');p.src=photo;p.style.display='block';};r.readAsDataURL(f);}
 });
-
-function updateTotalMembers(){
-  let members = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-  let count = members.length;
-  if(count < 2) count = 2;
-  document.getElementById('totalMembersBadge').innerText = `TOTAL: ${count} MEMBERS`;
-  document.getElementById('totalNum').innerText = count;
-  if(count >= 10000){
-    document.getElementById('totalMembersBadge').innerText = `🎉 TOTAL: ${count} 🎉`;
-  }
+function updateTotal(){
+ let m=JSON.parse(localStorage.getItem(KEY)||'[]');
+ let c=m.length; if(c<2)c=2;
+ document.getElementById('totalMembersBadge').innerText=`TOTAL: ${c} MEMBERS`;
+ document.getElementById('totalNum').innerText=c;
 }
-updateTotalMembers();
-
-document.getElementById('tpkForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  let members = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-  let newMember = {
-    name: document.getElementById('name').value,
-    booth: document.getElementById('booth').value,
-    thoguthi: document.getElementById('thoguthi').value,
-    phone: document.getElementById('phone').value,
-    date: new Date().toLocaleString()
-  };
-  members.push(newMember);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(members));
-  updateTotalMembers();
-  alert(`✅ ${newMember.name} - Register Success!\nTotal: ${members.length < 2 ? 2 : members.length}`);
-  this.reset();
-  document.getElementById('preview').style.display='none';
-  window.scrollTo(0,0);
+updateTotal();
+document.getElementById('tpkForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ let m=JSON.parse(localStorage.getItem(KEY)||'[]');
+ m.push({name:document.getElementById('name').value,booth:document.getElementById('booth').value,thoguthi:document.getElementById('thoguthi').value,phone:document.getElementById('phone').value,date:new Date().toLocaleString()});
+ localStorage.setItem(KEY,JSON.stringify(m));
+ updateTotal();
+ alert('✅ Register Success! Total: '+(m.length<2?2:m.length));
+ e.target.reset();document.getElementById('preview').style.display='none';
 });
-
-function adminLogin(){
-  let pass = prompt("Admin Password:");
-  if(pass === "TPK2026"){
-    let members = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    alert(`Members: ${members.length}\n${members.map((m,i)=>`${i+1}. ${m.name} - ${m.booth}`).join('\n')}`);
-  }
-}
 </script>
 </body>
 </html>
