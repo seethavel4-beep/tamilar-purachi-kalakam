@@ -3,168 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TPK - Membership</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<title>ADMIN - TPK</title>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#F5E6C8}
-.header{background:#3E2723;text-align:center;padding:12px 10px}
-.logo-circle{width:100px;height:100px;background:#fff;border:4px solid #FF0000;border-radius:50%;margin:0 auto;overflow:hidden}
-.logo-circle img{width:100%;height:100%;object-fit:cover}
-.banner{width:100%;height:140px;overflow:hidden;border-top:4px solid #FFD700;border-bottom:4px solid #FFD700}
-.banner img{width:100%;height:100%;object-fit:cover}
-.badges{margin:12px 0;display:flex;justify-content:center;gap:12px}
-.badge-total{background:#FFD700;color:#000;padding:10px 20px;border-radius:25px;font-weight:900;font-size:15px;border:2px solid #000}
-.badge-admin{background:#D32F2F;color:#fff;padding:10px 20px;border-radius:25px;font-weight:900;border:2px solid #000}
-.reg-title{text-align:center;color:#D32F2F;font-size:22px;font-weight:900;margin:10px}
-.form-box{margin:10px;padding:12px;border:2px solid #FFD700;border-radius:12px;background:#FFF8E1}
-.btn-row{display:flex;gap:10px}
-.btn-cam{flex:1;background:#5C6BC0;color:#fff;border:none;padding:12px;border-radius:8px;font-weight:bold}
-.btn-gal{flex:1;background:#43A047;color:#fff;border:none;padding:12px;border-radius:8px;font-weight:bold}
-input,select{width:100%;padding:13px;margin-top:11px;border:1.5px solid #D7CCC8;border-radius:8px;font-size:15px}
-.label{font-size:13px;font-weight:bold;color:#3E2723;margin:11px 0 0 4px;display:block}
-.btn-submit{width:100%;margin-top:18px;background:linear-gradient(to right,#FF0000 50%,#FFD700 50%);padding:15px;border:2px solid #000;border-radius:10px;font-size:19px;font-weight:900}
-.preview-img{width:90px;height:90px;border-radius:50%;margin:10px auto;display:none;object-fit:cover;border:3px solid #FFD700}
-
-/* ID CARD MODEL - EXACT AS YOUR PHOTO */
-.id-card-wrapper{display:none;margin:20px 10px;text-align:center}
-#idCardExact{width:680px;height:420px;background:#FFC107;position:relative;margin:0 auto;border:2px solid #000;text-align:left;overflow:hidden;transform-origin:top left}
-.id-top-left{position:absolute;left:15px;top:10px}
-.id-title{color:#7B0000;font-size:26px;font-weight:900;line-height:1}
-.id-sub{color:#000;font-size:13px;font-weight:bold;margin-top:2px}
-.id-badge{background:#7B0000;color:#fff;padding:3px 12px;border-radius:15px;font-size:12px;display:inline-block;margin-top:5px}
-.id-logo{position:absolute;right:15px;top:10px;width:70px;height:70px;border-radius:50%;background:#fff;border:2px solid #7B0000;overflow:hidden}
-.id-logo img{width:100%;height:100%;object-fit:cover}
-.id-details{position:absolute;left:15px;top:95px;font-size:14px;font-weight:900;line-height:1.8;color:#000}
-.id-details span{font-weight:900}
-.id-member-photo{position:absolute;left:15px;top:285px;width:75px;height:95px;border:2px solid #7B0000;background:#fff;overflow:hidden}
-.id-member-photo img{width:100%;height:100%;object-fit:cover}
-.id-sign{position:absolute;left:115px;top:285px;text-align:center}
-.id-sign img{width:110px;height:50px;object-fit:contain;background:#fff;padding:2px}
-.id-right-box{position:absolute;right:15px;top:95px;width:310px;height:250px;border-radius:12px;overflow:hidden;border:3px solid #000;background:#000}
-.id-right-box img.main{width:100%;height:100%;object-fit:cover}
-.id-right-text{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.9));color:#FFD700;padding:10px 8px;text-align:center;font-weight:900;font-size:13px}
-.id-footer{position:absolute;bottom:0;left:0;right:0;height:22px;background:#7B0000;color:#fff;font-size:9px;display:flex;align-items:center;padding-left:10px;font-weight:bold}
+body{background:#3E2723;padding:15px;color:#000}
+.login-box{background:#FFF8E1;max-width:380px;margin:50px auto;padding:25px;border-radius:20px;border:4px solid #FFD700;text-align:center}
+.logo{width:80px;height:80px;background:#fff;border:3px solid red;border-radius:50%;margin:0 auto;overflow:hidden}
+.logo img{width:100%;height:100%;object-fit:cover}
+input{width:100%;padding:14px;margin-top:12px;border:2px solid #8D6E63;border-radius:10px;font-size:16px}
+.btn-login{width:100%;margin-top:12px;background:#3E2723;color:#FFD700;padding:14px;border:none;border-radius:10px;font-size:18px;font-weight:900;cursor:pointer}
+.admin-panel{display:none;background:#FFF8E1;min-height:100vh;border-radius:10px;padding:10px}
+table{width:100%;border-collapse:collapse;background:#fff;margin-top:10px}
+th,td{border:1px solid #333;padding:6px;font-size:11px}
+th{background:#D32F2F;color:#fff}
+.btn{padding:10px 14px;margin:4px;border:none;border-radius:6px;font-weight:bold;cursor:pointer;font-size:12px}
+.debug{font-size:11px;background:#000;color:#0f0;padding:8px;margin-top:10px;border-radius:5px;white-space:pre-wrap}
 </style>
 </head>
 <body>
 
-<div class="header"><div class="logo-circle"><img src="tpk-logo.jpg"></div><div style="color:#FFD700;font-weight:900;margin-top:6px">TAMILAR PURATCHI KALAKAM</div></div>
-<div class="banner"><img src="tpk-flag.jpg"></div>
-
-<div class="badges">
-  <div class="badge-total" id="totalMembersBadge">TOTAL: 2 MEMBERS</div>
-  <button class="badge-admin" onclick="location.href='admin.html'">🔒 ADMIN</button>
+<div class="login-box" id="loginBox">
+  <div class="logo"><img src="tpk-logo.jpg" onerror="this.src='logo.png'"></div>
+  <h2 style="margin-top:10px">தமிழர் புரட்சி இயக்கம்<br>ADMIN LOGIN</h2>
+  <input type="password" id="pwd" placeholder="Password: TPI2026">
+  <button class="btn-login" onclick="login()">LOGIN</button>
+  <p style="font-size:11px;margin-top:8px;color:#666">Try: TPI2026 / TPK2026 / 1234 / admin</p>
+  <p id="err" style="color:red;font-size:13px;display:none;margin-top:8px">Wrong Password!</p>
 </div>
 
-<h2 class="reg-title">📝 MEMBERSHIP FORM</h2>
-<div class="form-box">
-  <b>📸 Member Photo *</b>
-  <div class="btn-row" style="margin-top:8px">
-    <button class="btn-cam" onclick="document.getElementById('photoInput').click()">📷 CAMERA</button>
-    <button class="btn-gal" onclick="document.getElementById('photoInput').click()">🖼️ GALLERY</button>
-  </div>
-  <img id="preview" class="preview-img">
-  <input type="file" id="photoInput" accept="image/*" style="display:none">
-</div>
-
-<form id="tpkForm" style="padding:0 10px 10px">
-  <span class="label">Name *</span><input type="text" id="name" required>
-  <span class="label">பூத் எண் *</span><input type="text" id="booth" required>
-  <span class="label">Mobile Number *</span><input type="tel" id="mobile" required>
-  <span class="label">Blood Group *</span><select id="blood" required><option value="">Select</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select>
-  <span class="label">Date of Birth *</span><input type="date" id="dob" required>
-  <span class="label">Taluk *</span><input type="text" id="taluk" required>
-  <span class="label">Thoguthi *</span><input type="text" id="thoguthi" required>
-  <span class="label">Mavattam *</span><input type="text" id="mavattam" required>
-  <span class="label">மாநிலம் *</span><input type="text" id="maanilam" value="Tamil Nadu" required>
-  <button type="submit" class="btn-submit">REGISTER</button>
-</form>
-
-<!-- EXACT ID CARD MODEL -->
-<div class="id-card-wrapper" id="idCardWrapper">
-  <h3 style="color:#D32F2F;margin-bottom:10px">✅ ID Card Ready - Download Pannunga</h3>
-  <div id="idCardExact">
-    <div class="id-top-left">
-      <div class="id-title">தமிழர் புரட்சி கழகம்</div>
-      <div class="id-sub">தமிழர் நலன் * தமிழர் உரிமை</div>
-      <div class="id-badge">உறுப்பினர் அட்டை</div>
-    </div>
-    <div class="id-logo"><img src="tpk-logo.jpg"></div>
-
-    <div class="id-details" id="idDetailsText">
-      பெயர் : L.INBARAJ<br>
-      பூத் எண் : 158<br>
-      தொகுதி : Alangulam<br>
-      மாவட்டம் : Thenkasi<br>
-      மாநிலம் : தமிழ்நாடு<br>
-      பிறந்த தேதி : 2003-12-16
-    </div>
-
-    <div class="id-member-photo"><img id="idMemberPhoto" src=""></div>
-    <div class="id-sign">
-      <img src="velmurugan_sign.jpg" onerror="this.style.display='none'">
-      <div style="font-size:11px;font-weight:bold">தலைவர்</div>
-    </div>
-
-    <div class="id-right-box">
-      <img class="main" id="idRightLeader" src="leader.jpg" onerror="this.src='tpk-flag.jpg'">
-      <div class="id-right-text">
-        புரட்சி தலைவர்<br>
-        <span style="font-size:9px;color:#fff">மக்கள் போராட்டம் - நீதி : சமத்துவம்</span>
-      </div>
-    </div>
-
-    <div class="id-footer">📍 Plot No: 35, Aruppukottai, Virudhunagar - 626101 | @TPK</div>
+<div class="admin-panel" id="adminPanel">
+  <h2 style="text-align:center;color:#D32F2F">🔒 TPK ADMIN PANEL</h2>
+  <div style="text-align:center;margin:10px 0">
+    <button class="btn" style="background:#FFD700;color:#000" id="totalBtn">TOTAL: 0</button>
+    <button class="btn" style="background:#0D47A1;color:#fff" onclick="downloadExcel()">📊 DOWNLOAD EXCEL</button>
+    <button class="btn" style="background:#2E7D32;color:#fff" onclick="downloadCSV()">📄 DOWNLOAD CSV</button>
+    <button class="btn" style="background:#FF6F00;color:#fff" onclick="location.href='index.html'">🏠 HOME</button>
+    <button class="btn" style="background:#D32F2F;color:#fff" onclick="clearAll()">🗑️ CLEAR</button>
   </div>
 
-  <div style="margin-top:15px">
-    <button style="background:#0D47A1;color:#fff;padding:12px 20px;border:none;border-radius:8px;font-weight:bold;width:48%" onclick="downloadID()">📥 DOWNLOAD ID CARD</button>
-    <button style="background:#2E7D32;color:#fff;padding:12px 20px;border:none;border-radius:8px;font-weight:bold;width:48%" onclick="printID()">🖨️ PRINT ID CARD</button>
-    <button style="background:#FF6F00;color:#fff;padding:12px 20px;border:none;border-radius:8px;font-weight:bold;width:98%;margin-top:8px" onclick="downloadExcel()">📊 DOWNLOAD EXCEL SHEET</button>
+  <div style="overflow:auto;max-height:70vh">
+    <table id="tbl"><thead><tr><th>#</th><th>Name</th><th>Booth</th><th>Mobile</th><th>Blood</th><th>DOB</th><th>Taluk</th><th>Thoguthi</th><th>Mavattam</th><th>Maanilam</th><th>Date</th></tr></thead><tbody id="tbody"></tbody></table>
   </div>
+
+  <div class="debug" id="debug">Checking storage...</div>
 </div>
 
 <script>
-let KEY='tpk_final_idmodel_v7';
-let photoData='';let currentMember=null;
-document.getElementById('photoInput').addEventListener('change',e=>{
- let f=e.target.files[0]; if(f){let r=new FileReader();r.onload=ev=>{photoData=ev.target.result;let p=document.getElementById('preview');p.src=photoData;p.style.display='block';};r.readAsDataURL(f);}
-});
-function updateTotal(){let m=JSON.parse(localStorage.getItem(KEY)||'[]');let c=m.length<2?2:m.length;document.getElementById('totalMembersBadge').innerText=`TOTAL: ${c} MEMBERS`;}
-updateTotal();
+// ELLA KEYS UM CHECK PANNUM
+let ALL_KEYS = ['tpk_final_idmodel_v8','tpk_final_excel_v6','tpk_final_idmodel_v7','tpk_members_v5_newform','tpk_final_v4','tpk_members_final_local','tpk_members_final_v3','tpk_members'];
 
-function downloadID(){
- html2canvas(document.getElementById('idCardExact'),{scale:3}).then(canvas=>{
-  let a=document.createElement('a');a.download=`TPK_ID_${currentMember.name}.png`;a.href=canvas.toDataURL();a.click();
- });
+function login(){
+  let p=document.getElementById('pwd').value.trim().toUpperCase();
+  if(['TPI2026','TPK2026','1234','ADMIN','TPK'].includes(p)){
+    document.getElementById('loginBox').style.display='none';
+    document.getElementById('adminPanel').style.display='block';
+    loadData();
+  }else{
+    document.getElementById('err').style.display='block';
+    setTimeout(()=>document.getElementById('err').style.display='none',2000);
+  }
 }
-function printID(){
- html2canvas(document.getElementById('idCardExact'),{scale:3}).then(canvas=>{
-  let w=window.open('');w.document.write('<img src="'+canvas.toDataURL()+'" style="width:100%"><script>window.print();<\/script>');
- });
+
+function loadData(){
+  let all=[];
+  let log='';
+  ALL_KEYS.forEach(k=>{
+    let raw=localStorage.getItem(k);
+    if(raw){
+      try{
+        let arr=JSON.parse(raw);
+        log+=`${k}: ${arr.length} members\n`;
+        all=all.concat(arr);
+      }catch(e){log+=`${k}: error\n`;}
+    }else{log+=`${k}: empty\n`;}
+  });
+
+  // Duplicate remove by mobile
+  let map=new Map();
+  all.forEach(m=>{
+    let key=m.mobile||m.name;
+    if(!map.has(key)) map.set(key,m);
+  });
+  let members=[...map.values()];
+
+  document.getElementById('debug').innerText=log+`\nTOTAL UNIQUE: ${members.length}\n\n⚠️ Mukkiyam: Member Register Panna Phone-la Than Admin Open Panna Data Varum Anna! Vera Phone-la Varathu!`;
+
+  document.getElementById('totalBtn').innerText=`TOTAL: ${members.length<2?2:members.length} MEMBERS`;
+
+  let tbody=document.getElementById('tbody');
+  tbody.innerHTML='';
+  if(members.length===0){
+    tbody.innerHTML='<tr><td colspan="11" style="text-align:center;padding:20px">No Data Anna! Same Phone la Register Panni Paarkkavum<br><br>Neenga Indha Phone la Yaarum Register Pannala-na Data Varathu</td></tr>';
+  }else{
+    members.forEach((m,i)=>{
+      let tr=document.createElement('tr');
+      tr.innerHTML=`<td>${i+1}</td><td>${m.name||''}</td><td>${m.booth||''}</td><td>${m.mobile||m.phone||''}</td><td>${m.blood||''}</td><td>${m.dob||''}</td><td>${m.taluk||''}</td><td>${m.thoguthi||''}</td><td>${m.mavattam||''}</td><td>${m.maanilam||''}</td><td>${m.date||''}</td>`;
+      tbody.appendChild(tr);
+    });
+  }
+  window._members=members;
 }
+
 function downloadExcel(){
- let members=JSON.parse(localStorage.getItem(KEY)||'[]');
- let ws=XLSX.utils.json_to_sheet(members);let wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"TPK Members");
- XLSX.writeFile(wb,"TPK_Members_List.xlsx");
+  let members=window._members||[];
+  if(members.length===0){alert('Data Illa Anna! Same Phone la Register Pannunga');return;}
+  let ws=XLSX.utils.json_to_sheet(members);
+  let wb=XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb,ws,"Members");
+  XLSX.writeFile(wb,`TPK_Members_${new Date().toISOString().slice(0,10)}.xlsx`);
 }
 
-document.getElementById('tpkForm').addEventListener('submit',e=>{
- e.preventDefault();if(!photoData){alert('Photo Select Pannunga Anna!');return;}
- let member={name:document.getElementById('name').value,booth:document.getElementById('booth').value,mobile:document.getElementById('mobile').value,blood:document.getElementById('blood').value,dob:document.getElementById('dob').value,taluk:document.getElementById('taluk').value,thoguthi:document.getElementById('thoguthi').value,mavattam:document.getElementById('mavattam').value,maanilam:document.getElementById('maanilam').value,date:new Date().toLocaleString()};
- let m=JSON.parse(localStorage.getItem(KEY)||'[]');m.push(member);localStorage.setItem(KEY,JSON.stringify(m));
- updateTotal();currentMember=member;
+function downloadCSV(){
+  let members=window._members||[];
+  if(members.length===0){alert('Data Illa Anna!');return;}
+  let headers=Object.keys(members[0]).join(',');
+  let rows=members.map(m=>Object.values(m).map(v=>`"${(v||'').toString().replace(/"/g,'""')}"`).join(',')).join('\n');
+  let csv=headers+'\n'+rows;
+  let blob=new Blob([csv],{type:'text/csv'});
+  let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='TPK_Members.csv';a.click();
+}
 
- // Fill ID Card Details - SAME MODEL
- document.getElementById('idDetailsText').innerHTML=`பெயர் &nbsp;&nbsp;&nbsp;&nbsp;: ${member.name.toUpperCase()}<br>பூத் எண் &nbsp;&nbsp;: ${member.booth}<br>தொகுதி &nbsp;&nbsp;&nbsp;&nbsp;: ${member.thoguthi}<br>மாவட்டம் : ${member.mavattam}<br>மாநிலம் &nbsp;&nbsp;: ${member.maanilam}<br>பிறந்த தேதி : ${member.dob}`;
- document.getElementById('idMemberPhoto').src=photoData;
+function clearAll(){
+  if(confirm('All Data Delete Pannava Anna?')){
+    ALL_KEYS.forEach(k=>localStorage.removeItem(k));
+    loadData();
+  }
+}
 
- document.getElementById('idCardWrapper').style.display='block';
- window.scrollTo(0,document.getElementById('idCardWrapper').offsetTop);
- e.target.reset();document.getElementById('preview').style.display='none';
-});
+document.getElementById('pwd').addEventListener('keypress',e=>{if(e.key==='Enter')login();});
 </script>
 </body>
 </html>
