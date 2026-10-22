@@ -3,21 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TPK - Tamilar Nalan Tamilar Urimai</title>
+<title>TPK - Total + Excel Auto Add - Fixed</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body class="bg-black">
 <div class="max-w-md mx-auto bg-white min-h-screen shadow-2xl">
 <div class="bg-black text-center p-3 border-b-4 border-yellow-400">
-<img src="tpk-logo.jpg?v=9" class="w-24 h-24 mx-auto rounded-full border-4 border-yellow-400 bg-white object-cover">
+<img src="tpk-logo.jpg?v=10" class="w-24 h-24 mx-auto rounded-full border-4 border-yellow-400 bg-white object-cover">
 <h1 class="text-yellow-400 font-black mt-2">TAMILAR PURATCHI KALAKAM</h1>
 <div class="flex justify-center gap-2 mt-2">
-<div class="bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold">TOTAL: <span id="totalCount">0</span></div>
+<div class="bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold animate-pulse">TOTAL: <span id="totalCount">0</span> MEMBERS</div>
 <button onclick="openAdminLogin()" class="bg-red-600 text-white px-4 py-1 rounded-full text-xs font-black">🔐 ADMIN</button>
 </div>
-<img src="tpk-flag.jpg?v=9" class="w-full h-20 object-cover mt-3 rounded border-2 border-yellow-400">
+<img src="tpk-flag.jpg?v=10" class="w-full h-20 object-cover mt-3 rounded border-2 border-yellow-400">
 </div>
+
 <div id="publicView" class="p-4">
 <h2 class="text-center font-black text-red-600 mb-3">📝 REGISTRATION</h2>
 <div class="border-2 border-yellow-400 rounded-xl p-3 bg-yellow-50 mb-3">
@@ -47,6 +48,7 @@
 <canvas id="idCanvas" width="1000" height="620" class="w-full rounded-lg border"></canvas>
 </div>
 </div>
+
 <div id="loginModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50">
 <div class="bg-white rounded-2xl p-6 w-full max-w-sm">
 <h3 class="font-black text-center">🔐 ADMIN LOGIN</h3>
@@ -56,25 +58,53 @@
 <p id="loginMsg" class="text-center text-xs font-bold mt-2"></p>
 </div>
 </div>
+
 <div id="adminView" class="hidden p-4 bg-gray-50 min-h-screen">
-<div class="flex justify-between"><h2 class="font-black">🔐 ADMIN</h2><button onclick="closeAdmin()" class="bg-black text-white px-3 py-1 rounded-full text-xs">CLOSE</button></div>
+<div class="flex justify-between items-center">
+<h2 class="font-black">🔐 ADMIN PANEL - TOTAL: <span id="adminTotal">0</span></h2>
+<button onclick="closeAdmin()" class="bg-black text-white px-3 py-1 rounded-full text-xs">CLOSE</button>
+</div>
 <div class="bg-white border-2 border-green-600 rounded-xl p-3 mt-3">
 <div class="grid grid-cols-2 gap-2">
-<button onclick="downloadExcel()" class="bg-green-600 text-white py-3 rounded-xl font-black text-sm">📥 EXCEL</button>
-<button onclick="downloadCSV()" class="bg-blue-600 text-white py-3 rounded-xl font-black text-sm">📄 CSV</button>
+<button onclick="downloadExcel()" class="bg-green-600 text-white py-4 rounded-xl font-black text-sm">📥 EXCEL SHEET DOWNLOAD (All Members)</button>
+<button onclick="downloadCSV()" class="bg-blue-600 text-white py-4 rounded-xl font-black text-sm">📄 CSV DOWNLOAD</button>
 </div>
-<a href="https://docs.google.com/spreadsheets/d/1fkBkupoUE3ybd_JlE_fHxYsx-YtbQE5tuUnUBfduLk0/edit" target="_blank" class="block mt-2 bg-yellow-400 text-black text-center py-2 rounded-xl font-bold text-xs">📊 GOOGLE SHEET</a>
+<div class="mt-2 text-center">
+<p class="text-xs font-bold text-green-700">Last Added: <span id="lastAdded">-</span></p>
+</div>
+<a href="https://docs.google.com/spreadsheets/d/1fkBkupoUE3ybd_JlE_fHxYsx-YtbQE5tuUnUBfduLk0/edit" target="_blank" class="block mt-2 bg-yellow-400 text-black text-center py-3 rounded-xl font-bold text-sm">📊 OPEN GOOGLE SHEET - Auto Adds There Also</a>
+<button onclick="clearAllData()" class="w-full mt-2 bg-red-100 text-red-600 py-2 rounded-xl font-bold text-xs border border-red-300">🗑️ Clear All Local Data (If Full)</button>
 </div>
 <div id="adminList" class="space-y-2 mt-3 max-h-[60vh] overflow-auto"></div>
 </div>
 </div>
+
 <script>
 const SCRIPT_URL="https://script.google.com/macros/s/AKfycbxrfdA8J0kU8aNlZPOv3IXwQH6H_Afw1Qu4Li9j_hplcjLWumL8DftvTeQiwIRRyTRH/exec";
 const ADMIN_PASSWORD="TPK@2026";
 let photoData=""; 
+// USE ONE KEY ONLY - FIX FOR TOTAL + EXCEL
+const STORAGE_KEY = 'tpk_final_v10';
 let members=[];
-try{members=JSON.parse(localStorage.getItem('tpk_final_dob')||'[]');}catch(e){members=[];}
-document.getElementById('totalCount').textContent=members.length;
+try{
+  members=JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');
+  // Migrate old data if exists
+  if(members.length===0){
+    const old1 = JSON.parse(localStorage.getItem('tpk_final_dob')||'[]');
+    const old2 = JSON.parse(localStorage.getItem('tpk_members')||'[]');
+    if(old1.length>0) members=old1;
+    else if(old2.length>0) members=old2;
+    if(members.length>0) localStorage.setItem(STORAGE_KEY, JSON.stringify(members));
+  }
+}catch(e){members=[];}
+
+function updateTotalDisplay(){
+  document.getElementById('totalCount').textContent=members.length;
+  const adminTotalEl = document.getElementById('adminTotal');
+  if(adminTotalEl) adminTotalEl.textContent=members.length;
+}
+updateTotalDisplay();
+
 document.getElementById('camIn').addEventListener('change',e=>handlePhoto(e.target.files[0]));
 document.getElementById('galIn').addEventListener('change',e=>handlePhoto(e.target.files[0]));
 function handlePhoto(f){ 
@@ -91,7 +121,6 @@ img.onload=()=>{
   canvas.width=w; canvas.height=h;
   canvas.getContext('2d').drawImage(img,0,0,w,h);
   photoData=canvas.toDataURL('image/jpeg',0.6);
-  window.photoData=photoData;
   document.getElementById('photoPrev').src=photoData;
   document.getElementById('photoDiv').classList.remove('hidden');
   drawCard();
@@ -100,12 +129,12 @@ img.src=result;
 }; 
 r.readAsDataURL(f); 
 }
+
 function drawCard(){
 const c=document.getElementById('idCanvas'); const ctx=c.getContext('2d');
 ctx.clearRect(0,0,1000,620);
 ctx.fillStyle='#FFC200'; ctx.fillRect(0,0,1000,620);
 ctx.fillStyle='#8B0000'; ctx.font='900 40px sans-serif'; ctx.fillText('தமிழர் புரட்சி கழகம்',25,55);
-// NEW CONTENT - TAMILAR NALAN * TAMILAR URIMAI
 ctx.font='900 18px sans-serif'; ctx.fillText('தமிழர் நலன் * தமிழர் உரிமை',25,85);
 ctx.fillStyle='#8B0000'; ctx.beginPath(); ctx.roundRect(25,95,165,28,14); ctx.fill();
 ctx.fillStyle='white'; ctx.font='700 14px sans-serif'; ctx.fillText('உறுப்பினர் அட்டை',38,114);
@@ -126,14 +155,12 @@ if(photoData){
   const mImg=new Image(); mImg.src=photoData;
   mImg.onload=()=>{ctx.drawImage(mImg,27,302,96,116);};
 }
-// Thalaivar Photo - NO BACKGROUND - CLEAN
-const lImg=new Image(); lImg.src='leader.jpg?v=9';
+const lImg=new Image(); lImg.src='leader.jpg?v=10';
 lImg.onload=()=>{
   ctx.save();
   ctx.fillStyle='white';
   ctx.beginPath(); ctx.roundRect(600,170,350,310,18); ctx.fill();
-  ctx.strokeStyle='#8B0000'; ctx.lineWidth=2;
-  ctx.stroke();
+  ctx.strokeStyle='#8B0000'; ctx.lineWidth=2; ctx.stroke();
   ctx.beginPath(); ctx.roundRect(600,170,350,310,18); ctx.clip();
   ctx.drawImage(lImg,600,170,350,310);
   ctx.restore();
@@ -141,7 +168,7 @@ lImg.onload=()=>{
   ctx.fillStyle='#FFC200'; ctx.font='900 18px sans-serif'; ctx.fillText('புரட்சி தலைவர்',680,445);
   ctx.fillStyle='white'; ctx.font='700 11px sans-serif'; ctx.fillText('மக்கள் போராட்டம் - நீதி - சமத்துவம்',650,465);
 };
-const logoImg=new Image(); logoImg.src='tpk-logo.jpg?v=9';
+const logoImg=new Image(); logoImg.src='tpk-logo.jpg?v=10';
 logoImg.onload=()=>{
   ctx.save();
   ctx.beginPath(); ctx.arc(875,75,55,0,Math.PI*2); ctx.clip();
@@ -150,7 +177,7 @@ logoImg.onload=()=>{
   ctx.strokeStyle='#8B0000'; ctx.lineWidth=3;
   ctx.beginPath(); ctx.arc(875,75,55,0,Math.PI*2); ctx.stroke();
 };
-const sImg=new Image(); sImg.src='velmurugan_sign.jpg?v=9';
+const sImg=new Image(); sImg.src='velmurugan_sign.jpg?v=10';
 sImg.onload=()=>{
   ctx.drawImage(sImg,200,305,140,70);
   ctx.fillStyle='black'; ctx.font='700 11px sans-serif'; ctx.fillText('தலைவர்',255,390);
@@ -160,6 +187,7 @@ ctx.fillStyle='white'; ctx.font='700 11px sans-serif';
 ctx.fillText('📍 Plot No: 35, Aruppukottai, Virudhunagar - 626101 | @TPK',20,585);
 }
 function downloadCanvas(name){ const c=document.getElementById('idCanvas'); const a=document.createElement('a'); a.download=name+'.png'; a.href=c.toDataURL('image/png'); a.click(); }
+
 document.getElementById('mainBtn').addEventListener('click', async ()=>{
 const name=document.getElementById('name').value.trim();
 const booth=document.getElementById('booth').value.trim();
@@ -171,41 +199,91 @@ if(!name||!booth||!thoguthi||!dist||!dob||!photoData){
 msg.textContent='❌ All Fields + Photo Required!'; msg.className='text-center font-bold text-sm mt-2 text-red-600'; return;
 }
 btn.textContent='⏳ Saving...'; btn.disabled=true;
-msg.textContent='⏳ Generating ID Card...'; msg.className='text-center font-bold text-sm mt-2 text-blue-600';
+msg.textContent='⏳ Saving & Adding to Total + Excel...'; msg.className='text-center font-bold text-sm mt-2 text-blue-600';
 const memberId='TPK/'+new Date().getFullYear()+'/'+Math.floor(1000+Math.random()*9000);
+
 setTimeout(()=>{
   drawCard();
   setTimeout(()=>{
     try{
+      // 1. DOWNLOAD ID CARD
       downloadCanvas(memberId+'_TPK_ID');
-      try{
-        const memberForStorage={id:memberId,name,booth,thoguthi,dist,dob,phone:document.getElementById('phone').value,date:new Date().toLocaleString()};
-        members.unshift(memberForStorage);
-        if(members.length>100){members=members.slice(0,100);}
-        localStorage.setItem('tpk_final_dob',JSON.stringify(members));
-        document.getElementById('totalCount').textContent=members.length;
-      }catch(e){try{localStorage.removeItem('tpk_final_dob'); members=[]; }catch(e2){}}
+      
+      // 2. SAVE TO LOCAL - THIS ADDS TO TOTAL + EXCEL
+      const newMember={id:memberId,name,booth,thoguthi,dist,dob,phone:document.getElementById('phone').value,address:document.getElementById('address').value,date:new Date().toLocaleString(),timestamp:Date.now()};
+      members.unshift(newMember);
+      // Keep max 200 members to avoid full
+      if(members.length>200){members=members.slice(0,200);}
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(members));
+      
+      // 3. UPDATE TOTAL DISPLAY IMMEDIATELY
+      updateTotalDisplay();
+      document.getElementById('lastAdded').textContent = name + ' - ' + memberId;
+      
+      // 4. SEND TO GOOGLE SHEET - AUTO ADDS THERE ALSO
       const payload={memberId,name,fname:'',phone:document.getElementById('phone').value,blood:'',dist,thoguthi,address:document.getElementById('address').value,boothNo:booth,taluk:'',dob:dob};
-      fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)}).catch(()=>{});
-      msg.textContent='✅ Success! ID Card Downloaded!'; msg.className='text-center font-bold text-sm mt-2 text-green-600';
-      btn.textContent='✅ DOWNLOADED!'; setTimeout(()=>{btn.textContent='🪪 REGISTER & DOWNLOAD ID CARD'; btn.disabled=false;},2000);
+      fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(payload)}).then(()=>console.log('Google Sheet Added')).catch(()=>{});
+      
+      msg.textContent='✅ Added! TOTAL: '+members.length+' | Excel Sheet Ready!'; 
+      msg.className='text-center font-bold text-sm mt-2 text-green-600';
+      btn.textContent='✅ ADDED TO TOTAL + EXCEL!';
+      setTimeout(()=>{btn.textContent='🪪 REGISTER & DOWNLOAD ID CARD'; btn.disabled=false;},2500);
+      
+      // Clear form for next entry
+      // document.getElementById('name').value=''; etc - optional
     }catch(err){
-      msg.textContent='✅ ID Downloaded!'; btn.disabled=false; downloadCanvas(memberId+'_TPK_ID');
+      console.error(err);
+      msg.textContent='✅ ID Downloaded but Storage Full - Click Clear in Admin'; 
+      msg.className='text-center font-bold text-sm mt-2 text-orange-600';
+      btn.disabled=false; 
+      downloadCanvas(memberId+'_TPK_ID');
     }
-  },600);
+  },500);
 },100);
 });
+
 ['name','booth','thoguthi','dist','dob'].forEach(id=>{
 const el=document.getElementById(id); if(el){el.addEventListener('input',drawCard); el.addEventListener('change',drawCard);}
 });
-setTimeout(drawCard,600);
+setTimeout(drawCard,500);
+
 function openAdminLogin(){document.getElementById('loginModal').classList.remove('hidden');}
 function closeAdminLogin(){document.getElementById('loginModal').classList.add('hidden'); document.getElementById('adminPass').value='';}
 function checkAdminPass(){ const p=document.getElementById('adminPass').value; if(p===ADMIN_PASSWORD){document.getElementById('loginModal').classList.add('hidden'); document.getElementById('publicView').classList.add('hidden'); document.getElementById('adminView').classList.remove('hidden'); renderAdmin();}else{document.getElementById('loginMsg').textContent='❌ Wrong Password!';} }
 function closeAdmin(){document.getElementById('adminView').classList.add('hidden'); document.getElementById('publicView').classList.remove('hidden');}
-function renderAdmin(){ const div=document.getElementById('adminList'); if(members.length===0){div.innerHTML='<p class="text-center py-10 text-gray-500">No members</p>'; return;} div.innerHTML=members.map(m=>`<div class="bg-white border p-3 rounded-xl"><p class="font-black text-sm">${m.name} - DOB:${m.dob}</p><p class="text-[11px] text-gray-600">${m.id} • பூத்:${m.booth} • ${m.dist} • ${m.thoguthi}</p></div>`).join(''); }
-function downloadExcel(){ if(!members.length){alert('No members!'); return;} const data=members.map(m=>({MemberID:m.id,Name:m.name,BoothNo:m.booth,Thoguthi:m.thoguthi,Mavattam:m.dist,DOB:m.dob,Phone:m.phone||'',Date:m.date})); const ws=XLSX.utils.json_to_sheet(data); const wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,'TPK'); XLSX.writeFile(wb,'TPK_Members_DOB.xlsx'); }
-function downloadCSV(){ if(!members.length){alert('No members!'); return;} let csv='MemberID,Name,Booth,Thoguthi,Mavattam,DOB,Phone,Date\n'; members.forEach(m=>{csv+=`"${m.id}","${m.name}","${m.booth}","${m.thoguthi}","${m.dist}","${m.dob}","${m.phone||''}","${m.date}"\n`;}); const blob=new Blob([csv],{type:'text/csv'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='TPK_Members_DOB.csv'; a.click(); }
+function renderAdmin(){ 
+  updateTotalDisplay();
+  const div=document.getElementById('adminList'); 
+  if(members.length===0){div.innerHTML='<p class="text-center py-10 text-gray-500">No members yet - Add pannunga Anna!</p>'; document.getElementById('lastAdded').textContent='-'; return;} 
+  document.getElementById('lastAdded').textContent = members[0].name + ' - ' + members[0].id;
+  div.innerHTML=members.map((m,i)=>`<div class="bg-white border-2 border-yellow-400 p-3 rounded-xl"><div class="flex justify-between"><p class="font-black text-sm">${i+1}. ${m.name} - DOB:${m.dob}</p><span class="text-xs bg-green-100 px-2 py-1 rounded-full">${m.id}</span></div><p class="text-[11px] text-gray-600 mt-1">பூத்:${m.booth} • ${m.dist} • ${m.thoguthi} • ${m.phone||''}</p><p class="text-[10px] text-gray-400">${m.date}</p></div>`).join(''); 
+}
+function downloadExcel(){ 
+  if(!members.length){alert('No members! Add pannunga!'); return;} 
+  const data=members.map((m,i)=>({No:i+1,MemberID:m.id,Name:m.name,BoothNo:m.booth,Thoguthi:m.thoguthi,Mavattam:m.dist,DOB:m.dob,Phone:m.phone||'',Address:m.address||'',Date:m.date})); 
+  const ws=XLSX.utils.json_to_sheet(data); 
+  const wb=XLSX.utils.book_new(); 
+  XLSX.utils.book_append_sheet(wb,ws,'TPK_Members'); 
+  XLSX.writeFile(wb,'TPK_TOTAL_'+members.length+'_Members_DOB.xlsx'); 
+  alert('Excel Downloaded! Total '+members.length+' Members Included!');
+}
+function downloadCSV(){ 
+  if(!members.length){alert('No members!'); return;} 
+  let csv='No,MemberID,Name,Booth,Thoguthi,Mavattam,DOB,Phone,Address,Date\n'; 
+  members.forEach((m,i)=>{csv+=`${i+1},"${m.id}","${m.name}","${m.booth}","${m.thoguthi}","${m.dist}","${m.dob}","${m.phone||''}","${m.address||''}","${m.date}"\n`;}); 
+  const blob=new Blob([csv],{type:'text/csv'}); 
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='TPK_TOTAL_'+members.length+'_Members.csv'; a.click(); 
+}
+function clearAllData(){
+  if(confirm('Total + Excel data ellam delete agum! Sure ah Anna?')){
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem('tpk_final_dob');
+    members=[];
+    updateTotalDisplay();
+    renderAdmin();
+    alert('Cleared! Ippo Pudusa Add Pannalam!');
+  }
+}
 </script>
 </body>
 </html>
