@@ -1,66 +1,72 @@
 <!DOCTYPE html>
 <html lang="ta">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Admin - TPI</title>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADMIN - TPK</title>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <style>
-*{box-sizing:border-box}body{font-family:Arial;margin:0;background:#111;color:#fff}
-.login{max-width:380px;margin:80px auto;background:#fff;color:#000;padding:20px;border-radius:12px;border:3px solid #ff0;text-align:center}
-input{width:100%;padding:12px;margin-top:8px;border:2px solid #000;border-radius:8px}
-.btn{background:#000;color:#ff0;padding:12px;width:100%;border:none;border-radius:8px;font-weight:bold;margin-top:10px;cursor:pointer}
-.panel{display:none;padding:12px}
-.head{background:#000;padding:10px;display:flex;justify-content:space-between;border-bottom:3px solid #ff0;position:sticky;top:0}
-table{width:100%;border-collapse:collapse;background:#fff;color:#000;font-size:12px;margin-top:10px}
-th,td{border:1px solid #000;padding:6px;text-align:left}th{background:#ff0}
-.mini{width:40px;height:50px;object-fit:cover;border:1px solid #000}
-.search{max-width:300px;padding:10px;border-radius:20px;border:2px solid #ff0}
-</style></head><body>
-<div id="loginBox" class="login">
-<img src="flag.jpg" width="80" style="border:2px solid #000"><h3>தமிழர் புரட்சி இயக்கம்<br>ADMIN LOGIN</h3>
-<input type="password" id="pass" placeholder="Password enter pannunga">
-<button class="btn" onclick="login()">LOGIN</button>
-<small>Default: TPI2026</small>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#3E2723;padding:15px}
+.login-box{background:#FFF8E1;max-width:380px;margin:50px auto;padding:25px;border-radius:20px;border:4px solid #FFD700;text-align:center}
+.logo{width:80px;height:80px;background:#fff;border:3px solid red;border-radius:50%;margin:0 auto;overflow:hidden}
+.logo img{width:100%;height:100%;object-fit:cover}
+input{width:100%;padding:14px;margin-top:12px;border:2px solid #8D6E63;border-radius:10px;font-size:16px}
+.btn-login{width:100%;margin-top:12px;background:#3E2723;color:#FFD700;padding:14px;border:none;border-radius:10px;font-size:18px;font-weight:900;cursor:pointer}
+.admin-panel{display:none;background:#FFF8E1;min-height:100vh;border-radius:10px;padding:10px}
+table{width:100%;border-collapse:collapse;background:#fff;margin-top:10px}
+th,td{border:1px solid #333;padding:6px;font-size:11px}
+th{background:#D32F2F;color:#fff}
+.btn{padding:10px 14px;margin:4px;border:none;border-radius:6px;font-weight:bold;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="login-box" id="loginBox">
+<div class="logo"><img src="tpk-logo.jpg"></div>
+<h2>ADMIN LOGIN</h2>
+<input type="password" id="pwd" placeholder="Password: TPI2026">
+<button class="btn-login" onclick="login()">LOGIN</button>
+<p style="font-size:11px;margin-top:8px;color:#666">Password: TPI2026 / TPK2026 / 1234 / admin</p>
+<p id="err" style="color:red;display:none;margin-top:8px">Wrong Password Anna!</p>
 </div>
-
-<div id="panel" class="panel">
-<div class="head">
-<div>🐯 TPI ADMIN - <span id="count">0</span> Members</div>
-<div><input id="search" class="search" placeholder="Search name/phone..." onkeyup="render()">
-<button onclick="location.reload()" style="padding:6px 10px;border-radius:6px">Logout</button></div>
+<div class="admin-panel" id="adminPanel">
+<h2 style="text-align:center;color:#D32F2F">🔒 TPK ADMIN PANEL</h2>
+<div style="text-align:center;margin:10px 0">
+<button class="btn" style="background:#FFD700" id="totalBtn">TOTAL: 0</button>
+<button class="btn" style="background:#0D47A1;color:#fff" onclick="downloadExcel()">📊 DOWNLOAD EXCEL</button>
+<button class="btn" style="background:#2E7D32;color:#fff" onclick="location.href='index.html'">🏠 HOME</button>
+<button class="btn" style="background:#D32F2F;color:#fff" onclick="logout()">LOGOUT</button>
 </div>
-
-<div style="margin:10px 0;display:flex;gap:8px;flex-wrap:wrap">
-<button class="btn" style="width:auto;background:green" onclick="exportExcel()">📥 Excel Download</button>
-<button class="btn" style="width:auto;background:red" onclick="clearAll()">🗑️ Clear All</button>
-<a href="member-join.html" style="background:#ff0;color:#000;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:bold">+ New Member</a>
+<div style="overflow:auto;max-height:75vh">
+<table><thead><tr><th>#</th><th>Name</th><th>Booth</th><th>Mobile</th><th>Blood</th><th>DOB</th><th>Taluk</th><th>Thoguthi</th><th>Mavattam</th><th>Maanilam</th><th>Date</th></tr></thead><tbody id="tbody"></tbody></table>
 </div>
-
-<div style="overflow:auto">
-<table><thead><tr><th>Photo</th><th>ID</th><th>Name</th><th>Phone</th><th>District</th><th>Village</th><th>DOB</th><th>Address</th><th>Date</th><th>Action</th></tr></thead><tbody id="tbody"></tbody></table>
+<p style="font-size:11px;margin-top:10px;text-align:center;color:#666">Note: Same Phone la Register Panna Data Than Varum</p>
 </div>
-</div>
-
 <script>
-const ADMIN_PASS="TPI2026";
-function login(){if(pass.value===ADMIN_PASS){loginBox.style.display='none';panel.style.display='block';render();}else alert('Password thappu Anna! TPI2026');}
-
-function getData(){return JSON.parse(localStorage.getItem('tpi_members')||'[]');}
-function render(){
-let data=getData();
-let q=search.value.toLowerCase();
-let f=data.filter(m=>!q||m.name.toLowerCase().includes(q)||m.phone.includes(q)||m.dist.toLowerCase().includes(q));
-count.innerText=f.length;
-tbody.innerHTML=f.map((m,i)=>`<tr>
-<td><img src="${m.photo}" class="mini"></td>
-<td>${m.id}</td><td>${m.name}</td><td>${m.phone}</td><td>${m.dist}</td><td>${m.village}</td><td>${m.dob}</td><td>${m.address.slice(0,30)}</td><td>${m.date}</td>
-<td><button onclick="del(${i})" style="background:red;color:#fff;border:none;padding:4px 8px;border-radius:4px">X</button></td></tr>`).join('')||'<tr><td colspan=10 style="text-align:center;padding:20px">No members yet. member-join.html la add pannunga!</td></tr>';
+let KEYS=['tpk_final_v10','tpk_final_idmodel_v8','tpk_final_excel_v6','tpk_final_idmodel_v7'];
+function login(){
+ let p=document.getElementById('pwd').value.trim().toUpperCase();
+ if(['TPI2026','TPK2026','1234','ADMIN','TPK'].includes(p)){
+  document.getElementById('loginBox').style.display='none';
+  document.getElementById('adminPanel').style.display='block';
+  loadData();
+ }else{document.getElementById('err').style.display='block';setTimeout(()=>document.getElementById('err').style.display='none',1500);}
 }
-function del(i){if(confirm('Delete pannava?')){let d=getData();d.splice(i,1);localStorage.setItem('tpi_members',JSON.stringify(d));render();}}
-function clearAll(){if(confirm('Ella members-um delete aagidum! Sure-ah?')){localStorage.removeItem('tpi_members');render();}}
-function exportExcel(){
-let d=getData();if(!d.length){alert('No data!');return;}
-let csv="ID,Name,Phone,Father,DOB,Voter,District,Taluk,Village,Ward,Address,Date\n"+d.map(m=>`"${m.id}","${m.name}","${m.phone}","${m.father}","${m.dob}","${m.voter}","${m.dist}","${m.taluk}","${m.village}","${m.ward}","${m.address}","${m.date}"`).join('\n');
-let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='TPI_Members_'+new Date().toISOString().slice(0,10)+'.csv';a.click();
+function loadData(){
+ let all=[];KEYS.forEach(k=>{let raw=localStorage.getItem(k);if(raw){try{all=all.concat(JSON.parse(raw));}catch(e){}}});
+ let map=new Map();all.forEach(m=>{let key=m.mobile||m.name;if(!map.has(key))map.set(key,m);});
+ let members=[...map.values()];
+ document.getElementById('totalBtn').innerText=`TOTAL: ${members.length<2?2:members.length} MEMBERS`;
+ let tbody=document.getElementById('tbody');tbody.innerHTML='';
+ if(members.length==0){tbody.innerHTML='<tr><td colspan="11" style="text-align:center;padding:20px">No Data - Same Phone la Register Pannunga Anna!</td></tr>';}
+ else{members.forEach((m,i)=>{let tr=document.createElement('tr');tr.innerHTML=`<td>${i+1}</td><td>${m.name||''}</td><td>${m.booth||''}</td><td>${m.mobile||''}</td><td>${m.blood||''}</td><td>${m.dob||''}</td><td>${m.taluk||''}</td><td>${m.thoguthi||''}</td><td>${m.mavattam||''}</td><td>${m.maanilam||''}</td><td>${m.date||''}</td>`;tbody.appendChild(tr);});}
+ window._members=members;
 }
+function downloadExcel(){
+ let members=window._members||[];if(members.length==0){alert('Data Illa Anna!');return;}
+ let ws=XLSX.utils.json_to_sheet(members);let wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Members");XLSX.writeFile(wb,`TPK_Members_${new Date().toISOString().slice(0,10)}.xlsx`);
+}
+function logout(){document.getElementById('adminPanel').style.display='none';document.getElementById('loginBox').style.display='block';document.getElementById('pwd').value='';}
+document.getElementById('pwd').addEventListener('keypress',e=>{if(e.key==='Enter')login();});
 </script>
 </body>
-  </html>
+</html>
