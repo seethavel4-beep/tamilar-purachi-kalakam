@@ -3,38 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAMILAR PURATCHI KAZHAGAM - TPK</title>
+<title>TAMILAR PURATCHI KALAKAM - TPK</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
 body{background:#F5E6C8;}
 .header{background:#3E2723;text-align:center;padding:15px 10px;position:sticky;top:0;z-index:100;}
-.logo-circle{width:100px;height:100px;background:#FFD700;border:4px solid #FF0000;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.logo-circle img{width:90%;height:90%;object-fit:contain;}
-.header h1{color:#FFD700;font-size:18px;margin-top:10px;letter-spacing:1px;}
+.logo-circle{width:110px;height:110px;background:radial-gradient(circle,#FFD700 0%,#FF8C00 100%);border:4px solid #FF0000;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;box-shadow:0 0 10px #000;}
+.logo-circle span{font-size:50px;}
+.header h1{color:#FFD700;font-size:18px;margin-top:10px;letter-spacing:1px;font-weight:900;}
 .badges{margin-top:10px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
 .badge-total{background:#C19A2A;color:#000;padding:7px 18px;border-radius:20px;font-weight:900;font-size:14px;}
 .badge-admin{background:#D32F2F;color:#fff;padding:7px 18px;border-radius:20px;font-weight:900;font-size:14px;border:none;cursor:pointer;}
-.banner{width:100%;height:120px;overflow:hidden;border:2px solid #FFD700;}
-.banner img{width:100%;height:100%;object-fit:cover;}
+.banner{width:100%;height:130px;background:linear-gradient(to bottom,#D32F2F 50%,#FFD700 50%);display:flex;align-items:center;justify-content:center;position:relative;border-top:3px solid #FFD700;border-bottom:3px solid #FFD700;overflow:hidden;}
+.banner-tiger{font-size:80px;filter:drop-shadow(2px 2px 4px #000);animation: roar 2s infinite;}
+@keyframes roar{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.banner-text{position:absolute;bottom:5px;right:10px;background:#000;color:#FFD700;padding:2px 8px;font-size:10px;border-radius:5px;font-weight:bold;}
 .reg-title{text-align:center;color:#D32F2F;font-size:22px;font-weight:900;margin:15px 0 10px;}
 .form-box{margin:10px;padding:12px;border:2px solid #FFD700;border-radius:12px;background:#FFF8E1;}
 .photo-label{font-weight:bold;margin-bottom:8px;display:block;}
 .btn-row{display:flex;gap:10px;}
 .btn-cam{flex:1;background:#5C6BC0;color:#fff;border:none;padding:12px;border-radius:8px;font-weight:bold;cursor:pointer;}
 .btn-gal{flex:1;background:#43A047;color:#fff;border:none;padding:12px;border-radius:8px;font-weight:bold;cursor:pointer;}
-input,select{width:100%;padding:13px;margin-top:12px;border:1.5px solid #D7CCC8;border-radius:8px;font-size:15px;background:#fff;}
-input:focus{border-color:#FFD700;outline:none;}
-.btn-submit{width:100%;margin-top:15px;background:linear-gradient(to right,#FF0000 50%,#FFD700 50%);color:#000;padding:14px;border:none;border-radius:8px;font-size:18px;font-weight:900;cursor:pointer;text-shadow:1px 1px 0 #fff;}
+input{width:100%;padding:13px;margin-top:12px;border:1.5px solid #D7CCC8;border-radius:8px;font-size:15px;background:#fff;}
+.btn-submit{width:100%;margin-top:15px;background:linear-gradient(to right,#FF0000 50%,#FFD700 50%);color:#000;padding:14px;border:2px solid #000;border-radius:8px;font-size:18px;font-weight:900;cursor:pointer;}
 .preview-img{width:80px;height:80px;border-radius:50%;margin:10px auto;display:none;object-fit:cover;border:3px solid #FFD700;}
-.total-big{text-align:center;font-size:14px;color:#3E2723;margin-top:10px;font-weight:bold;}
+.total-big{text-align:center;font-size:14px;color:#3E2723;margin:15px 0;font-weight:bold;padding-bottom:20px;}
 </style>
 </head>
 <body>
 
 <div class="header">
   <div class="logo-circle">
-    <img src="https://i.ibb.co/3m0Qb5Z/tiger.png" onerror="this.src='https://via.placeholder.com/80?text=TPK'">
+    <span>🐅</span>
   </div>
+  <div style="color:#fff;font-size:11px;margin-top:5px;font-weight:bold;">TAMILAR PURATCHI KALAKAM</div>
+  <div style="color:#FFD700;font-size:18px;font-weight:900;">TPK</div>
   <h1>TAMILAR PURATCHI KALAKAM</h1>
   <div class="badges">
     <div class="badge-total" id="totalMembersBadge">TOTAL: 2 MEMBERS</div>
@@ -43,7 +46,8 @@ input:focus{border-color:#FFD700;outline:none;}
 </div>
 
 <div class="banner">
-  <img src="https://i.ibb.co/3m0Qb5Z/tiger-banner.jpg" onerror="this.src='https://via.placeholder.com/600x120?text=TPK+BANNER'">
+  <div class="banner-tiger">🐅</div>
+  <div class="banner-text">தமிழர் புரட்சி கழகம்</div>
 </div>
 
 <h2 class="reg-title">📝 REGISTRATION</h2>
@@ -58,23 +62,20 @@ input:focus{border-color:#FFD700;outline:none;}
   <input type="file" id="photoInput" accept="image/*" capture="environment" style="display:none">
 </div>
 
-<form id="tpkForm">
+<form id="tpkForm" style="padding:0 10px;">
   <input type="text" id="name" placeholder="Name / பெயர் *" required>
   <input type="text" id="booth" placeholder="பூத் எண் / Booth No *" required>
   <input type="text" id="thoguthi" placeholder="தொகுதி / Thoguthi *" required>
   <input type="tel" id="phone" placeholder="Phone / தொலைபேசி *" required>
-  
-  <button type="submit" class="btn-submit">தமிழர் புரட்சி கழகத்தில் இணைய - JOIN</button>
+  <button type="submit" class="btn-submit">JOIN TPK - இணைய</button>
 </form>
 
-<div class="total-big" id="totalBig">Total Registered: <span id="totalNum">2</span> | Target: 10,000</div>
+<div class="total-big">Total Registered: <span id="totalNum">2</span> / 10,000 Target</div>
 
 <script>
-// ===== CONFIG =====
-let STORAGE_KEY = 'tpk_members_final';
+let STORAGE_KEY = 'tpk_members_final_v3';
 let photoBase64 = '';
 
-// ===== PHOTO PREVIEW =====
 document.getElementById('photoInput').addEventListener('change', function(e){
   let file = e.target.files[0];
   if(file){
@@ -89,55 +90,34 @@ document.getElementById('photoInput').addEventListener('change', function(e){
   }
 });
 
-// ===== TOTAL UPDATE FUNCTION - MAIN FIX =====
 function updateTotalMembers(){
   let members = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-  // Default 2 members already (as per your screenshot)
   let count = members.length;
-  if(count < 2) count = 2; // Starting count
-  
+  if(count < 2) count = 2;
   document.getElementById('totalMembersBadge').innerText = `TOTAL: ${count} MEMBERS`;
   document.getElementById('totalNum').innerText = count;
-  
-  // 10000 Celebration
   if(count >= 10000){
-    document.getElementById('totalMembersBadge').innerText = `🎉 TOTAL: ${count.toLocaleString()} MEMBERS 🎉`;
-    document.getElementById('totalMembersBadge').style.background = '#FFD700';
+    document.getElementById('totalMembersBadge').innerText = `🎉 TOTAL: ${count} 🎉`;
   }
 }
-
-// Load time
 updateTotalMembers();
 
-// ===== FORM SUBMIT =====
 document.getElementById('tpkForm').addEventListener('submit', function(e){
   e.preventDefault();
-  
   let members = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-  
   let newMember = {
     name: document.getElementById('name').value,
     booth: document.getElementById('booth').value,
     thoguthi: document.getElementById('thoguthi').value,
     phone: document.getElementById('phone').value,
-    photo: photoBase64.substring(0,100), // Save small part
-    date: new Date().toLocaleString('ta-IN')
+    date: new Date().toLocaleString()
   };
-  
   members.push(newMember);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(members));
-  
-  // UPDATE TOTAL IMMEDIATELY - FIX
   updateTotalMembers();
-  
-  alert(`✅ வாழ்த்துக்கள் ${newMember.name}!\nதமிழர் புரட்சி கழகத்தில் வெற்றிகரமாக பதிவு செய்யப்பட்டது!\n\nTotal: ${members.length < 2 ? 2 : members.length} Members`);
-  
-  // Reset Form
+  alert(`✅ ${newMember.name} - Register Success!\nTotal: ${members.length < 2 ? 2 : members.length}`);
   this.reset();
   document.getElementById('preview').style.display='none';
-  photoBase64='';
-  
-  // Scroll top to show total
   window.scrollTo(0,0);
 });
 
@@ -145,12 +125,9 @@ function adminLogin(){
   let pass = prompt("Admin Password:");
   if(pass === "TPK2026"){
     let members = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    alert(`Total Members List: ${members.length}\n\n${members.map((m,i)=>`${i+1}. ${m.name} - ${m.booth}`).join('\n')}`);
-  } else if(pass){
-    alert("Wrong Password Anna!");
+    alert(`Members: ${members.length}\n${members.map((m,i)=>`${i+1}. ${m.name} - ${m.booth}`).join('\n')}`);
   }
 }
 </script>
-
 </body>
 </html>
