@@ -3,33 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TPK - Tamilar Puratchi Kalakam - Final</title>
+<title>TPK - Tamilar Puratchi Kalakam - Final Fixed</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body class="bg-black">
 <div class="max-w-md mx-auto bg-white min-h-screen shadow-2xl">
 
-<div class="bg-black text-center p-4 border-b-4 border-yellow-400">
-<div class="w-20 h-14 bg-yellow-400 rounded flex items-center justify-center text-3xl mx-auto">🐅</div>
+<!-- HEADER WITH YOUR UPLOADED LOGO & FLAG -->
+<div class="bg-black text-center p-3 border-b-4 border-yellow-400">
+<img src="tpk-logo.jpg" class="w-24 h-24 mx-auto rounded-full border-4 border-yellow-400 object-cover bg-white">
 <h1 class="text-yellow-400 font-black mt-2 text-lg">TAMILAR PURATCHI KALAKAM</h1>
-<p class="text-gray-400 text-xs">38 DISTRICTS • 234 THOGUTHIS • 35, Aruppukottai</p>
-<div class="flex justify-center gap-2 mt-3">
+<p class="text-gray-400 text-[11px]">38 DISTRICTS • 234 THOGUTHIS • Aruppukottai</p>
+<div class="flex justify-center gap-2 mt-2">
 <div class="bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold">TOTAL: <span id="totalCount">0</span></div>
 <button onclick="openAdminLogin()" class="bg-red-600 text-white px-4 py-1 rounded-full text-xs font-black">🔐 ADMIN</button>
 </div>
+<img src="tpk-flag.jpg" class="w-full h-24 object-cover mt-3 rounded-lg border-2 border-yellow-400">
 </div>
 
 <div id="publicView" class="p-4">
 <h2 class="text-center font-black text-red-600 mb-3">📝 NEW MEMBER REGISTRATION</h2>
 
 <div class="border-2 border-yellow-400 rounded-xl p-3 bg-yellow-50 mb-3">
-<label class="text-xs font-bold">📸 Photo *</label>
+<label class="text-xs font-bold">📸 Photo * - Camera & Gallery Working</label>
 <input id="camIn" type="file" accept="image/*" capture="environment" class="hidden">
 <input id="galIn" type="file" accept="image/*" class="hidden">
 <div class="flex gap-2 mt-2">
-<button type="button" onclick="document.getElementById('camIn').click()" class="flex-1 bg-blue-600 text-white py-2.5 rounded-lg font-bold text-sm">📷 CAMERA</button>
-<button type="button" onclick="document.getElementById('galIn').click()" class="flex-1 bg-green-600 text-white py-2.5 rounded-lg font-bold text-sm">🖼️ GALLERY</button>
+<button onclick="document.getElementById('camIn').click()" class="flex-1 bg-blue-600 text-white py-2.5 rounded-lg font-bold text-sm">📷 CAMERA</button>
+<button onclick="document.getElementById('galIn').click()" class="flex-1 bg-green-600 text-white py-2.5 rounded-lg font-bold text-sm">🖼️ GALLERY</button>
 </div>
 <div id="photoDiv" class="hidden mt-2 text-center">
 <img id="photoPrev" class="w-28 h-28 mx-auto rounded-xl object-cover border-4 border-yellow-400">
@@ -45,46 +47,43 @@
 <input id="booth" placeholder="Booth No" class="w-full border-2 p-3 rounded-lg mb-2">
 <input id="address" placeholder="Address" class="w-full border-2 p-3 rounded-lg mb-3">
 
-<button id="mainBtn" type="button" class="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-4 rounded-xl font-black text-[16px]">🪪 REGISTER & DOWNLOAD ID CARD</button>
+<button id="mainBtn" type="button" class="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-4 rounded-xl font-black text-[16px] shadow-xl">🪪 REGISTER & DOWNLOAD ID CARD</button>
 <p id="msg" class="text-center font-bold text-sm mt-2"></p>
 
-<div class="mt-4 bg-yellow-50 p-2 rounded-xl border">
-<p class="text-xs font-bold text-center mb-1">🪪 ID Card Preview</p>
-<canvas id="idCanvas" width="800" height="460" class="w-full rounded-lg border-2 border-black"></canvas>
+<div class="mt-4 bg-yellow-50 p-2 rounded-xl border-2 border-black">
+<p class="text-xs font-bold text-center mb-1">🪪 ID Card Preview - With Your Fixed Kodi & Logo</p>
+<canvas id="idCanvas" width="800" height="460" class="w-full rounded-lg bg-yellow-400"></canvas>
 </div>
 </div>
 
+<!-- ADMIN LOGIN -->
 <div id="loginModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50">
 <div class="bg-white rounded-2xl p-6 w-full max-w-sm">
-<h3 class="font-black text-center text-lg mb-1">🔐 ADMIN LOGIN</h3>
-<p class="text-center text-xs text-gray-500 mb-4">Private Password Only For You</p>
-<input id="adminPass" type="password" placeholder="Password" class="w-full border-2 border-black p-3 rounded-xl font-bold text-center">
-<p class="text-[10px] text-gray-400 mt-2 text-center">Default: TPK@2026</p>
+<h3 class="font-black text-center text-lg">🔐 ADMIN LOGIN</h3>
+<p class="text-center text-xs text-gray-500 mb-3">Password: TPK@2026</p>
+<input id="adminPass" type="password" placeholder="Enter Password" class="w-full border-2 border-black p-3 rounded-xl font-bold text-center">
 <button onclick="checkAdminPass()" class="w-full mt-3 bg-black text-yellow-400 py-3 rounded-xl font-black">🔓 LOGIN</button>
 <button onclick="closeAdminLogin()" class="w-full mt-2 bg-gray-200 py-2 rounded-xl text-sm font-bold">Cancel</button>
 <p id="loginMsg" class="text-center text-xs font-bold mt-2"></p>
 </div>
 </div>
 
+<!-- ADMIN PANEL -->
 <div id="adminView" class="hidden p-4 bg-gray-50 min-h-screen">
 <div class="flex justify-between items-center mb-4">
 <h2 class="font-black text-lg">🔐 ADMIN PANEL</h2>
 <button onclick="closeAdmin()" class="bg-black text-white px-3 py-1 rounded-full text-xs font-bold">❌ CLOSE</button>
 </div>
-<div class="grid grid-cols-2 gap-2 mb-4">
-<div class="bg-yellow-400 p-3 rounded-xl text-center"><p class="text-xs font-bold">TOTAL</p><p id="adminTotal" class="text-xl font-black">0</p></div>
-<div class="bg-green-600 text-white p-3 rounded-xl text-center"><p class="text-xs font-bold">GOOGLE SHEET</p><p class="text-xs font-bold">LIVE ✅</p></div>
-</div>
 <div class="bg-white border-2 border-green-600 rounded-xl p-3 mb-4">
-<h3 class="font-black text-green-700 text-sm mb-2">📊 AUTO EXCEL - Member Sera Sera Add</h3>
+<h3 class="font-black text-green-700 text-sm mb-2">📊 AUTO EXCEL - Member Sera Sera Add Agum</h3>
 <div class="grid grid-cols-2 gap-2">
 <button onclick="downloadExcel()" class="bg-green-600 text-white py-3 rounded-xl font-black text-sm">📥 EXCEL</button>
 <button onclick="downloadCSV()" class="bg-blue-600 text-white py-3 rounded-xl font-black text-sm">📄 CSV</button>
 </div>
-<a href="https://docs.google.com/spreadsheets/d/1fkBkupoUE3ybd_JlE_fHxYsx-YtbQE5tuUnUBfduLk0/edit" target="_blank" class="block mt-2 bg-yellow-400 text-black text-center py-2 rounded-xl font-bold text-xs">📊 OPEN GOOGLE SHEET</a>
+<a href="https://docs.google.com/spreadsheets/d/1fkBkupoUE3ybd_JlE_fHxYsx-YtbQE5tuUnUBfduLk0/edit" target="_blank" class="block mt-2 bg-yellow-400 text-black text-center py-2 rounded-xl font-bold text-xs">📊 OPEN GOOGLE SHEET LIVE</a>
 </div>
 <input id="searchBox" placeholder="🔍 Search Name / Phone" class="w-full border-2 p-3 rounded-xl mb-3" oninput="renderAdmin()">
-<div id="adminList" class="space-y-2 max-h-[50vh] overflow-auto"></div>
+<div id="adminList" class="space-y-2 max-h-[60vh] overflow-auto"></div>
 </div>
 </div>
 
@@ -94,36 +93,34 @@ const ADMIN_PASSWORD="TPK@2026";
 let photoData="";
 let members=JSON.parse(localStorage.getItem('tpk_admin_final')||'[]');
 document.getElementById('totalCount').textContent=members.length;
+
 document.getElementById('camIn').addEventListener('change',e=>handlePhoto(e.target.files[0]));
 document.getElementById('galIn').addEventListener('change',e=>handlePhoto(e.target.files[0]));
 function handlePhoto(f){ if(!f) return; const r=new FileReader(); r.onload=e=>{photoData=e.target.result; document.getElementById('photoPrev').src=photoData; document.getElementById('photoDiv').classList.remove('hidden'); drawCard();}; r.readAsDataURL(f); }
+
 function drawCard(){
 const m={id:'TPK/'+new Date().getFullYear()+'/'+Math.floor(1000+Math.random()*9000),name:document.getElementById('name').value||'Name',booth:document.getElementById('booth').value||'--',thoguthi:document.getElementById('thoguthi').value||'Aruppukottai',dist:document.getElementById('dist').value||'Virudhunagar',photo:photoData};
 const c=document.getElementById('idCanvas'); const ctx=c.getContext('2d');
 ctx.fillStyle='#FFC200'; ctx.fillRect(0,0,800,460);
-ctx.fillStyle='#7A0019'; ctx.font='900 34px sans-serif'; ctx.fillText('தமிழர் புரட்சி கழகம்',20,45);
+ctx.fillStyle='#7A0019'; ctx.font='900 32px sans-serif'; ctx.fillText('தமிழர் புரட்சி கழகம்',20,45);
 ctx.font='700 13px sans-serif'; ctx.fillText('மக்கள் நலன் • தமிழர் உரிமை',20,68);
 ctx.fillStyle='#7A0019'; ctx.beginPath(); ctx.roundRect(310,48,135,40,18); ctx.fill();
 ctx.fillStyle='#FFEB3B'; ctx.font='700 13px sans-serif'; ctx.fillText('உறுப்பினர் அட்டை',330,73);
-ctx.fillStyle='white'; ctx.beginPath(); ctx.arc(710,70,52,0,Math.PI*2); ctx.fill();
-ctx.fillStyle='#7A0019'; ctx.beginPath(); ctx.arc(710,70,47,0,Math.PI*2); ctx.fill();
-ctx.fillStyle='#E60000'; ctx.fillRect(675,38,70,22); ctx.fillStyle='#FFD700'; ctx.fillRect(675,60,70,22);
-ctx.fillStyle='white'; ctx.font='26px Arial'; ctx.fillText('🐅',695,78);
-ctx.fillStyle='#7A0019'; ctx.font='900 16px Arial'; ctx.fillText('TPK',690,110);
+// Logo from your uploaded file
+const logoImg=new Image(); logoImg.src='tpk-logo.jpg'; try{ctx.drawImage(logoImg,640,10,120,120);}catch(e){}
 ctx.fillStyle='#4A000F'; ctx.font='700 17px sans-serif';
 ctx.fillText('பெயர்',20,130); ctx.fillText(':',150,130); ctx.fillText(m.name,170,130);
 ctx.fillText('பூத் எண்',20,158); ctx.fillText(':',150,158); ctx.fillText(m.booth,170,158);
 ctx.fillText('சட்டமன்றம்',20,186); ctx.fillText(':',150,186); ctx.font='700 15px sans-serif'; ctx.fillText(m.thoguthi,170,186);
-ctx.font='700 17px sans-serif';
-ctx.fillText('மாவட்டம்',20,214); ctx.fillText(':',150,214); ctx.fillText(m.dist,170,214);
+ctx.font='700 17px sans-serif'; ctx.fillText('மாவட்டம்',20,214); ctx.fillText(':',150,214); ctx.fillText(m.dist,170,214);
 ctx.fillText('மாநிலம்',20,242); ctx.fillText(':',150,242); ctx.fillText('தமிழ்நாடு',170,242);
-ctx.strokeStyle='#7A0019'; ctx.strokeRect(20,260,80,80);
+ctx.strokeStyle='#7A0019'; ctx.lineWidth=2; ctx.strokeRect(20,260,80,80);
 if(m.photo){const img=new Image(); img.onload=()=>ctx.drawImage(img,22,262,76,76); img.src=m.photo;}
 ctx.fillStyle='white'; ctx.fillRect(130,260,80,80); ctx.fillStyle='black';
 for(let i=0;i<8;i++) for(let j=0;j<8;j++) if(Math.random()>0.5) ctx.fillRect(135+i*9,265+j*9,6,6);
 ctx.fillStyle='#7A0019'; ctx.font='700 10px Arial'; ctx.fillText('ID:'+m.id,130,355);
-ctx.fillStyle='white'; ctx.beginPath(); ctx.arc(500,200,50,0,Math.PI*2); ctx.fill(); ctx.fillRect(450,250,100,110);
-ctx.fillStyle='#7A0019'; ctx.font='24px Arial'; ctx.fillText('🙏',485,285);
+// Flag from your uploaded file
+const flagImg=new Image(); flagImg.src='tpk-flag.jpg'; try{ctx.drawImage(flagImg,450,150,300,120);}catch(e){}
 ctx.fillStyle='#7A0019'; ctx.fillRect(0,400,800,60);
 ctx.fillStyle='#FFEB3B'; ctx.font='11px Arial'; ctx.fillText('📍 Plot 35, Aruppukottai, Virudhunagar - 626101',15,435);
 return m;
@@ -134,9 +131,9 @@ const name=document.getElementById('name').value.trim(); const phone=document.ge
 const dist=document.getElementById('dist').value; const thoguthi=document.getElementById('thoguthi').value;
 const msg=document.getElementById('msg'); const btn=document.getElementById('mainBtn');
 if(!name||!phone){msg.textContent='❌ Name & Phone required!'; msg.className='text-center font-bold text-sm mt-2 text-red-600'; return;}
-if(!photoData){msg.textContent='❌ Photo required!'; msg.className='text-center font-bold text-sm mt-2 text-red-600'; return;}
+if(!photoData){msg.textContent='❌ Photo required! Camera or Gallery click!'; msg.className='text-center font-bold text-sm mt-2 text-red-600'; return;}
 if(!dist||!thoguthi){msg.textContent='❌ District & Thoguthi select!'; msg.className='text-center font-bold text-sm mt-2 text-red-600'; return;}
-btn.textContent='⏳ Saving...'; btn.disabled=true; msg.textContent='⏳ Saving to Excel Sheet...'; msg.className='text-center font-bold text-sm mt-2 text-blue-600';
+btn.textContent='⏳ Saving & Excel Adding...'; btn.disabled=true; msg.textContent='⏳ Saving to Excel Sheet...'; msg.className='text-center font-bold text-sm mt-2 text-blue-600';
 const memberId='TPK/'+new Date().getFullYear()+'/'+Math.floor(1000+Math.random()*9000);
 drawCard();
 const payload={memberId,name,fname:'',phone,blood:document.getElementById('blood').value,dist,thoguthi,address:document.getElementById('address').value,boothNo:document.getElementById('booth').value,taluk:''};
@@ -145,8 +142,8 @@ await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(payload
 members.unshift({id:memberId,name,phone,blood:document.getElementById('blood').value,dist,thoguthi,booth:document.getElementById('booth').value,address:document.getElementById('address').value,date:new Date().toLocaleString(),photo:photoData});
 localStorage.setItem('tpk_admin_final',JSON.stringify(members));
 document.getElementById('totalCount').textContent=members.length;
-msg.textContent='✅ Registered! Downloading ID Card...'; msg.className='text-center font-bold text-sm mt-2 text-green-600';
-setTimeout(()=>{downloadCanvas(memberId+'_TPK_ID'); msg.textContent='✅ Success! ID Card Downloaded!'; btn.textContent='✅ REGISTERED!'; setTimeout(()=>{btn.textContent='🪪 REGISTER & DOWNLOAD ID CARD'; btn.disabled=false; document.getElementById('name').value=''; document.getElementById('phone').value=''; photoData=''; document.getElementById('photoDiv').classList.add('hidden'); msg.textContent='';},2000);},600);
+msg.textContent='✅ Registered! Auto Added to Excel! Downloading ID Card...'; msg.className='text-center font-bold text-sm mt-2 text-green-600';
+setTimeout(()=>{downloadCanvas(memberId+'_TPK_ID'); msg.textContent='✅ Success! ID Card Downloaded!'; btn.textContent='✅ REGISTERED & DOWNLOADED!'; setTimeout(()=>{btn.textContent='🪪 REGISTER & DOWNLOAD ID CARD'; btn.disabled=false; document.getElementById('name').value=''; document.getElementById('phone').value=''; photoData=''; document.getElementById('photoDiv').classList.add('hidden'); msg.textContent='';},2500);},800);
 }catch(e){msg.textContent='❌ Error'; btn.disabled=false;}
 });
 ['name','booth','thoguthi','dist'].forEach(id=>{document.getElementById(id).addEventListener('input',drawCard); document.getElementById(id).addEventListener('change',drawCard);});
@@ -155,7 +152,7 @@ function openAdminLogin(){document.getElementById('loginModal').classList.remove
 function closeAdminLogin(){document.getElementById('loginModal').classList.add('hidden'); document.getElementById('adminPass').value='';}
 function checkAdminPass(){ const p=document.getElementById('adminPass').value; if(p===ADMIN_PASSWORD){document.getElementById('loginModal').classList.add('hidden'); document.getElementById('publicView').classList.add('hidden'); document.getElementById('adminView').classList.remove('hidden'); renderAdmin();}else{document.getElementById('loginMsg').textContent='❌ Wrong Password!';} }
 function closeAdmin(){document.getElementById('adminView').classList.add('hidden'); document.getElementById('publicView').classList.remove('hidden');}
-function renderAdmin(){ document.getElementById('adminTotal').textContent=members.length; const div=document.getElementById('adminList'); if(members.length===0){div.innerHTML='<p class="text-center text-gray-500 py-10">No members yet</p>'; return;} div.innerHTML=members.map(m=>`<div class="bg-white border p-3 rounded-xl"><p class="font-black text-sm">${m.name}</p><p class="text-[11px] text-gray-600">${m.id} • ${m.phone} • ${m.dist} • ${m.thoguthi}</p></div>`).join(''); }
+function renderAdmin(){ const div=document.getElementById('adminList'); document.getElementById('adminTotal')?document.getElementById('adminTotal').textContent=members.length:null; if(members.length===0){div.innerHTML='<p class="text-center text-gray-500 py-10">No members yet</p>'; return;} div.innerHTML=members.map(m=>`<div class="bg-white border p-3 rounded-xl flex justify-between"><div><p class="font-black text-sm">${m.name}</p><p class="text-[11px] text-gray-600">${m.id} • ${m.phone} • ${m.dist} • ${m.thoguthi}</p><p class="text-[10px] text-gray-400">${m.date}</p></div><button onclick="viewMember('${m.id}')" class="bg-yellow-400 px-3 py-1 rounded-full text-xs font-black">View</button></div>`).join(''); }
 function downloadExcel(){ if(members.length===0){alert('No members!'); return;} const data=members.map(m=>({MemberID:m.id,Name:m.name,Phone:m.phone,Blood:m.blood,District:m.dist,Thoguthi:m.thoguthi,Booth:m.booth,Date:m.date})); const ws=XLSX.utils.json_to_sheet(data); const wb=XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb,ws,'TPK_Members'); XLSX.writeFile(wb,'TPK_Members.xlsx'); }
 function downloadCSV(){ if(members.length===0){alert('No members!'); return;} let csv='MemberID,Name,Phone,Blood,District,Thoguthi,Booth,Date\n'; members.forEach(m=>{csv+=`"${m.id}","${m.name}","${m.phone}","${m.blood||''}","${m.dist}","${m.thoguthi}","${m.booth||''}","${m.date}"\n`;}); const blob=new Blob([csv],{type:'text/csv'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='TPK_Members.csv'; a.click(); }
 </script>
